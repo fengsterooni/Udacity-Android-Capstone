@@ -30,6 +30,7 @@ proguard-project.txt
 .gradle/**
 build/**
 /build
+/backend/build
 
 .idea/**
 import-summary.txt
