@@ -2,4 +2,14 @@
     <string name="app_name">CSix</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string name="csix">CSix Connect</string>
+
+    <string name="open_navigation_drawer">Open navigation drawer</string>
+    <string name="close_navigation_drawer">Close navigation drawer</string>
+
+    <string name="title_events">Events</string>
+    <string name="title_direction">Direction</string>
+    <string name="title_groups">SIGs</string>
+    <string name="title_about">About</string>
 </resources>

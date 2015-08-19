@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="all">
+        <item
+            android:id="@+id/navEvent"
+            android:icon="@drawable/ic_action_event"
+            android:title="@string/title_events"/>
+        <item
+            android:id="@+id/navDirection"
+            android:icon="@drawable/ic_action_direction"
+            android:title="@string/title_direction"/>
+
+        <item
+            android:id="@+id/navGroup"
+            android:icon="@drawable/ic_action_group"
+            android:title="@string/title_groups"/>
+
+        <item
+            android:id="@+id/navAbout"
+            android:icon="@drawable/ic_action_about"
+            android:title="@string/title_about"/>
+    </group>
+
+</menu>
