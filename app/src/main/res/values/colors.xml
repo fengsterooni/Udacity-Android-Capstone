@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="photo_placeholder">#ccc</color>
+
+    <color name="ltgray">#ffe0e0e0</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="dark_gray">#333333</color>
+    <color name="text_gray">#8FFF</color>
+    <color name="text_black">#6000</color>
+
+    <color name="main_color">#1468a9</color>
+    <color name="main_darker">#0e4772</color>
+    <color name="main_accent">#a90611</color>
+
+</resources>
