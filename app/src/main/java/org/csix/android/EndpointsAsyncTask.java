@@ -2,7 +2,6 @@ package org.csix.android;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v4.util.Pair;
 import android.widget.Toast;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -11,16 +10,23 @@ import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import org.csix.backend.myApi.MyApi;
+import org.csix.backend.myApi.model.Event;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
-class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
+class EndpointsAsyncTask extends AsyncTask<Void, Void, List<Event>> {
     private static MyApi myApiService = null;
     private Context context;
 
+    EndpointsAsyncTask(Context context) {
+        this.context = context;
+    }
+
     @Override
-    protected String doInBackground(Pair<Context, String>... params) {
-        if(myApiService == null) {  // Only do this once
+    protected List<Event> doInBackground(Void... params) {
+        if (myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
                     // options for running against local devappserver
@@ -39,18 +45,17 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
             myApiService = builder.build();
         }
 
-        context = params[0].first;
-        String name = params[0].second;
-
         try {
-            return myApiService.sayHi(name).execute().getData();
+            // ArrayList<Event> events = myApiService.listEvent();
+            return myApiService.listEvent().execute().getItems();
         } catch (IOException e) {
-            return e.getMessage();
+            return Collections.EMPTY_LIST;
         }
     }
 
     @Override
-    protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+    protected void onPostExecute(List<Event> result) {
+        for (Event event : result)
+            Toast.makeText(context, event.getTopic(), Toast.LENGTH_LONG).show();
     }
 }

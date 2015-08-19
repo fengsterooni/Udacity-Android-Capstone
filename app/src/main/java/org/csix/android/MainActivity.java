@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -74,15 +75,19 @@ public class MainActivity extends AppCompatActivity {
                 switch (id) {
                     case R.id.navEvent:
                         // fragment = EventFragment.newInstance("Event", "arg2");
+                        Snackbar.make(rootLayout, "Event Event Event!", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.navDirection:
                         // fragment = DirectionFragment.newInstance("Direction", "arg2");
+                        Snackbar.make(rootLayout, "Where where?!", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.navGroup:
                         // fragment = GroupFragment.newInstance("Group", "arg2");
+                        Snackbar.make(rootLayout, "GOOPS!", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.navAbout:
                         // fragment = AboutFragment.newInstance("About", "arg2");
+                        Snackbar.make(rootLayout, "HU AM I?!", Snackbar.LENGTH_SHORT).show();
                         break;
                 }
 
@@ -100,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "CSix"));
+        new EndpointsAsyncTask(this).execute();
     }
 
     @Override
