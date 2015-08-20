@@ -1,5 +1,6 @@
 package org.csix.android;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -106,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         new EndpointsAsyncTask(this).execute();
+        startService(new Intent(this, EventIntentService.class));
     }
 
     @Override

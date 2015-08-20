@@ -10,7 +10,10 @@ public class Event {
     @Id
     Long id;
     Date date;
+    String speaker;
+    String image;
     String topic;
+    String desc;
     int type = 0;
 
     public Long getId() {
@@ -23,6 +26,30 @@ public class Event {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getSpeaker() {
+        return speaker;
+    }
+
+    public void setSpeaker(String speaker) {
+        this.speaker = speaker;
     }
 
     public String getTopic() {
@@ -40,5 +67,4 @@ public class Event {
     public void setType(int type) {
         this.type = type;
     }
-
 }

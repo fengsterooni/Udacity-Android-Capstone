@@ -56,6 +56,6 @@ class EndpointsAsyncTask extends AsyncTask<Void, Void, List<Event>> {
     @Override
     protected void onPostExecute(List<Event> result) {
         for (Event event : result)
-            Toast.makeText(context, event.getTopic(), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, event.toString(), Toast.LENGTH_LONG).show();
     }
 }
