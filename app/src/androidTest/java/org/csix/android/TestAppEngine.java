@@ -63,7 +63,7 @@ public class TestAppEngine extends AndroidTestCase {
     public void testInitialization() throws Throwable {
         if (myApiService != null) {
             myApiService.removeAllEvent().execute();
-            
+
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
             Event event = new Event();
             Date date = format.parse("2015-08-27");
