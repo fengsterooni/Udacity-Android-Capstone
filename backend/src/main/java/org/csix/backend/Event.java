@@ -16,6 +16,15 @@ public class Event {
     String desc;
     int type = 0;
 
+    public Event() {}
+
+    public Event(Date date, String speaker, String topic, String desc) {
+        setDate(date);
+        setSpeaker(speaker);
+        setTopic(topic);
+        if (desc != null) setDesc(desc);
+    }
+
     public Long getId() {
         return id;
     }

@@ -35,7 +35,7 @@ public class EventEndpoint {
 
         ArrayList<Event> records = new ArrayList<Event>();
 
-        for (Event e: query) {
+        for (Event e : query) {
             records.add(e);
         }
         return records;
@@ -89,6 +89,16 @@ public class EventEndpoint {
             throw new NotFoundException("Event Record does not exist");
         }
         ofy().delete().entity(record).now();
+    }
+
+    /**
+     * This deletes all existing <code>Event</code> object.
+     */
+    @ApiMethod(name = "removeAllEvent")
+    public void removeAllEvents() throws NotFoundException {
+        Query<Event> events = ofy().load().type(Event.class);
+        for (Event event : events)
+            ofy().delete().entity(event).now();
     }
 
     //Private method to retrieve a <code>Event</code> record
