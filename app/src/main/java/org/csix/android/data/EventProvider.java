@@ -15,8 +15,6 @@ public class EventProvider extends ContentProvider{
 
     private static final int EVENT_ID = 100;
     private static final int EVENT = 101;
-    private static final int SPEAKER_ID = 200;
-    private static final int SPEAKER = 201;
 
     private DbHelper dbHelper;
 

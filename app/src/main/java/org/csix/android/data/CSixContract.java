@@ -6,7 +6,7 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 public class CSixContract {
-    public static final String CONTENT_AUTHORITY = "org.csix.android";
+    public static final String CONTENT_AUTHORITY = "org.csix";
 
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
@@ -26,19 +26,13 @@ public class CSixContract {
 
         // Columns
         public static final String COLUMN_DATE = "date";
-
-        // Column with the foreign key to speaker table
         public static final String COLUMN_SPEAKER = "speaker";
-
         public static final String COLUMN_TOPIC = "topic";
-
         public static final String COLUMN_DESC = "description";
-
         public static final String COLUMN_TYPE = "type";
 
         public static Uri buildEventUri(long id) {
             return ContentUris.withAppendedId(CONTENT_URI, id);
         }
-
     }
 }

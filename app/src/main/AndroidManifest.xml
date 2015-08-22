@@ -18,6 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:name=".data.EventProvider"
+            android:authorities="@string/content_authority"
+            android:exported="false"
+            android:syncable="true" />
         <service
             android:name=".EventIntentService"
             android:exported="false"/>
