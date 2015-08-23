@@ -8,7 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
-public class EventProvider extends ContentProvider{
+public class EventProvider extends ContentProvider {
 
     private final String LOG_TAG = EventProvider.class.getSimpleName();
     private static final UriMatcher uriMatcher = buildUriMatcher();

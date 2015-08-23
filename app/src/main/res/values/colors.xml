@@ -4,6 +4,8 @@
 
     <color name="ltgray">#ffe0e0e0</color>
 
+
+    <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="dark_gray">#333333</color>
     <color name="text_gray">#8FFF</color>
