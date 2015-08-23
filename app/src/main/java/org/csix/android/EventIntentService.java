@@ -60,9 +60,10 @@ public class EventIntentService extends IntentService {
     private void getEventData(List<Event> events) {
         Event event;
         int size = events.size();
-        ContentValues values = new ContentValues();
+        ContentValues values;
         Vector<ContentValues> vector = new Vector<>(size);
         for (int i = 0; i < size; i++) {
+            values = new ContentValues();
             event = events.get(i);
             values.put(CSixContract.EventEntry.COLUMN_DATE, DateUtils.getDateLong(DateUtils.getDateFromDateTime(event.getDate())));
             values.put(CSixContract.EventEntry.COLUMN_SPEAKER, event.getSpeaker());
