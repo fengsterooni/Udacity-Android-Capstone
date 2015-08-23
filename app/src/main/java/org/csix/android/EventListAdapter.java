@@ -16,7 +16,7 @@ import java.util.Date;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class EventListAdapter extends CursorAdapter{
+public class EventListAdapter extends CursorAdapter {
 
     private final String LOG_TAG = EventListAdapter.class.getSimpleName();
 
@@ -62,7 +62,7 @@ public class EventListAdapter extends CursorAdapter{
                 + DateUtils.getDayString(date);
 
         viewHolder.eventDate.setText("" + strTime);
-        viewHolder.speaker.setText("" + cursor.getString(cursor.getColumnIndex( CSixContract.EventEntry.COLUMN_SPEAKER)));
+        viewHolder.speaker.setText("" + cursor.getString(cursor.getColumnIndex(CSixContract.EventEntry.COLUMN_SPEAKER)));
         viewHolder.topic.setText("" + cursor.getString(cursor.getColumnIndex(CSixContract.EventEntry.COLUMN_TOPIC)));
     }
 }

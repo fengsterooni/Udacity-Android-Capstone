@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 null, // leaving "columns" null just returns all the columns.
                 null, // cols for "where" clause
                 null, // values for "where" clause
-                null  // sort order
+                CSixContract.EventEntry.COLUMN_DATE + " ASC"  // sort order
         );
 
         Log.i(LOG_TAG, "SIZE OF THE CURSOR " + cursor.getCount());
