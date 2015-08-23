@@ -8,7 +8,9 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -26,7 +28,7 @@ import org.csix.android.data.CSixContract;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements android.support.v4.app.LoaderManager.LoaderCallbacks<Cursor> {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
 
@@ -105,14 +107,6 @@ public class MainActivity extends AppCompatActivity implements android.support.v
                         break;
                 }
 
-                // drawerToggle.onDrawerClosed(navigation);
-
-                /*
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, fragment)
-                        .commit();
-                */
                 drawerLayout.closeDrawers();
 
                 return true;
@@ -187,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements android.support.v
     }
 
     @Override
-    public android.support.v4.content.CursorLoader onCreateLoader(int id, Bundle args) {
+    public CursorLoader onCreateLoader(int id, Bundle args) {
 
         return new CursorLoader(
                 this,
@@ -200,12 +194,12 @@ public class MainActivity extends AppCompatActivity implements android.support.v
     }
 
     @Override
-    public void onLoadFinished(android.support.v4.content.Loader<Cursor> loader, Cursor data) {
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         eventListAdapter.swapCursor(data);
     }
 
     @Override
-    public void onLoaderReset(android.support.v4.content.Loader<Cursor> loader) {
+    public void onLoaderReset(Loader<Cursor> loader) {
         eventListAdapter.swapCursor(null);
     }
 
