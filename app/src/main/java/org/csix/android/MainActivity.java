@@ -24,6 +24,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
+    public static boolean IS_TABLET = false;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -41,7 +42,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        IS_TABLET = isTablet();
+        if (IS_TABLET) {
+            setContentView(R.layout.activity_main_tablet);
+        } else {
+            setContentView(R.layout.activity_main);
+        }
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
@@ -154,5 +160,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private boolean isTablet() {
+        return (getApplicationContext().getResources().getConfiguration().screenLayout
+                & Configuration.SCREENLAYOUT_SIZE_MASK)
+                >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 }
