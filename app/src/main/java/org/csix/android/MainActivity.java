@@ -57,12 +57,14 @@ public class MainActivity extends AppCompatActivity implements Callback {
 
         setupDrawer();
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, new EventFragment())
-                .commit();
+        if (savedInstanceState == null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, new EventFragment())
+                    .commit();
 
-        startService(new Intent(this, EventIntentService.class));
+            startService(new Intent(this, EventIntentService.class));
+        }
     }
 
     private void setupDrawer() {
