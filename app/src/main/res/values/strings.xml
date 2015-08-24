@@ -13,4 +13,6 @@
     <string name="title_direction">Direction</string>
     <string name="title_groups">SIGs</string>
     <string name="title_about">About</string>
+
+    <string name="title_event_details">Event Details</string>
 </resources>

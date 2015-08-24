@@ -18,6 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".EventDetailActivity"
+            android:label="@string/title_event_details"
+            android:parentActivityName=".MainActivity" >
+        </activity>
         <provider
             android:name=".data.EventProvider"
             android:authorities="@string/content_authority"

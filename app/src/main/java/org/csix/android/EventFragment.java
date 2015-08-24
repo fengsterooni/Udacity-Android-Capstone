@@ -24,6 +24,7 @@ import butterknife.ButterKnife;
 public class EventFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private final String LOG_TAG = EventFragment.class.getSimpleName();
+    private static final int LOADER_ID = 101;
 
     @Bind(R.id.listEvents)
     ListView listEvents;
@@ -37,6 +38,8 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_event, container, false);
         ButterKnife.bind(this, view);
+
+        getLoaderManager().initLoader(LOADER_ID, null, this);
 
         Cursor cursor = getActivity().getContentResolver().query(
                 CSixContract.EventEntry.CONTENT_URI,
@@ -57,7 +60,9 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Cursor cursor = eventListAdapter.getCursor();
                 if (cursor != null && cursor.moveToPosition(position)) {
-                    // onItemSelected(cursor.getString(cursor.getColumnIndex(CSixContract.EventEntry._ID)));
+                    String eventID = cursor.getString(cursor.getColumnIndex(CSixContract.EventEntry._ID));
+                    ((Callback) getActivity()).onItemSelected(eventID);
+                    Log.i(LOG_TAG, "CLICKED CLICKED " + eventID);
                 }
             }
         });
@@ -74,13 +79,17 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
                 null,
                 null,
                 null,
-                null
+                CSixContract.EventEntry.COLUMN_DATE + " ASC"
         );
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        eventListAdapter.swapCursor(data);
+        switch (loader.getId()) {
+            case LOADER_ID:
+                eventListAdapter.swapCursor(data);
+                break;
+        }
     }
 
     @Override

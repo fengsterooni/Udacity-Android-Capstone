@@ -1,0 +1,98 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvHeader"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@color/main_color"
+            android:gravity="end|center_vertical"
+            android:paddingEnd="30dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvLower"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignEnd="@id/tvHeader"
+            android:layout_alignLeft="@id/tvHeader"
+            android:layout_alignRight="@id/tvHeader"
+            android:layout_alignStart="@id/tvHeader"
+            android:layout_below="@id/tvHeader" />
+
+        <ImageView
+            android:id="@+id/ivSpeaker"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_margin="40dp"
+            android:background="@color/white"
+            android:padding="2dp"
+            android:src="@drawable/csix_logo" />
+
+        <TextView
+            android:id="@+id/tvSpeaker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvHeader"
+            android:layout_gravity="center"
+            android:layout_marginEnd="36dp"
+            android:layout_marginLeft="128dp"
+            android:layout_marginRight="36dp"
+            android:layout_marginStart="128dp"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/main_color"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvTopic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/tvHeader"
+            android:layout_alignLeft="@id/tvHeader"
+            android:layout_alignRight="@id/tvHeader"
+            android:layout_alignStart="@id/tvHeader"
+            android:layout_below="@id/tvHeader"
+            android:layout_gravity="center"
+            android:layout_marginEnd="36dp"
+            android:layout_marginRight="36dp"
+            android:layout_marginTop="72dp"
+            android:ellipsize="end"
+            android:lines="3"
+            android:paddingLeft="24dp"
+
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/tvHeader"
+            android:layout_alignLeft="@id/tvHeader"
+            android:layout_alignRight="@id/tvHeader"
+            android:layout_alignStart="@id/tvHeader"
+            android:layout_below="@id/tvTopic"
+            android:layout_gravity="center"
+            android:layout_marginEnd="36dp"
+            android:layout_marginRight="36dp"
+            android:layout_marginTop="8dp"
+            android:paddingLeft="24dp"
+
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -21,9 +21,10 @@ import android.view.View;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Callback {
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
+    public static final String EVENTDETAIL_TAG = "EVENTDETAIL_TAG";
     public static boolean IS_TABLET = false;
 
     @Bind(R.id.toolbar)
@@ -166,5 +167,28 @@ public class MainActivity extends AppCompatActivity {
         return (getApplicationContext().getResources().getConfiguration().screenLayout
                 & Configuration.SCREENLAYOUT_SIZE_MASK)
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE;
+    }
+
+    @Override
+    public void onItemSelected(String eventID) {
+        if (IS_TABLET) {
+            EventDetailFragment fragment = EventDetailFragment.newInstatnce(eventID);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_event_detail, fragment, EVENTDETAIL_TAG)
+                            // .addToBackStack("Event Detail")
+                    .commit();
+        } else {
+            Intent intent = new Intent(this, EventDetailActivity.class);
+            intent.putExtra(EventDetailActivity.EVENT_ID, eventID);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() < 2) {
+            finish();
+        }
+        super.onBackPressed();
     }
 }
