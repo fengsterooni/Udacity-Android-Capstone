@@ -2,33 +2,26 @@ package org.csix.android;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-
-import org.csix.android.data.CSixContract;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class MainActivity extends AppCompatActivity {
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
 
@@ -42,13 +35,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     CoordinatorLayout rootLayout;
     @Bind(R.id.navigation)
     NavigationView navigation;
-    @Bind(R.id.listEvents)
-    ListView listEvents;
 
     ActionBarDrawerToggle drawerToggle;
-
-    private EventListAdapter eventListAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +45,20 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        setupDrawer();
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, new EventFragment())
+                .commit();
+
+        startService(new Intent(this, EventIntentService.class));
+    }
+
+    private void setupDrawer() {
         drawerToggle = new ActionBarDrawerToggle(
                 MainActivity.this,
                 drawerLayout,
@@ -80,17 +81,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         drawerLayout.setDrawerListener(drawerToggle);
 
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 int id = menuItem.getItemId();
-                // Fragment fragment = null;
+                Fragment fragment = null;
                 switch (id) {
                     case R.id.navEvent:
-                        // fragment = EventFragment.newInstance("Event", "arg2");
+                        fragment = new EventFragment();
                         Snackbar.make(rootLayout, "Event Event Event!", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.navDirection:
@@ -107,36 +105,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                         break;
                 }
 
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, fragment)
+                        .commit();
+
                 drawerLayout.closeDrawers();
 
                 return true;
-            }
-        });
-
-        // new EndpointsAsyncTask(this).execute();
-        startService(new Intent(this, EventIntentService.class));
-
-        Cursor cursor = getContentResolver().query(
-                CSixContract.EventEntry.CONTENT_URI,
-                null, // leaving "columns" null just returns all the columns.
-                null, // cols for "where" clause
-                null, // values for "where" clause
-                CSixContract.EventEntry.COLUMN_DATE + " ASC"  // sort order
-        );
-
-        Log.i(LOG_TAG, "SIZE OF THE CURSOR " + cursor.getCount());
-
-        eventListAdapter = new EventListAdapter(this, cursor, 0);
-        listEvents.setAdapter(eventListAdapter);
-
-        listEvents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Cursor cursor = eventListAdapter.getCursor();
-                if (cursor != null && cursor.moveToPosition(position)) {
-                    // onItemSelected(cursor.getString(cursor.getColumnIndex(CSixContract.EventEntry._ID)));
-                }
             }
         });
     }
@@ -179,28 +155,4 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    public CursorLoader onCreateLoader(int id, Bundle args) {
-
-        return new CursorLoader(
-                this,
-                CSixContract.EventEntry.CONTENT_URI,
-                null,
-                null,
-                null,
-                null
-        );
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        eventListAdapter.swapCursor(data);
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-        eventListAdapter.swapCursor(null);
-    }
-
 }
