@@ -77,6 +77,7 @@ public class TestAppEngine extends AndroidTestCase {
                     "Jenny’s background with sales, recruiting, finance and technology provides a unique perspective with a focus on creating a personal brand to “sell” your background into companies.  Her workshops including “Tapping into the Hidden Job Market”, Laser-Focused Search” and “Building Instant Rapport” encourage clients to step out of their comfort zone to land their ideal job.\n" +
                     "\n" +
                     "Jenny brings over 15 years of recruiting and business development experience primarily marketing financial consulting services as the Director of Business Development in a boutique staffing firm in the Silicon Valley.  She returned to coaching after several years marketing financial and “big data” software to technology companies as part of a late stage startup.");
+            event.setImage("http://csix.org/wp-content/uploads/2015/08/JennyDunham.jpg");
             myApiService.insertEvent(event).execute();
 
             event = new Event();
@@ -89,7 +90,7 @@ public class TestAppEngine extends AndroidTestCase {
                     "Katie has over 15 years of experience in the world of small business. In her corporate career she worked as the Vice President of Small Business Funding, focusing primarily on funding start-up franchises and businesses. During her time there, she gained extensive knowledge on the ins-and-outs of franchising from the back end forward. Katie has helped over 600 small businesses open their doors, many of which were franchises, and has facilitated hundreds of SBA loans. Katie also worked in business brokerage, as a co-founder of a boutique brokerage firm focusing on the resale of restaurants, nightclubs and franchises. Currently, Katie teaches Entrepreneurship at universities across the Bay Area, volunteers with the San Jose Chapter of SCORE, as well as working with other local government and non-profit agencies educating people on the ins-and-outs of small business ownership.\n" +
                     "Katie holds an MBA in Entrepreneurship and Finance and a PhD in Mass Communications.\n" +
                     "\n");
-
+            event.setImage("http://csix.org/wp-content/uploads/2015/08/kfagan.jpg");
             myApiService.insertEvent(event).execute();
 
         }

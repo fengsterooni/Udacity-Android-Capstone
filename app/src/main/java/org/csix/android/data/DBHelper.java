@@ -22,6 +22,7 @@ public class DbHelper extends SQLiteOpenHelper{
                 CSixContract.EventEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 CSixContract.EventEntry.COLUMN_DATE + " INTEGER NOT NULL," +
                 CSixContract.EventEntry.COLUMN_SPEAKER + " TEXT NOT NULL," +
+                CSixContract.EventEntry.COLUMN_IMAGE + " TEXT NOT NULL," +
                 CSixContract.EventEntry.COLUMN_TOPIC + " TEXT NOT NULL," +
                 CSixContract.EventEntry.COLUMN_DESC + " TEXT," +
                 CSixContract.EventEntry.COLUMN_TYPE + " INTEGER," +

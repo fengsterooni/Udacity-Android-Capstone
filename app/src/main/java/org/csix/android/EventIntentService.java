@@ -67,6 +67,7 @@ public class EventIntentService extends IntentService {
             event = events.get(i);
             values.put(CSixContract.EventEntry.COLUMN_DATE, DateUtils.getDateLong(DateUtils.getDateFromDateTime(event.getDate())));
             values.put(CSixContract.EventEntry.COLUMN_SPEAKER, event.getSpeaker());
+            values.put(CSixContract.EventEntry.COLUMN_IMAGE, event.getImage());
             values.put(CSixContract.EventEntry.COLUMN_TOPIC, event.getTopic());
             values.put(CSixContract.EventEntry.COLUMN_DESC, event.getDesc());
             values.put(CSixContract.EventEntry.COLUMN_TYPE, event.getType());

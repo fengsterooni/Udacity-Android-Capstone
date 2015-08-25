@@ -27,6 +27,7 @@ public class CSixContract {
         // Columns
         public static final String COLUMN_DATE = "date";
         public static final String COLUMN_SPEAKER = "speaker";
+        public static final String COLUMN_IMAGE = "image";
         public static final String COLUMN_TOPIC = "topic";
         public static final String COLUMN_DESC = "description";
         public static final String COLUMN_TYPE = "type";

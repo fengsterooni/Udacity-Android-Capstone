@@ -9,6 +9,8 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import org.csix.android.data.CSixContract;
 
 import java.util.Date;
@@ -64,5 +66,11 @@ public class EventListAdapter extends CursorAdapter {
         viewHolder.eventDate.setText("" + strTime);
         viewHolder.speaker.setText("" + cursor.getString(cursor.getColumnIndex(CSixContract.EventEntry.COLUMN_SPEAKER)));
         viewHolder.topic.setText("" + cursor.getString(cursor.getColumnIndex(CSixContract.EventEntry.COLUMN_TOPIC)));
+
+        String imageUrl = cursor.getString(cursor.getColumnIndex(CSixContract.EventEntry.COLUMN_IMAGE));
+        if (imageUrl != null) {
+            // Picasso.with(context).load(imageUrl).into(viewHolder.speakerImage);
+            Glide.with(context).load(imageUrl).into(viewHolder.speakerImage);
+        }
     }
 }

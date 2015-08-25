@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import org.csix.android.data.CSixContract;
 
 import butterknife.Bind;
@@ -104,6 +106,12 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
                 speaker.setText("" + data.getString(data.getColumnIndex(CSixContract.EventEntry.COLUMN_SPEAKER)));
                 topic.setText("" + data.getString(data.getColumnIndex(CSixContract.EventEntry.COLUMN_TOPIC)));
                 desc.setText("" + data.getString(data.getColumnIndex(CSixContract.EventEntry.COLUMN_DESC)));
+
+                String imageUrl = data.getString(data.getColumnIndex(CSixContract.EventEntry.COLUMN_IMAGE));
+                if (imageUrl != null) {
+                    // Picasso.with(context).load(imageUrl).into(viewHolder.speakerImage);
+                    Glide.with(getActivity()).load(imageUrl).into(speakerImage);
+                }
                 break;
         }
     }
