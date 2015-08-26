@@ -21,50 +21,50 @@ import butterknife.ButterKnife;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class EventFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class GroupFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private final String LOG_TAG = EventFragment.class.getSimpleName();
-    private static final int LOADER_ID = 101;
+    private final String LOG_TAG = GroupFragment.class.getSimpleName();
+    private static final int LOADER_ID = 201;
 
-    public static final String EVENT_ID = "EVENT_ID";
+    public static final String GROUP_ID = "GROUP_ID";
 
-    @Bind(R.id.listEvents)
-    ListView listEvents;
-    private EventListAdapter eventListAdapter;
+    @Bind(R.id.listGroups)
+    ListView listGroups;
+    private GroupListAdapter groupListAdapter;
 
-    public EventFragment() {
+    public GroupFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_event, container, false);
+        View view = inflater.inflate(R.layout.fragment_group, container, false);
         ButterKnife.bind(this, view);
 
         getLoaderManager().initLoader(LOADER_ID, null, this);
 
         Cursor cursor = getActivity().getContentResolver().query(
-                CSixContract.EventEntry.CONTENT_URI,
+                CSixContract.GroupEntry.CONTENT_URI,
                 null, // leaving "columns" null just returns all the columns.
                 null, // cols for "where" clause
                 null, // values for "where" clause
-                CSixContract.EventEntry.COLUMN_DATE + " ASC"  // sort order
+                null// sort order
         );
 
         Log.i(LOG_TAG, "SIZE OF THE CURSOR " + cursor.getCount());
 
-        eventListAdapter = new EventListAdapter(getActivity(), cursor, 0);
-        listEvents.setAdapter(eventListAdapter);
+        groupListAdapter = new GroupListAdapter(getActivity(), cursor, 0);
+        listGroups.setAdapter(groupListAdapter);
 
-        listEvents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listGroups.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Cursor cursor = eventListAdapter.getCursor();
+                Cursor cursor = groupListAdapter.getCursor();
                 if (cursor != null && cursor.moveToPosition(position)) {
-                    String eventID = cursor.getString(cursor.getColumnIndex(CSixContract.EventEntry._ID));
-                    ((Callback) getActivity()).onItemSelected(EVENT_ID, eventID);
-                    Log.i(LOG_TAG, "CLICKED CLICKED " + eventID);
+                    String groupID = cursor.getString(cursor.getColumnIndex(CSixContract.GroupEntry._ID));
+                    ((Callback) getActivity()).onItemSelected(GROUP_ID, groupID);
+                    Log.i(LOG_TAG, "CLICKED CLICKED " + groupID);
                 }
             }
         });
@@ -77,11 +77,11 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
 
         return new CursorLoader(
                 getActivity(),
-                CSixContract.EventEntry.CONTENT_URI,
+                CSixContract.GroupEntry.CONTENT_URI,
                 null,
                 null,
                 null,
-                CSixContract.EventEntry.COLUMN_DATE + " ASC"
+                null
         );
     }
 
@@ -89,13 +89,13 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         switch (loader.getId()) {
             case LOADER_ID:
-                eventListAdapter.swapCursor(data);
+                groupListAdapter.swapCursor(data);
                 break;
         }
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        eventListAdapter.swapCursor(null);
+        groupListAdapter.swapCursor(null);
     }
 }

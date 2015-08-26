@@ -8,13 +8,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
-public class EventProvider extends ContentProvider {
+public class CSixProvider extends ContentProvider {
 
-    private final String LOG_TAG = EventProvider.class.getSimpleName();
+    private final String LOG_TAG = CSixProvider.class.getSimpleName();
     private static final UriMatcher uriMatcher = buildUriMatcher();
 
     private static final int EVENT_ID = 100;
     private static final int EVENT = 101;
+    private static final int GROUP_ID = 200;
+    private static final int GROUP = 201;
 
     private DbHelper dbHelper;
 
@@ -25,6 +27,9 @@ public class EventProvider extends ContentProvider {
 
         matcher.addURI(authority, CSixContract.PATH_EVENT + "/#", EVENT_ID);
         matcher.addURI(authority, CSixContract.PATH_EVENT, EVENT);
+
+        matcher.addURI(authority, CSixContract.PATH_GROUP + "/#", GROUP_ID);
+        matcher.addURI(authority, CSixContract.PATH_GROUP, GROUP);
         return matcher;
     }
 
@@ -60,6 +65,28 @@ public class EventProvider extends ContentProvider {
                         sortOrder
                 );
                 break;
+            case GROUP:
+                retCursor = dbHelper.getReadableDatabase().query(
+                        CSixContract.GroupEntry.TABLE_NAME,
+                        projection,
+                        selection,
+                        selection == null ? null : selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            case GROUP_ID:
+                retCursor = dbHelper.getReadableDatabase().query(
+                        CSixContract.GroupEntry.TABLE_NAME,
+                        projection,
+                        CSixContract.GroupEntry._ID + " = '" + ContentUris.parseId(uri) + "'",
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
@@ -78,6 +105,10 @@ public class EventProvider extends ContentProvider {
                 return CSixContract.EventEntry.CONTENT_ITEM_TYPE;
             case EVENT:
                 return CSixContract.EventEntry.CONTENT_TYPE;
+            case GROUP_ID:
+                return CSixContract.GroupEntry.CONTENT_ITEM_TYPE;
+            case GROUP:
+                return CSixContract.GroupEntry.CONTENT_TYPE;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
@@ -96,7 +127,18 @@ public class EventProvider extends ContentProvider {
                 } else {
                     throw new android.database.SQLException("Failed to insert row into " + uri);
                 }
-                // getContext().getContentResolver().notifyChange(CSixContract.EventEntry.buildFullBookUri(_id), null);
+
+                break;
+            }
+
+            case GROUP: {
+                long _id = db.insert(CSixContract.GroupEntry.TABLE_NAME, null, values);
+                if (_id > 0) {
+                    returnUri = CSixContract.GroupEntry.buildGroupUri(_id);
+                } else {
+                    throw new android.database.SQLException("Failed to insert row into " + uri);
+                }
+
                 break;
             }
 
@@ -122,6 +164,16 @@ public class EventProvider extends ContentProvider {
                         CSixContract.EventEntry._ID + " = '" + ContentUris.parseId(uri) + "'",
                         selectionArgs);
                 break;
+            case GROUP:
+                rowsDeleted = db.delete(
+                        CSixContract.GroupEntry.TABLE_NAME, selection, selectionArgs);
+                break;
+            case GROUP_ID:
+                rowsDeleted = db.delete(
+                        CSixContract.GroupEntry.TABLE_NAME,
+                        CSixContract.GroupEntry._ID + " = '" + ContentUris.parseId(uri) + "'",
+                        selectionArgs);
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
@@ -140,6 +192,10 @@ public class EventProvider extends ContentProvider {
         switch (match) {
             case EVENT:
                 rowsUpdated = db.update(CSixContract.EventEntry.TABLE_NAME, values, selection,
+                        selectionArgs);
+                break;
+            case GROUP:
+                rowsUpdated = db.update(CSixContract.GroupEntry.TABLE_NAME, values, selection,
                         selectionArgs);
                 break;
             default:
@@ -162,6 +218,22 @@ public class EventProvider extends ContentProvider {
                 try {
                     for (ContentValues value : values) {
                         long _id = db.insert(CSixContract.EventEntry.TABLE_NAME, null, value);
+                        if (_id != -1) {
+                            returnCount++;
+                        }
+                    }
+                    db.setTransactionSuccessful();
+                } finally {
+                    db.endTransaction();
+                }
+                getContext().getContentResolver().notifyChange(uri, null);
+                return returnCount;
+            case GROUP:
+                db.beginTransaction();
+                returnCount = 0;
+                try {
+                    for (ContentValues value : values) {
+                        long _id = db.insert(CSixContract.GroupEntry.TABLE_NAME, null, value);
                         if (_id != -1) {
                             returnCount++;
                         }

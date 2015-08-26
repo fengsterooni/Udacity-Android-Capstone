@@ -10,6 +10,7 @@ import com.google.api.client.util.DateTime;
 
 import org.csix.backend.myApi.MyApi;
 import org.csix.backend.myApi.model.Event;
+import org.csix.backend.myApi.model.Group;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -44,25 +45,14 @@ public class TestAppEngine extends AndroidTestCase {
         myApiService = builder.build();
     }
 
-    /*
-    public void testInsertEvent() throws Throwable {
-        if (myApiService != null) {
-            myApiService.removeAllEvent().execute();
-            Event event = new Event();
-            String topic = "Hello World!";
-            event.setTopic(topic);
-            Event temp = myApiService.insertEvent(event).execute();
-//            assertEquals(temp, event);
-            List<Event> events = myApiService.listEvent().execute().getItems();
-            assertEquals(events.size(), 1);
-            assertEquals(topic, events.get(0).getTopic());
-        }
-    }
-    */
-
     public void testInitialization() throws Throwable {
+        initializeEvents();
+        initializeGroups();
+    }
+
+    public void initializeEvents() throws Throwable {
         if (myApiService != null) {
-            myApiService.removeAllEvent().execute();
+            myApiService.removeAllEvents().execute();
 
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
             Event event = new Event();
@@ -93,6 +83,73 @@ public class TestAppEngine extends AndroidTestCase {
             event.setImage("http://csix.org/wp-content/uploads/2015/08/kfagan.jpg");
             myApiService.insertEvent(event).execute();
 
+        }
+    }
+
+    public void initializeGroups() throws Throwable {
+        if (myApiService != null) {
+            myApiService.removeAllGroups().execute();
+
+            Group group = new Group();
+            group.setName("CSix Connect, Burlingame");
+            group.setAddress("1500 Easton Drive, Burlingame, CA 94010");
+            group.setLocation("First Presbyterian Church");
+            group.setTime("First Tuesdays every month, 6:00 pm - 8:30 pm");
+            group.setDesc("CSix Peninsula Chapter");
+            myApiService.insertGroup(group).execute();
+
+            group = new Group();
+            group.setName("Eco Green Group (EGG)");
+            group.setAddress("20390 Park Place, Saratoga, CA");
+            group.setLocation("Richards Hall, Saratoga Federated Church");
+            group.setTime("Thursday, 8:00 am – 9:30 am");
+            group.setDesc("EcoGreen Group creates professional and entrepreneurial opportunities in sustainability and clean technologies through education, professional development, industry collaboration, and networking.");
+            myApiService.insertGroup(group).execute();
+
+            group = new Group();
+            group.setName("Manufacturing/Operations SIG");
+            group.setAddress("1000 S. Bascom Avenue, San Jose, CA 95128");
+            group.setLocation("Community Room – 2nd Floor, Bascom Library & Community Center");
+            group.setTime("Every 1st and 3rd Wednesday of each month, 9:00 am – 11:00 am");
+            group.setDesc("Networking, job leads, and information focused on the corporate functions of manufacturing and more general operations including Facilities, Logistics, Supply Chain, Procurement, Materials, Manufacturing & Test Engineering and Quality Engineering.");
+            myApiService.insertGroup(group).execute();
+
+            group = new Group();
+            group.setName("Finance SIG");
+            group.setAddress("118 East El Camino Real, Sunnyvale, CA 94087");
+            group.setLocation("Panera Bread, Sunnyvale");
+            group.setTime("Every 2nd and 4th Wednesday of each month, 7:30 am – 9:00 pm");
+            group.setDesc("Our mission is to bring together finance professionals in the South Bay Area so that we may explore the uniqueness of working in this field and how that pertains to job searching, professional development, and being successful on the job.");
+            myApiService.insertGroup(group).execute();
+
+            group = new Group();
+            group.setName("Job Search Empowerment on the Peninsula (JSEP)");
+            group.setAddress("399 Marine Parkway, Redwood City, CA 94065");
+            group.setLocation("Meeting Room #B, Redwood Shores Library");
+                    group.setTime("Monday (Except holidays), 5:30 pm – 6:30 pm");
+            group.setDesc("Help one another with resumes\n" +
+                    "Practice interview skills\n" +
+                    "Develop a concise elevator pitch\n" +
+                    "Learn proper dress for interviewing in today’s market\n" +
+                    "Develop networking skills\n" +
+                    "Strive for accountability");
+            myApiService.insertGroup(group).execute();
+
+            group = new Group();
+            group.setName("Semiconductor SIG (SemiSIG)");
+            group.setAddress("1000 S. Bascom Avenue, San Jose, CA 95128");
+            group.setLocation("Community Room – 2nd Floor, Bascom Library & Community Center");
+            group.setTime("Every 1st and 3rd Wednesday of each month, 9:00 am – 11:00 am");
+            group.setDesc("SemiSIG is a Special Interest Group for professionals in the semiconductor industry, and in the related industries of flat panel display, magnetic, optical and thin film coating. Our network was formed to improve our members’ knowledge of these industries and to share career change opportunities.");
+            myApiService.insertGroup(group).execute();
+
+            group = new Group();
+            group.setName("Morning Wildcat Loop Trail Hike");
+            group.setAddress("22500 Cristo Rey Drive, Los Altos, CA");
+            group.setLocation("Rancho San Antonio");
+            group.setTime("Every Tuesday, 6:30 am - 8:00 am");
+            group.setDesc("A fun group of people who meet every Tuesday morning at 6:30 a.m. at Rancho San Antonio in Cupertino (off Hwy 280 & 85) for an early morning networking hike. It’s a terrific way to keep fit and meet interesting people at the same time. This is a particularly good group for people who may be in career transition mode because of the group’s philosophy of mutual support, the power of networking and a group hike! We are finished by 8:00 a.m. so you can get on with your day and feel fantastic because you have had a great workout. We hope you can join us soon!");
+            myApiService.insertGroup(group).execute();
         }
     }
 }

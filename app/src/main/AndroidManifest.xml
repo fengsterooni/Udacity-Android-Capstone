@@ -44,12 +44,15 @@
             android:parentActivityName=".MainActivity" >
         </activity>
         <provider
-            android:name=".data.EventProvider"
+            android:name=".data.CSixProvider"
             android:authorities="@string/content_authority"
             android:exported="false"
             android:syncable="true" />
         <service
             android:name=".EventIntentService"
+            android:exported="false"/>
+        <service
+            android:name=".GroupIntentService"
             android:exported="false"/>
     </application>
 

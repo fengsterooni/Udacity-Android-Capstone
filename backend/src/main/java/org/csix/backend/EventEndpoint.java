@@ -94,7 +94,7 @@ public class EventEndpoint {
     /**
      * This deletes all existing <code>Event</code> object.
      */
-    @ApiMethod(name = "removeAllEvent")
+    @ApiMethod(name = "removeAllEvents")
     public void removeAllEvents() throws NotFoundException {
         Query<Event> events = ofy().load().type(Event.class);
         for (Event event : events)

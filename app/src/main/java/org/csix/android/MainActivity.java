@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements Callback {
                     .commit();
 
             startService(new Intent(this, EventIntentService.class));
+            startService(new Intent(this, GroupIntentService.class));
         }
     }
 
@@ -98,16 +99,16 @@ public class MainActivity extends AppCompatActivity implements Callback {
                 switch (id) {
                     case R.id.navEvent:
                         fragment = new EventFragment();
-                        Snackbar.make(rootLayout, "Event Event Event!", Snackbar.LENGTH_SHORT).show();
+                        // Snackbar.make(rootLayout, "Event Event Event!", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.navDirection:
                         startActivity(new Intent(MainActivity.this, DirectionActivity.class));
                         // fragment = DirectionFragment.newInstance("Direction", "arg2");
-                        Snackbar.make(rootLayout, "Where where?!", Snackbar.LENGTH_SHORT).show();
+                        // Snackbar.make(rootLayout, "Where where?!", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.navGroup:
-                        // fragment = GroupFragment.newInstance("Group", "arg2");
-                        Snackbar.make(rootLayout, "GOOPS!", Snackbar.LENGTH_SHORT).show();
+                        fragment = new GroupFragment();
+                        // Snackbar.make(rootLayout, "GOOPS!", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.navAbout:
                         // fragment = AboutFragment.newInstance("About", "arg2");
@@ -175,17 +176,31 @@ public class MainActivity extends AppCompatActivity implements Callback {
     }
 
     @Override
-    public void onItemSelected(String eventID) {
-        if (IS_TABLET) {
-            EventDetailFragment fragment = EventDetailFragment.newInstatnce(eventID);
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_event_detail, fragment, EVENTDETAIL_TAG)
-                            // .addToBackStack("Event Detail")
-                    .commit();
-        } else {
-            Intent intent = new Intent(this, EventDetailActivity.class);
-            intent.putExtra(EventDetailActivity.EVENT_ID, eventID);
-            startActivity(intent);
+    public void onItemSelected(String tag, String itemID) {
+        if (tag.equals(EventFragment.EVENT_ID)) {
+            if (IS_TABLET) {
+                EventDetailFragment fragment = EventDetailFragment.newInstatnce(itemID);
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_event_detail, fragment, EVENTDETAIL_TAG)
+                                // .addToBackStack("Event Detail")
+                        .commit();
+            } else {
+                Intent intent = new Intent(this, EventDetailActivity.class);
+                intent.putExtra(EventDetailActivity.EVENT_ID, itemID);
+                startActivity(intent);
+            }
+        } else if (tag.equals(GroupFragment.GROUP_ID)) {
+            if (IS_TABLET) {
+                EventDetailFragment fragment = EventDetailFragment.newInstatnce(itemID);
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_event_detail, fragment, EVENTDETAIL_TAG)
+                                // .addToBackStack("Event Detail")
+                        .commit();
+            } else {
+                Intent intent = new Intent(this, EventDetailActivity.class);
+                intent.putExtra(EventDetailActivity.EVENT_ID, itemID);
+                startActivity(intent);
+            }
         }
     }
 

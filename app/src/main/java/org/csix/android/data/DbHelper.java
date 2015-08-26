@@ -30,9 +30,22 @@ public class DbHelper extends SQLiteOpenHelper{
                 " UNIQUE (" + CSixContract.EventEntry.COLUMN_DATE + ", " +
                 CSixContract.EventEntry.COLUMN_SPEAKER + ") ON CONFLICT REPLACE);";
 
-        Log.d(LOG_TAG, SQL_CREATE_EVENT_TABLE);
+        final String SQL_CREATE_GROUP_TABLE = "CREATE TABLE " + CSixContract.GroupEntry.TABLE_NAME + " (" +
+                CSixContract.GroupEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                CSixContract.GroupEntry.COLUMN_NAME + " TEXT NOT NULL," +
+                CSixContract.GroupEntry.COLUMN_ADDRESS + " TEXT NOT NULL," +
+                CSixContract.GroupEntry.COLUMN_LOCATION + " TEXT NOT NULL," +
+                CSixContract.GroupEntry.COLUMN_TIME + " TEXT NOT NULL," +
+                CSixContract.GroupEntry.COLUMN_DESC + " TEXT," +
 
+                " UNIQUE (" + CSixContract.GroupEntry._ID + ") ON CONFLICT REPLACE);";
+
+        Log.d(LOG_TAG, SQL_CREATE_GROUP_TABLE);
+        db.execSQL(SQL_CREATE_GROUP_TABLE);
+
+        Log.d(LOG_TAG, SQL_CREATE_EVENT_TABLE);
         db.execSQL(SQL_CREATE_EVENT_TABLE);
+
     }
 
     @Override

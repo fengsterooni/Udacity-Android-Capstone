@@ -14,11 +14,11 @@ import java.util.Set;
 public class TestDb extends AndroidTestCase{
     public static final String LOG_TAG = TestDb.class.getSimpleName();
 
-    // public final static long ean = 9780137903955L;
+    // Variables for Events
     public final static String date = "2015-08-27";
     public final static String speaker = "Jenny Dunham";
     public final static String topic = "Tapping into the Hidden Job Market";
-    public final static String desc = "You’ve applied to every job order on line and posted your resume on every job board, but you’re still not getting in the door. What’s next? Many available jobs are unadvertised. Learn how to get in front of hiring managers  without  standing  in  line!  Use  sales  tricks  and  tips  to  warm up  a  cold  call  and  get  past  the gatekeeper to generate informational meetings. Differentiate yourself from the rest of the crowd by doing what other candidates are unwilling to do and afraid to try.\n" +
+    public final static String event_desc = "You’ve applied to every job order on line and posted your resume on every job board, but you’re still not getting in the door. What’s next? Many available jobs are unadvertised. Learn how to get in front of hiring managers  without  standing  in  line!  Use  sales  tricks  and  tips  to  warm up  a  cold  call  and  get  past  the gatekeeper to generate informational meetings. Differentiate yourself from the rest of the crowd by doing what other candidates are unwilling to do and afraid to try.\n" +
             "\n" +
             "Jenny Dunham is a Personal Career Coach counseling clients throughout various stages of their career transition.  She is a recognized facilitator and speaker who enjoys uncovering natural talent, pinpointing goals and turning dreams into reality.\n" +
             "\n" +
@@ -26,6 +26,13 @@ public class TestDb extends AndroidTestCase{
             "\n" +
             "Jenny brings over 15 years of recruiting and business development experience primarily marketing financial consulting services as the Director of Business Development in a boutique staffing firm in the Silicon Valley.  She returned to coaching after several years marketing financial and “big data” software to technology companies as part of a late stage startup.";
     public final static int type = 0;
+
+    // Variables for Groups
+    public final static String name = "Eco Green Group (EGG)";
+    public final static String address = "20390 Park Place, Saratoga, CA";
+    public final static String location = "Richards Hall, Saratoga Federated Church";
+    public final static String time = "Thursday, 8:00 am – 9:30 am";
+    public final static String group_desc = "EcoGreen Group creates professional and entrepreneurial opportunities in sustainability and clean technologies through education, professional development, industry collaboration, and networking.";
     
     public void testCreateDb() throws Throwable {
         mContext.deleteDatabase(DbHelper.DATABASE_NAME);
@@ -36,16 +43,22 @@ public class TestDb extends AndroidTestCase{
     }
 
     public void testInsertReadDb() {
+        testEvent();
+        testGroup();
+    }
 
+
+    public void testEvent() {
         DbHelper dbHelper = new DbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
+        // Testing Event
         ContentValues values = getEventValues();
 
-        long retEan = db.insert(CSixContract.EventEntry.TABLE_NAME, null, values);
-        // assertEquals(ean, retEan);
+        long ret = db.insert(CSixContract.EventEntry.TABLE_NAME, null, values);
+        assertEquals(1, ret);
 
-        String[] columns = {
+        String[] event_columns = {
                 CSixContract.EventEntry._ID,
                 CSixContract.EventEntry.COLUMN_DATE,
                 CSixContract.EventEntry.COLUMN_SPEAKER,
@@ -57,7 +70,45 @@ public class TestDb extends AndroidTestCase{
         // A cursor is your primary interface to the query results.
         Cursor cursor = db.query(
                 CSixContract.EventEntry.TABLE_NAME,  // Table to Query
-                columns,
+                event_columns,
+                null, // Columns for the "where" clause
+                null, // Values for the "where" clause
+                null, // columns to group by
+                null, // columns to filter by row groups
+                null // sort order
+        );
+
+        validateCursor(cursor, values);
+
+        dbHelper.close();
+
+    }
+
+    public void testGroup() {
+
+        DbHelper dbHelper = new DbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+
+        // Testing Group
+        ContentValues values = getGroupValues();
+
+        long ret = db.insert(CSixContract.GroupEntry.TABLE_NAME, null, values);
+        assertEquals(1, ret);
+
+        String[] group_columns = {
+                CSixContract.GroupEntry._ID,
+                CSixContract.GroupEntry.COLUMN_NAME,
+                CSixContract.GroupEntry.COLUMN_ADDRESS,
+                CSixContract.GroupEntry.COLUMN_LOCATION,
+                CSixContract.GroupEntry.COLUMN_TIME,
+                CSixContract.GroupEntry.COLUMN_DESC
+        };
+
+        // A cursor is your primary interface to the query results.
+        Cursor cursor = db.query(
+                CSixContract.GroupEntry.TABLE_NAME,  // Table to Query
+                group_columns,
                 null, // Columns for the "where" clause
                 null, // Values for the "where" clause
                 null, // columns to group by
@@ -89,12 +140,23 @@ public class TestDb extends AndroidTestCase{
     public static ContentValues getEventValues() {
 
         final ContentValues values = new ContentValues();
-        // values.put(CSixContract.EventEntry._ID, ean);
         values.put(CSixContract.EventEntry.COLUMN_DATE, date);
         values.put(CSixContract.EventEntry.COLUMN_SPEAKER, speaker);
         values.put(CSixContract.EventEntry.COLUMN_TOPIC, topic);
-        values.put(CSixContract.EventEntry.COLUMN_DESC, desc);
+        values.put(CSixContract.EventEntry.COLUMN_DESC, event_desc);
         values.put(CSixContract.EventEntry.COLUMN_TYPE, type);
+
+        return values;
+    }
+
+    public static ContentValues getGroupValues() {
+
+        final ContentValues values = new ContentValues();
+        values.put(CSixContract.GroupEntry.COLUMN_NAME, name);
+        values.put(CSixContract.GroupEntry.COLUMN_ADDRESS, address);
+        values.put(CSixContract.GroupEntry.COLUMN_LOCATION, location);
+        values.put(CSixContract.GroupEntry.COLUMN_TIME, time);
+        values.put(CSixContract.GroupEntry.COLUMN_DESC, group_desc);
 
         return values;
     }
