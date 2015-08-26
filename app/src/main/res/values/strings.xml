@@ -9,10 +9,11 @@
     <string name="open_navigation_drawer">Open navigation drawer</string>
     <string name="close_navigation_drawer">Close navigation drawer</string>
 
-    <string name="title_events">Events</string>
-    <string name="title_direction">Direction</string>
-    <string name="title_groups">SIGs</string>
-    <string name="title_about">About</string>
+    <string name="drawer_title_events">Events</string>
+    <string name="drawer_title_direction">Direction</string>
+    <string name="drawer_title_groups">SIGs</string>
+    <string name="drawer_title_about">About</string>
 
-    <string name="title_event_details">Event Details</string>
+    <string name="activity_title_event_details">Event Details</string>
+    <string name="activity_title_direction">Direction</string>
 </resources>
