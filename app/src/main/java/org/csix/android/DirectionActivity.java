@@ -42,17 +42,8 @@ public class DirectionActivity extends BaseMapActivity {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
 
-
-
-        //font = Typeface.createFromAsset(getApplicationContext().getAssets(),
-        //        "fonts/Roboto-Light.ttf");
-
-        // eventId = getIntent().getStringExtra("eventId");
         locationAddress = "20390 Park Place, Saratoga, CA 95070";
         latLng = LocationUtils.getAddress(this, locationAddress);
-        // sfc = getResources().getString(R.string.event_location);
-
-        // getEvent();
     }
 /*
     saratoga & park

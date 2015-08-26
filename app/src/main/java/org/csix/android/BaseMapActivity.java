@@ -32,15 +32,12 @@ public abstract class BaseMapActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
-    private SupportMapFragment mapFragment;
     private GoogleMap map;
     private GoogleApiClient mGoogleApiClient;
     protected LatLng srcLatLng, latLng;
-    protected String srcLatitude;
-    protected String srcLongitude;
-    LocationRequest mLocationRequest;
+    protected String srcLatitude, srcLongitude;
 
-    private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
+    private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 10000;
 
     protected int getLayoutId() {
         return R.layout.activity_map_base;
@@ -60,7 +57,7 @@ public abstract class BaseMapActivity extends AppCompatActivity implements
     }
 
     public void init() {
-        mapFragment = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
+        SupportMapFragment mapFragment = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
         if (mapFragment != null) {
             mapFragment.getMapAsync(new OnMapReadyCallback() {
                 @Override
@@ -77,7 +74,6 @@ public abstract class BaseMapActivity extends AppCompatActivity implements
     protected void loadMap(GoogleMap googleMap) {
         map = googleMap;
         if (map != null) {
-            // Toast.makeText(this, "Map Fragment was loaded properly!", Toast.LENGTH_SHORT).show();
             map.setMyLocationEnabled(true);
 
             map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
@@ -85,13 +81,21 @@ public abstract class BaseMapActivity extends AppCompatActivity implements
                 public boolean onMarkerClick(Marker marker) {
                     latLng = marker.getPosition();
                     if (srcLatLng != null) {
-                        String uri = "http://maps.google.com/maps?saddr="
-                                + srcLatitude + "," + srcLongitude + "&daddr="
-                                + Double.toString(latLng.latitude) + "," + Double.toString(latLng.longitude);
+                        String uri =
+                                "http://maps.google.com/maps?saddr="
+                                + srcLatitude
+                                + ","
+                                + srcLongitude
+                                + "&daddr="
+                                + Double.toString(latLng.latitude)
+                                + ","
+                                + Double.toString(latLng.longitude);
+
                         Intent intent = new Intent(
                                 Intent.ACTION_VIEW, Uri.parse(uri));
                         intent.setClassName("com.google.android.apps.maps",
                                 "com.google.android.maps.MapsActivity");
+
                         try {
                             startActivity(intent);
                         } catch (ActivityNotFoundException ex) {
@@ -115,7 +119,8 @@ public abstract class BaseMapActivity extends AppCompatActivity implements
             mGoogleApiClient = new GoogleApiClient.Builder(this)
                     .addApi(LocationServices.API)
                     .addConnectionCallbacks(this)
-                    .addOnConnectionFailedListener(this).build();
+                    .addOnConnectionFailedListener(this)
+                    .build();
 
             connectClient();
         } else {
@@ -185,9 +190,9 @@ public abstract class BaseMapActivity extends AppCompatActivity implements
 
     @Override
     public void onConnected(Bundle dataBundle) {
-        mLocationRequest = LocationRequest.create();
+        LocationRequest mLocationRequest = LocationRequest.create();
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        mLocationRequest.setInterval(10000);
+        mLocationRequest.setInterval(CONNECTION_FAILURE_RESOLUTION_REQUEST);
 
         LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
         setupMap();
