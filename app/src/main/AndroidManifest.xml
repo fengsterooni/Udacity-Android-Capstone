@@ -39,7 +39,7 @@
             android:parentActivityName=".MainActivity" >
         </activity>
         <activity
-            android:name=".EventActivity"
+            android:name=".DirectionActivity"
             android:label="@string/activity_title_direction"
             android:parentActivityName=".MainActivity" >
         </activity>

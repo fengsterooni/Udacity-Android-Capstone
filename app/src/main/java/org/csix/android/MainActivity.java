@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements Callback {
                         Snackbar.make(rootLayout, "Event Event Event!", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.navDirection:
-                        startActivity(new Intent(MainActivity.this, EventActivity.class));
+                        startActivity(new Intent(MainActivity.this, DirectionActivity.class));
                         // fragment = DirectionFragment.newInstance("Direction", "arg2");
                         Snackbar.make(rootLayout, "Where where?!", Snackbar.LENGTH_SHORT).show();
                         break;

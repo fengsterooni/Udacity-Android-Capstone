@@ -15,7 +15,7 @@ import com.google.maps.android.ui.IconGenerator;
 
 import butterknife.ButterKnife;
 
-public class EventActivity extends BaseMapActivity {
+public class DirectionActivity extends BaseMapActivity {
 
     private int year;
     private int month;
@@ -34,7 +34,7 @@ public class EventActivity extends BaseMapActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_event;
+        return R.layout.activity_direction;
     }
 
     @Override
