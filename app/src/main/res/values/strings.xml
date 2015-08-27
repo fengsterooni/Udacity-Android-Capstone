@@ -15,5 +15,9 @@
     <string name="drawer_title_about">About</string>
 
     <string name="activity_title_event_details">Event Details</string>
+    <string name="activity_title_group_details">Group Details</string>
     <string name="activity_title_direction">Direction</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

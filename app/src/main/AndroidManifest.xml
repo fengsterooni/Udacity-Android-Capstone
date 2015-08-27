@@ -43,6 +43,11 @@
             android:label="@string/activity_title_direction"
             android:parentActivityName=".MainActivity" >
         </activity>
+        <activity
+            android:name=".GroupDetailActivity"
+            android:label="@string/activity_title_group_details"
+            android:parentActivityName=".MainActivity" >
+        </activity>
         <provider
             android:name=".data.CSixProvider"
             android:authorities="@string/content_authority"

@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements Callback {
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
     public static final String EVENTDETAIL_TAG = "EVENTDETAIL_TAG";
+    public static final String GROUPDETAIL_TAG = "GROUPDETAIL_TAG";
     public static boolean IS_TABLET = false;
 
     @Bind(R.id.toolbar)
@@ -191,14 +192,14 @@ public class MainActivity extends AppCompatActivity implements Callback {
             }
         } else if (tag.equals(GroupFragment.GROUP_ID)) {
             if (IS_TABLET) {
-                EventDetailFragment fragment = EventDetailFragment.newInstatnce(itemID);
+                GroupDetailFragment fragment = GroupDetailFragment.newInstatnce(itemID);
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_event_detail, fragment, EVENTDETAIL_TAG)
+                        .replace(R.id.fragment_group_detail, fragment, GROUPDETAIL_TAG)
                                 // .addToBackStack("Event Detail")
                         .commit();
             } else {
-                Intent intent = new Intent(this, EventDetailActivity.class);
-                intent.putExtra(EventDetailActivity.EVENT_ID, itemID);
+                Intent intent = new Intent(this, GroupDetailActivity.class);
+                intent.putExtra(GroupDetailActivity.GROUP_ID, itemID);
                 startActivity(intent);
             }
         }
