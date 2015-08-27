@@ -95,7 +95,7 @@ public class GroupDetailFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_group_detail, container, false);
+        view = inflater.inflate(R.layout.fragment_group_detail, container, false);
 
         ButterKnife.bind(this, view);
 
@@ -130,7 +130,7 @@ public class GroupDetailFragment extends Fragment implements
         }
 
         if (latLng != null) {
-            CameraPosition cp = CameraPosition.builder().target(latLng).zoom(17).build();
+            CameraPosition cp = CameraPosition.builder().target(latLng).zoom(15).build();
             map.moveCamera(CameraUpdateFactory.newCameraPosition(cp));
 
             map.addMarker(new MarkerOptions()
@@ -188,7 +188,7 @@ public class GroupDetailFragment extends Fragment implements
     @Override
     public void onPause() {
         super.onDestroyView();
-        if (MainActivity.IS_TABLET && view.findViewById(R.id.fragment_event_detail) == null) {
+        if (MainActivity.IS_TABLET && view.findViewById(R.id.fragment_detail) == null) {
             getFragmentManager().popBackStack();
         }
     }

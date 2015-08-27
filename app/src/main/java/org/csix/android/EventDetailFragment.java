@@ -125,7 +125,7 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
     @Override
     public void onPause() {
         super.onDestroyView();
-        if (MainActivity.IS_TABLET && view.findViewById(R.id.fragment_event_detail) == null) {
+        if (MainActivity.IS_TABLET && view.findViewById(R.id.fragment_detail) == null) {
             getActivity().getSupportFragmentManager().popBackStack();
         }
     }

@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements Callback {
             if (IS_TABLET) {
                 EventDetailFragment fragment = EventDetailFragment.newInstatnce(itemID);
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_event_detail, fragment, EVENTDETAIL_TAG)
+                        .replace(R.id.fragment_detail, fragment, EVENTDETAIL_TAG)
                                 // .addToBackStack("Event Detail")
                         .commit();
             } else {
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements Callback {
             if (IS_TABLET) {
                 GroupDetailFragment fragment = GroupDetailFragment.newInstatnce(itemID);
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_group_detail, fragment, GROUPDETAIL_TAG)
+                        .replace(R.id.fragment_detail, fragment, GROUPDETAIL_TAG)
                                 // .addToBackStack("Event Detail")
                         .commit();
             } else {
