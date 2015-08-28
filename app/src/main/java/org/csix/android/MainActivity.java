@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements Callback {
 
         setupDrawer();
 
+
         if (savedInstanceState == null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements Callback {
 
             startService(new Intent(this, EventIntentService.class));
             startService(new Intent(this, GroupIntentService.class));
+
         }
     }
 

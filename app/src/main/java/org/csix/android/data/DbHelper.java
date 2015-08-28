@@ -38,7 +38,7 @@ public class DbHelper extends SQLiteOpenHelper{
                 CSixContract.GroupEntry.COLUMN_TIME + " TEXT NOT NULL," +
                 CSixContract.GroupEntry.COLUMN_DESC + " TEXT," +
 
-                " UNIQUE (" + CSixContract.GroupEntry._ID + ") ON CONFLICT REPLACE);";
+                " UNIQUE (" + CSixContract.GroupEntry.COLUMN_NAME + ") ON CONFLICT REPLACE);";
 
         Log.d(LOG_TAG, SQL_CREATE_GROUP_TABLE);
         db.execSQL(SQL_CREATE_GROUP_TABLE);

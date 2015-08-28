@@ -60,9 +60,9 @@ public class GroupFragment extends Fragment implements LoaderManager.LoaderCallb
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Cursor cursor = groupListAdapter.getCursor();
-                if (cursor != null && cursor.moveToPosition(position)) {
-                    String groupID = cursor.getString(cursor.getColumnIndex(CSixContract.GroupEntry._ID));
+                Cursor data = groupListAdapter.getCursor();
+                if (data != null && data.moveToPosition(position)) {
+                    String groupID = data.getString(data.getColumnIndex(CSixContract.GroupEntry._ID));
                     ((Callback) getActivity()).onItemSelected(GROUP_ID, groupID);
                     Log.i(LOG_TAG, "CLICKED CLICKED " + groupID);
                 }

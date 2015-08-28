@@ -60,9 +60,9 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Cursor cursor = eventListAdapter.getCursor();
-                if (cursor != null && cursor.moveToPosition(position)) {
-                    String eventID = cursor.getString(cursor.getColumnIndex(CSixContract.EventEntry._ID));
+                Cursor data = eventListAdapter.getCursor();
+                if (data != null && data.moveToPosition(position)) {
+                    String eventID = data.getString(data.getColumnIndex(CSixContract.EventEntry._ID));
                     ((Callback) getActivity()).onItemSelected(EVENT_ID, eventID);
                     Log.i(LOG_TAG, "CLICKED CLICKED " + eventID);
                 }

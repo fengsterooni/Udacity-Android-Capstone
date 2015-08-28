@@ -127,7 +127,6 @@ public class CSixProvider extends ContentProvider {
                 } else {
                     throw new android.database.SQLException("Failed to insert row into " + uri);
                 }
-
                 break;
             }
 
@@ -138,7 +137,6 @@ public class CSixProvider extends ContentProvider {
                 } else {
                     throw new android.database.SQLException("Failed to insert row into " + uri);
                 }
-
                 break;
             }
 

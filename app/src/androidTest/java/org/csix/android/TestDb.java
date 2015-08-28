@@ -18,6 +18,7 @@ public class TestDb extends AndroidTestCase{
     public final static String date = "2015-08-27";
     public final static String speaker = "Jenny Dunham";
     public final static String topic = "Tapping into the Hidden Job Market";
+    public final static String image = "http://csix.org/wp-content/uploads/2015/08/JennyDunham.jpg";
     public final static String event_desc = "You’ve applied to every job order on line and posted your resume on every job board, but you’re still not getting in the door. What’s next? Many available jobs are unadvertised. Learn how to get in front of hiring managers  without  standing  in  line!  Use  sales  tricks  and  tips  to  warm up  a  cold  call  and  get  past  the gatekeeper to generate informational meetings. Differentiate yourself from the rest of the crowd by doing what other candidates are unwilling to do and afraid to try.\n" +
             "\n" +
             "Jenny Dunham is a Personal Career Coach counseling clients throughout various stages of their career transition.  She is a recognized facilitator and speaker who enjoys uncovering natural talent, pinpointing goals and turning dreams into reality.\n" +
@@ -25,7 +26,9 @@ public class TestDb extends AndroidTestCase{
             "Jenny’s background with sales, recruiting, finance and technology provides a unique perspective with a focus on creating a personal brand to “sell” your background into companies.  Her workshops including “Tapping into the Hidden Job Market”, Laser-Focused Search” and “Building Instant Rapport” encourage clients to step out of their comfort zone to land their ideal job.\n" +
             "\n" +
             "Jenny brings over 15 years of recruiting and business development experience primarily marketing financial consulting services as the Director of Business Development in a boutique staffing firm in the Silicon Valley.  She returned to coaching after several years marketing financial and “big data” software to technology companies as part of a late stage startup.";
+
     public final static int type = 0;
+
 
     // Variables for Groups
     public final static String name = "Eco Green Group (EGG)";
@@ -42,12 +45,6 @@ public class TestDb extends AndroidTestCase{
         db.close();
     }
 
-    public void testInsertReadDb() {
-        testEvent();
-        testGroup();
-    }
-
-
     public void testEvent() {
         DbHelper dbHelper = new DbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -56,12 +53,14 @@ public class TestDb extends AndroidTestCase{
         ContentValues values = getEventValues();
 
         long ret = db.insert(CSixContract.EventEntry.TABLE_NAME, null, values);
+
         assertEquals(1, ret);
 
         String[] event_columns = {
                 CSixContract.EventEntry._ID,
                 CSixContract.EventEntry.COLUMN_DATE,
                 CSixContract.EventEntry.COLUMN_SPEAKER,
+                CSixContract.EventEntry.COLUMN_IMAGE,
                 CSixContract.EventEntry.COLUMN_TOPIC,
                 CSixContract.EventEntry.COLUMN_DESC,
                 CSixContract.EventEntry.COLUMN_TYPE
@@ -80,6 +79,7 @@ public class TestDb extends AndroidTestCase{
 
         validateCursor(cursor, values);
 
+        db.close();
         dbHelper.close();
 
     }
@@ -88,7 +88,6 @@ public class TestDb extends AndroidTestCase{
 
         DbHelper dbHelper = new DbHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-
 
         // Testing Group
         ContentValues values = getGroupValues();
@@ -118,8 +117,8 @@ public class TestDb extends AndroidTestCase{
 
         validateCursor(cursor, values);
 
+        db.close();
         dbHelper.close();
-
     }
 
     static void validateCursor(Cursor valueCursor, ContentValues expectedValues) {
@@ -142,6 +141,7 @@ public class TestDb extends AndroidTestCase{
         final ContentValues values = new ContentValues();
         values.put(CSixContract.EventEntry.COLUMN_DATE, date);
         values.put(CSixContract.EventEntry.COLUMN_SPEAKER, speaker);
+        values.put(CSixContract.EventEntry.COLUMN_IMAGE, image);
         values.put(CSixContract.EventEntry.COLUMN_TOPIC, topic);
         values.put(CSixContract.EventEntry.COLUMN_DESC, event_desc);
         values.put(CSixContract.EventEntry.COLUMN_TYPE, type);

@@ -16,7 +16,11 @@ public class TestProvider extends AndroidTestCase {
     }
 
     public void deleteAllRecords() {
+        deleteAllEvents();
+        deleteAllGroups();
+    }
 
+    public void deleteAllEvents() {
         // Testing Events
         mContext.getContentResolver().delete(
                 CSixContract.EventEntry.CONTENT_URI,
@@ -34,6 +38,11 @@ public class TestProvider extends AndroidTestCase {
 
         assertEquals(0, cursor.getCount());
 
+        cursor.close();
+    }
+
+    public void deleteAllGroups() {
+
         // Testing Groups
         mContext.getContentResolver().delete(
                 CSixContract.GroupEntry.CONTENT_URI,
@@ -41,7 +50,7 @@ public class TestProvider extends AndroidTestCase {
                 null
         );
 
-        cursor = mContext.getContentResolver().query(
+        Cursor cursor = mContext.getContentResolver().query(
                 CSixContract.GroupEntry.CONTENT_URI,
                 null,
                 null,
@@ -55,8 +64,7 @@ public class TestProvider extends AndroidTestCase {
 
     }
 
-    public void testGetType() {
-
+    public void testGetTypeEvent() {
         String type = mContext.getContentResolver().getType(CSixContract.EventEntry.CONTENT_URI);
         assertEquals(CSixContract.EventEntry.CONTENT_TYPE, type);
 
@@ -64,10 +72,13 @@ public class TestProvider extends AndroidTestCase {
         type = mContext.getContentResolver().getType(CSixContract.EventEntry.buildEventUri(id));
         assertEquals(CSixContract.EventEntry.CONTENT_ITEM_TYPE, type);
 
-        type = mContext.getContentResolver().getType(CSixContract.GroupEntry.CONTENT_URI);
+    }
+
+    public void testGetTypeGroup() {
+        String type = mContext.getContentResolver().getType(CSixContract.GroupEntry.CONTENT_URI);
         assertEquals(CSixContract.GroupEntry.CONTENT_TYPE, type);
 
-        id = 9780137903955L;
+        long id = 9780137903955L;
         type = mContext.getContentResolver().getType(CSixContract.GroupEntry.buildGroupUri(id));
         assertEquals(CSixContract.GroupEntry.CONTENT_ITEM_TYPE, type);
 
@@ -105,6 +116,7 @@ public class TestProvider extends AndroidTestCase {
 
         TestDb.validateCursor(cursor, eventValues);
 
+        cursor.close();
     }
 
     public void testInsertReadGroups() {
@@ -135,5 +147,6 @@ public class TestProvider extends AndroidTestCase {
 
         TestDb.validateCursor(cursor, groupValues);
 
+        cursor.close();
     }
 }
