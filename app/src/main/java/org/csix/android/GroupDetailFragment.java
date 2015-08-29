@@ -178,7 +178,8 @@ public class GroupDetailFragment extends Fragment implements
                 Log.i(LOG_TAG, data.toString());
 
                 groupName.setText("" + data.getString(COL_GROUP_NAME));
-                groupAddress.setText("" + data.getString(COL_GROUP_ADDRESS));
+                address = data.getString(COL_GROUP_ADDRESS);
+                groupAddress.setText("" + address);
                 groupLocation.setText("" + data.getString(COL_GROUP_LOCATION));
                 groupTime.setText("" + data.getString(COL_GROUP_TIME));
 
