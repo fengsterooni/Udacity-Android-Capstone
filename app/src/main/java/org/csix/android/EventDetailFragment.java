@@ -30,6 +30,23 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
     private String eventId;
     private View view;
 
+    private static final String[] EVENT_DETAIL_COLUMNS = {
+            CSixContract.EventEntry.COLUMN_DATE,
+            CSixContract.EventEntry.COLUMN_SPEAKER,
+            CSixContract.EventEntry.COLUMN_IMAGE,
+            CSixContract.EventEntry.COLUMN_TOPIC,
+            CSixContract.EventEntry.COLUMN_DESC,
+            CSixContract.EventEntry.COLUMN_TYPE
+    };
+
+    static final int COL_EVENT_ID        = 0;
+    static final int COL_EVENT_DATE      = 1;
+    static final int COL_EVENT_SPEAKER   = 2;
+    static final int COL_EVENT_IMAGE     = 3;
+    static final int COL_EVENT_TOPIC     = 4;
+    static final int COL_EVENT_DESC      = 5;
+    static final int COL_EVENT_TYPE      = 6;
+
     @Bind(R.id.ivSpeaker)
     ImageView speakerImage;
     @Bind(R.id.tvSpeaker)
@@ -66,8 +83,6 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
         if (savedInstanceState != null) {
             eventId = savedInstanceState.getString(EVENT_ID);
         }
-
-        getLoaderManager().initLoader(LOADER_ID, null, this);
     }
 
     @Nullable
@@ -78,6 +93,13 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
         ButterKnife.bind(this, view);
 
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+
+        getLoaderManager().initLoader(LOADER_ID, null, this);
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Override
@@ -103,11 +125,11 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
             case LOADER_ID:
                 Log.i(LOG_TAG, data.toString());
 
-                speaker.setText("" + data.getString(data.getColumnIndex(CSixContract.EventEntry.COLUMN_SPEAKER)));
-                topic.setText("" + data.getString(data.getColumnIndex(CSixContract.EventEntry.COLUMN_TOPIC)));
-                desc.setText("" + data.getString(data.getColumnIndex(CSixContract.EventEntry.COLUMN_DESC)));
+                speaker.setText("" + data.getString(COL_EVENT_SPEAKER));
+                topic.setText("" + data.getString(COL_EVENT_TOPIC));
+                desc.setText("" + data.getString(COL_EVENT_DESC));
 
-                String imageUrl = data.getString(data.getColumnIndex(CSixContract.EventEntry.COLUMN_IMAGE));
+                String imageUrl = data.getString(COL_EVENT_IMAGE);
                 if (imageUrl != null) {
                     // Picasso.with(context).load(imageUrl).into(viewHolder.speakerImage);
                     Glide.with(getActivity()).load(imageUrl).into(speakerImage);

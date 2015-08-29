@@ -18,6 +18,5 @@
     <string name="activity_title_group_details">Group Details</string>
     <string name="activity_title_direction">Direction</string>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty_event_list">No Event Information Available</string>
 </resources>

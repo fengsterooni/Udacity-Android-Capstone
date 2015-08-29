@@ -36,6 +36,21 @@ public class GroupDetailFragment extends Fragment implements
     private String groupId;
     private View view;
 
+    private static final String[] GROUP_DETAIL_COLUMNS = {
+            CSixContract.GroupEntry.COLUMN_NAME,
+            CSixContract.GroupEntry.COLUMN_ADDRESS,
+            CSixContract.GroupEntry.COLUMN_LOCATION,
+            CSixContract.GroupEntry.COLUMN_TIME,
+            CSixContract.GroupEntry.COLUMN_DESC
+    };
+
+    static final int COL_GROUP_ID       = 0;
+    static final int COL_GROUP_NAME     = 1;
+    static final int COL_GROUP_ADDRESS  = 2;
+    static final int COL_GROUP_LOCATION = 3;
+    static final int COL_GROUP_TIME     = 4;
+    static final int COL_GROUP_DESC     = 5;
+
     SupportMapFragment mapFragment;
 
     GoogleMap map;
@@ -87,8 +102,6 @@ public class GroupDetailFragment extends Fragment implements
         if (savedInstanceState != null) {
             groupId = savedInstanceState.getString(GROUP_ID);
         }
-
-        getLoaderManager().initLoader(LOADER_ID, null, this);
     }
 
     @Override
@@ -105,6 +118,7 @@ public class GroupDetailFragment extends Fragment implements
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        getLoaderManager().initLoader(LOADER_ID, null, this);
         FragmentManager fm = getChildFragmentManager();
         mapFragment = (SupportMapFragment) fm.findFragmentById(R.id.map);
         if (mapFragment == null) {
@@ -163,15 +177,10 @@ public class GroupDetailFragment extends Fragment implements
             case LOADER_ID:
                 Log.i(LOG_TAG, data.toString());
 
-                name = data.getString(data.getColumnIndex(CSixContract.GroupEntry.COLUMN_NAME));
-                groupName.setText("" + name);
-                address = data.getString(data.getColumnIndex(CSixContract.GroupEntry.COLUMN_ADDRESS));
-                groupAddress.setText("" + address);
-                location = data.getString(data.getColumnIndex(CSixContract.GroupEntry.COLUMN_LOCATION));
-                groupLocation.setText("" + location);
-                time = data.getString(data.getColumnIndex(CSixContract.GroupEntry.COLUMN_TIME));
-                groupTime.setText("" + time);
-
+                groupName.setText("" + data.getString(COL_GROUP_NAME));
+                groupAddress.setText("" + data.getString(COL_GROUP_ADDRESS));
+                groupLocation.setText("" + data.getString(COL_GROUP_LOCATION));
+                groupTime.setText("" + data.getString(COL_GROUP_TIME));
 
                 break;
         }
