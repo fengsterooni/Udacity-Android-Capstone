@@ -10,12 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import org.csix.android.data.CSixContract;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -28,8 +25,8 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
 
     public static final String EVENT_ID = "EVENT_ID";
 
-    @Bind(R.id.listEvents)
-    ListView listEvents;
+    // @Bind(R.id.listEvents)
+    // ListView listEvents;
     private EventListAdapter eventListAdapter;
 
     public EventFragment() {
@@ -54,6 +51,7 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
         Log.i(LOG_TAG, "SIZE OF THE CURSOR " + cursor.getCount());
 
         eventListAdapter = new EventListAdapter(getActivity(), cursor, 0);
+        /*
         listEvents.setAdapter(eventListAdapter);
 
         listEvents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -68,7 +66,7 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
                 }
             }
         });
-
+        */
         return view;
     }
 

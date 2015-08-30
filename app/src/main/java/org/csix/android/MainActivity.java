@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity implements
                     .commit();
         } else {
             Intent intent = new Intent(this, EventDetailActivity.class);
-            intent.putExtra(EventDetailActivity.EVENT_ID, eventId);
+            intent.putExtra(EventDetailActivity.EVENT_ID, eventId.toString());
             startActivity(intent);
         }
 
@@ -247,7 +247,7 @@ public class MainActivity extends AppCompatActivity implements
                     .commit();
         } else {
             Intent intent = new Intent(this, GroupDetailActivity.class);
-            intent.putExtra(GroupDetailActivity.GROUP_ID, groupId);
+            intent.putExtra(GroupDetailActivity.GROUP_ID, groupId.toString());
             startActivity(intent);
         }
     }
