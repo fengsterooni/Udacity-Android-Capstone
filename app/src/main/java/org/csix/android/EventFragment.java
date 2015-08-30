@@ -50,9 +50,11 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
     RecyclerView mRecyclerView;
 
 
+    /*
     public interface Callback {
         void onItemSelected(Long eventId, EventAdapter.EventAdapterViewHolder vh);
     }
+    */
 
     public EventFragment() {
     }

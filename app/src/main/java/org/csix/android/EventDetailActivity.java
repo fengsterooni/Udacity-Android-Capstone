@@ -12,7 +12,7 @@ public class EventDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
 
-        String eventID = getIntent().getStringExtra(EVENT_ID);
+        long eventID = getIntent().getLongExtra(EVENT_ID, 0);
 
         if (savedInstanceState == null) {
             fragment = EventDetailFragment.newInstatnce(eventID);

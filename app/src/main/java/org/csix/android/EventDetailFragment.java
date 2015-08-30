@@ -27,7 +27,7 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
     public static final String EVENT_ID = "EVENT_ID";
     public static final int LOADER_ID = 201;
 
-    private String eventId;
+    private long eventId;
     private View view;
 
     private static final String[] EVENT_DETAIL_COLUMNS = {
@@ -58,11 +58,11 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
 
     public EventDetailFragment() {}
 
-    public static EventDetailFragment newInstatnce(String eventId) {
+    public static EventDetailFragment newInstatnce(Long eventId) {
         EventDetailFragment fragment = new EventDetailFragment();
         Bundle args = new Bundle();
         if (eventId != null) {
-            args.putString(EventDetailFragment.EVENT_ID, eventId);
+            args.putLong(EventDetailFragment.EVENT_ID, eventId);
             fragment.setArguments(args);
         }
         return fragment;
@@ -75,13 +75,13 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
 
         Bundle args = getArguments();
         if (args != null) {
-            eventId = args.getString(EventDetailFragment.EVENT_ID);
+            eventId = args.getLong(EventDetailFragment.EVENT_ID);
             Log.i(LOG_TAG, "EVENT_ID ID " + eventId);
             // getLoaderManager().restartLoader(100, null, this);
         }
 
         if (savedInstanceState != null) {
-            eventId = savedInstanceState.getString(EVENT_ID);
+            eventId = savedInstanceState.getLong(EVENT_ID);
         }
     }
 
@@ -107,7 +107,7 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
 
         return new CursorLoader(
                 getActivity(),
-                CSixContract.EventEntry.buildEventUri(Long.parseLong(eventId)),
+                CSixContract.EventEntry.buildEventUri(eventId),
                 null,
                 null,
                 null,
@@ -153,7 +153,7 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
     }
 
     public void onSaveInstanceState(Bundle outState) {
-        outState.putString(EVENT_ID, eventId);
+        outState.putLong(EVENT_ID, eventId);
         super.onSaveInstanceState(outState);
     }
 }

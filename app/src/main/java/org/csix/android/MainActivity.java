@@ -13,6 +13,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,9 +22,7 @@ import android.view.View;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements
-        EventFragment.Callback,
-        GroupFragment.Callback {
+public class MainActivity extends AppCompatActivity implements Callback {
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
     public static final String EVENTDETAIL_TAG = "EVENTDETAIL_TAG";
@@ -188,6 +187,7 @@ public class MainActivity extends AppCompatActivity implements
         super.onBackPressed();
     }
 
+    /*
     @Override
     public void onItemSelected(Long eventId, EventAdapter.EventAdapterViewHolder vh) {
 
@@ -218,6 +218,38 @@ public class MainActivity extends AppCompatActivity implements
             Intent intent = new Intent(this, GroupDetailActivity.class);
             intent.putExtra(GroupDetailActivity.GROUP_ID, groupId.toString());
             startActivity(intent);
+        }
+    }
+    */
+
+    @Override
+    public void onItemSelected(long id, RecyclerView.ViewHolder viewHolder) {
+        if (viewHolder instanceof EventAdapter.EventAdapterViewHolder) {
+            if (IS_TABLET) {
+                EventDetailFragment fragment = EventDetailFragment.newInstatnce(id);
+
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_detail, fragment, EVENTDETAIL_TAG)
+                        .commit();
+            } else {
+                Intent intent = new Intent(this, EventDetailActivity.class);
+                intent.putExtra(EventDetailActivity.EVENT_ID, id);
+                startActivity(intent);
+            }
+        }
+
+        if (viewHolder instanceof GroupAdapter.GroupAdapterViewHolder) {
+            if (IS_TABLET) {
+                GroupDetailFragment fragment = GroupDetailFragment.newInstatnce(id);
+
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_detail, fragment, GROUPDETAIL_TAG)
+                        .commit();
+            } else {
+                Intent intent = new Intent(this, GroupDetailActivity.class);
+                intent.putExtra(GroupDetailActivity.GROUP_ID, id);
+                startActivity(intent);
+            }
         }
     }
 }

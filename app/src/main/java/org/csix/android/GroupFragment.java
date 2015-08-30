@@ -48,10 +48,11 @@ public class GroupFragment extends Fragment implements LoaderManager.LoaderCallb
     @Bind(R.id.recyclerview_group)
     RecyclerView mRecyclerView;
 
-
+    /*
     public interface Callback {
         void onItemSelected(Long groupId, GroupAdapter.GroupAdapterViewHolder vh);
     }
+    */
 
     public GroupFragment() {
     }

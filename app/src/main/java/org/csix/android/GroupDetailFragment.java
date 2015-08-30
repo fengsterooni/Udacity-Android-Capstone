@@ -33,7 +33,7 @@ public class GroupDetailFragment extends Fragment implements
     public static final String GROUP_ID = "GROUP_ID";
     public static final int LOADER_ID = 401;
 
-    private String groupId;
+    private long groupId;
     private View view;
 
     private static final String[] GROUP_DETAIL_COLUMNS = {
@@ -78,11 +78,11 @@ public class GroupDetailFragment extends Fragment implements
         // Required empty public constructor
     }
 
-    public static GroupDetailFragment newInstatnce(String groupId) {
+    public static GroupDetailFragment newInstatnce(Long groupId) {
         GroupDetailFragment fragment = new GroupDetailFragment();
         Bundle args = new Bundle();
         if (groupId != null) {
-            args.putString(GroupDetailFragment.GROUP_ID, groupId);
+            args.putLong(GroupDetailFragment.GROUP_ID, groupId);
             fragment.setArguments(args);
         }
         return fragment;
@@ -95,12 +95,12 @@ public class GroupDetailFragment extends Fragment implements
 
         Bundle args = getArguments();
         if (args != null) {
-            groupId = args.getString(GroupDetailFragment.GROUP_ID);
+            groupId = args.getLong(GroupDetailFragment.GROUP_ID);
             Log.i(LOG_TAG, "EVENT_ID ID " + groupId);
         }
 
         if (savedInstanceState != null) {
-            groupId = savedInstanceState.getString(GROUP_ID);
+            groupId = savedInstanceState.getLong(GROUP_ID);
         }
     }
 
@@ -132,8 +132,6 @@ public class GroupDetailFragment extends Fragment implements
         super.onResume();
         if (map == null) {
             map = mapFragment.getMap();
-
-            // setupMap();
         }
     }
 
@@ -158,7 +156,7 @@ public class GroupDetailFragment extends Fragment implements
 
         return new CursorLoader(
                 getActivity(),
-                CSixContract.GroupEntry.buildGroupUri(Long.parseLong(groupId)),
+                CSixContract.GroupEntry.buildGroupUri(groupId),
                 null,
                 null,
                 null,
@@ -204,7 +202,7 @@ public class GroupDetailFragment extends Fragment implements
     }
 
     public void onSaveInstanceState(Bundle outState) {
-        outState.putString(GROUP_ID, groupId);
+        outState.putLong(GROUP_ID, groupId);
         super.onSaveInstanceState(outState);
     }
 }

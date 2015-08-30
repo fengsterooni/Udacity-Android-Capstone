@@ -12,7 +12,7 @@ public class GroupDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_detail);
 
-        String groupID = getIntent().getStringExtra(GROUP_ID);
+        long groupID = getIntent().getLongExtra(GROUP_ID, 0);
 
         if (savedInstanceState == null) {
             fragment = GroupDetailFragment.newInstatnce(groupID);
