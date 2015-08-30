@@ -6,10 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.Date;
 
@@ -26,10 +26,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapter
 
     public class EventAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @Bind(R.id.tvHeader)
+        @Bind(R.id.tvDate)
         TextView eventDate;
         @Bind(R.id.ivSpeaker)
-        ImageView speakerImage;
+        RoundedImageView speakerImage;
         @Bind(R.id.tvSpeaker)
         TextView speaker;
         @Bind(R.id.tvTopic)

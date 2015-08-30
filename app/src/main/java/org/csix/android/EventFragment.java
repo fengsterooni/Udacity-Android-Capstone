@@ -68,6 +68,10 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setHasFixedSize(true);
 
+        RecyclerView.ItemDecoration itemDecoration = new
+                DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST);
+        mRecyclerView.addItemDecoration(itemDecoration);
+
         mEventAdapter = new EventAdapter(getActivity(), new EventAdapter.EventAdapterOnClickHandler() {
             @Override
             public void onClick(Long id, EventAdapter.EventAdapterViewHolder vh) {
