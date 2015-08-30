@@ -29,6 +29,7 @@ public class EventDetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         long eventID = getIntent().getLongExtra(EVENT_ID, 0);
 

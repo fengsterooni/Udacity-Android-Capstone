@@ -19,4 +19,7 @@
     <string name="activity_title_direction">Direction</string>
 
     <string name="empty_event_list">No Event Information Available</string>
+
+    <string name="action_share">Share</string>
+
 </resources>

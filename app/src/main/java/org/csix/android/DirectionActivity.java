@@ -2,6 +2,7 @@ package org.csix.android;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -14,6 +15,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.clustering.ClusterItem;
 import com.google.maps.android.ui.IconGenerator;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class DirectionActivity extends BaseMapActivity {
@@ -31,6 +33,9 @@ public class DirectionActivity extends BaseMapActivity {
     private GoogleMap map = null;
     private Marker marker;
 
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_direction;
@@ -41,8 +46,10 @@ public class DirectionActivity extends BaseMapActivity {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
 
-        // getSupportActionBar().setHomeButtonEnabled(true);
-        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         locationAddress = "20390 Park Place, Saratoga, CA 95070";
         latLng = LocationUtils.getAddress(this, locationAddress);

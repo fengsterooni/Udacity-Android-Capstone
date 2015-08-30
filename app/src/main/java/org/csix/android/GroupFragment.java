@@ -6,8 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,12 +48,6 @@ public class GroupFragment extends Fragment implements LoaderManager.LoaderCallb
     @Bind(R.id.recyclerview_group)
     RecyclerView mRecyclerView;
 
-    /*
-    public interface Callback {
-        void onItemSelected(Long groupId, GroupAdapter.GroupAdapterViewHolder vh);
-    }
-    */
-
     public GroupFragment() {
     }
 
@@ -63,8 +57,13 @@ public class GroupFragment extends Fragment implements LoaderManager.LoaderCallb
         View view = inflater.inflate(R.layout.fragment_group, container, false);
         ButterKnife.bind(this, view);
 
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setHasFixedSize(true);
+        // mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        // mRecyclerView.setHasFixedSize(true);
+
+        int columnCount = getResources().getInteger(R.integer.list_column_count);
+        StaggeredGridLayoutManager sglm =
+                new StaggeredGridLayoutManager(columnCount, StaggeredGridLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(sglm);
 
         mGroupAdapter = new GroupAdapter(getActivity(), new GroupAdapter.GroupAdapterOnClickHandler() {
             @Override

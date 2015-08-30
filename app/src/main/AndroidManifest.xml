@@ -44,8 +44,7 @@
         </activity>
         <activity
             android:name=".GroupDetailActivity"
-            android:label="@string/activity_title_group_details"
-            android:parentActivityName=".MainActivity" >
+            android:label="@string/activity_title_group_details" >
         </activity>
         <provider
             android:name=".data.CSixProvider"
