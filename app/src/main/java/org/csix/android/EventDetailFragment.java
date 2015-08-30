@@ -77,7 +77,6 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
         if (args != null) {
             eventId = args.getLong(EventDetailFragment.EVENT_ID);
             Log.i(LOG_TAG, "EVENT_ID ID " + eventId);
-            // getLoaderManager().restartLoader(100, null, this);
         }
 
         if (savedInstanceState != null) {

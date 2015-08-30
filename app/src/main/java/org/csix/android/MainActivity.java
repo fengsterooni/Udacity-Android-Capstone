@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements Callback {
         super.onCreate(savedInstanceState);
         IS_TABLET = isTablet();
         if (IS_TABLET) {
-            setContentView(R.layout.activity_main_tablet);
+            setContentView(R.layout.activity_main);
         } else {
             setContentView(R.layout.activity_main);
         }
@@ -186,41 +186,6 @@ public class MainActivity extends AppCompatActivity implements Callback {
         }
         super.onBackPressed();
     }
-
-    /*
-    @Override
-    public void onItemSelected(Long eventId, EventAdapter.EventAdapterViewHolder vh) {
-
-        if (IS_TABLET) {
-            EventDetailFragment fragment = EventDetailFragment.newInstatnce(eventId.toString());
-
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_detail, fragment, EVENTDETAIL_TAG)
-                    .commit();
-        } else {
-            Intent intent = new Intent(this, EventDetailActivity.class);
-            intent.putExtra(EventDetailActivity.EVENT_ID, eventId.toString());
-            startActivity(intent);
-        }
-
-    }
-
-    @Override
-    public void onItemSelected(Long groupId, GroupAdapter.GroupAdapterViewHolder vh) {
-
-        if (IS_TABLET) {
-            GroupDetailFragment fragment = GroupDetailFragment.newInstatnce(groupId.toString());
-
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_detail, fragment, GROUPDETAIL_TAG)
-                    .commit();
-        } else {
-            Intent intent = new Intent(this, GroupDetailActivity.class);
-            intent.putExtra(GroupDetailActivity.GROUP_ID, groupId.toString());
-            startActivity(intent);
-        }
-    }
-    */
 
     @Override
     public void onItemSelected(long id, RecyclerView.ViewHolder viewHolder) {

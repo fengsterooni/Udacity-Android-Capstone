@@ -41,6 +41,9 @@ public class DirectionActivity extends BaseMapActivity {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
 
+        // getSupportActionBar().setHomeButtonEnabled(true);
+        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         locationAddress = "20390 Park Place, Saratoga, CA 95070";
         latLng = LocationUtils.getAddress(this, locationAddress);
     }
