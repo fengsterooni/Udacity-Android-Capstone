@@ -10,8 +10,8 @@
         android:layout_height="match_parent" />
 
     <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
         android:src="@drawable/church2"
@@ -19,8 +19,8 @@
         android:layout_gravity="right|bottom" />
 
     <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
         android:src="@drawable/lifehouse2"
@@ -28,8 +28,8 @@
         android:layout_gravity="left|bottom" />
 
     <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
         android:background="@color/green"
