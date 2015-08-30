@@ -22,8 +22,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements
-        EventsFragment.Callback,
-        GroupsFragment.Callback {
+        EventFragment.Callback,
+        GroupFragment.Callback {
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
     public static final String EVENTDETAIL_TAG = "EVENTDETAIL_TAG";
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements
         if (savedInstanceState == null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, new EventsFragment())
+                    .replace(R.id.container, new EventFragment())
                     .commit();
 
             startService(new Intent(this, EventIntentService.class));
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements
                 Fragment fragment = null;
                 switch (id) {
                     case R.id.navEvent:
-                        fragment = new EventsFragment();
+                        fragment = new EventFragment();
                         // Snackbar.make(rootLayout, "Event Event Event!", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.navDirection:
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements
                         // Snackbar.make(rootLayout, "Where where?!", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.navGroup:
-                        fragment = new GroupsFragment();
+                        fragment = new GroupFragment();
                         // Snackbar.make(rootLayout, "GOOPS!", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.navAbout:
@@ -179,37 +179,6 @@ public class MainActivity extends AppCompatActivity implements
                 & Configuration.SCREENLAYOUT_SIZE_MASK)
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
-
-    /*
-    @Override
-    public void onItemSelected(String tag, String itemID) {
-        if (tag.equals(EventFragment.EVENT_ID)) {
-            if (IS_TABLET) {
-                EventDetailFragment fragment = EventDetailFragment.newInstatnce(itemID);
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_detail, fragment, EVENTDETAIL_TAG)
-                                // .addToBackStack("Event Detail")
-                        .commit();
-            } else {
-                Intent intent = new Intent(this, EventDetailActivity.class);
-                intent.putExtra(EventDetailActivity.EVENT_ID, itemID);
-                startActivity(intent);
-            }
-        } else if (tag.equals(GroupFragment.GROUP_ID)) {
-            if (IS_TABLET) {
-                GroupDetailFragment fragment = GroupDetailFragment.newInstatnce(itemID);
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_detail, fragment, GROUPDETAIL_TAG)
-                                // .addToBackStack("Event Detail")
-                        .commit();
-            } else {
-                Intent intent = new Intent(this, GroupDetailActivity.class);
-                intent.putExtra(GroupDetailActivity.GROUP_ID, itemID);
-                startActivity(intent);
-            }
-        }
-    }
-    */
 
     @Override
     public void onBackPressed() {

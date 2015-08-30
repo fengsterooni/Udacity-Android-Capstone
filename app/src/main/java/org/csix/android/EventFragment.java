@@ -6,13 +6,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import org.csix.android.data.CSixContract;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -20,14 +22,37 @@ import butterknife.ButterKnife;
  */
 public class EventFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private final String LOG_TAG = EventFragment.class.getSimpleName();
-    private static final int LOADER_ID = 101;
+    private static final String LOG_TAG = EventFragment.class.getSimpleName();
+    private EventAdapter mEventAdapter;
+    private long mInitialSelection = -1;
 
+    private static final int LOADER_ID = 101;
     public static final String EVENT_ID = "EVENT_ID";
 
-    // @Bind(R.id.listEvents)
-    // ListView listEvents;
-    private EventListAdapter eventListAdapter;
+    private static final String[] EVENT_COLUMNS = {
+            CSixContract.EventEntry.COLUMN_DATE,
+            CSixContract.EventEntry.COLUMN_SPEAKER,
+            CSixContract.EventEntry.COLUMN_IMAGE,
+            CSixContract.EventEntry.COLUMN_TOPIC,
+            CSixContract.EventEntry.COLUMN_DESC,
+            CSixContract.EventEntry.COLUMN_TYPE
+    };
+
+    static final int COL_EVENT_ID        = 0;
+    static final int COL_EVENT_DATE      = 1;
+    static final int COL_EVENT_SPEAKER   = 2;
+    static final int COL_EVENT_IMAGE     = 3;
+    static final int COL_EVENT_TOPIC     = 4;
+    static final int COL_EVENT_DESC      = 5;
+    static final int COL_EVENT_TYPE      = 6;
+
+    @Bind(R.id.recyclerview_event)
+    RecyclerView mRecyclerView;
+
+
+    public interface Callback {
+        void onItemSelected(Long eventId, EventAdapter.EventAdapterViewHolder vh);
+    }
 
     public EventFragment() {
     }
@@ -38,36 +63,25 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
         View view = inflater.inflate(R.layout.fragment_event, container, false);
         ButterKnife.bind(this, view);
 
-        getLoaderManager().initLoader(LOADER_ID, null, this);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setHasFixedSize(true);
 
-        Cursor cursor = getActivity().getContentResolver().query(
-                CSixContract.EventEntry.CONTENT_URI,
-                null, // leaving "columns" null just returns all the columns.
-                null, // cols for "where" clause
-                null, // values for "where" clause
-                CSixContract.EventEntry.COLUMN_DATE + " ASC"  // sort order
-        );
-
-        Log.i(LOG_TAG, "SIZE OF THE CURSOR " + cursor.getCount());
-
-        eventListAdapter = new EventListAdapter(getActivity(), cursor, 0);
-        /*
-        listEvents.setAdapter(eventListAdapter);
-
-        listEvents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+        mEventAdapter = new EventAdapter(getActivity(), new EventAdapter.EventAdapterOnClickHandler() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Cursor data = eventListAdapter.getCursor();
-                if (data != null && data.moveToPosition(position)) {
-                    String eventID = data.getString(data.getColumnIndex(CSixContract.EventEntry._ID));
-                    ((Callback) getActivity()).onItemSelected(EVENT_ID, eventID);
-                    Log.i(LOG_TAG, "CLICKED CLICKED " + eventID);
-                }
+            public void onClick(Long id, EventAdapter.EventAdapterViewHolder vh) {
+                ((Callback) getActivity())
+                        .onItemSelected(id, vh);
             }
         });
-        */
+
+        mRecyclerView.setAdapter(mEventAdapter);
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        getLoaderManager().initLoader(LOADER_ID, null, this);
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Override
@@ -85,15 +99,16 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
         switch (loader.getId()) {
             case LOADER_ID:
-                eventListAdapter.swapCursor(data);
+                mEventAdapter.swapCursor(data);
                 break;
         }
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        eventListAdapter.swapCursor(null);
+        mEventAdapter.swapCursor(null);
     }
 }

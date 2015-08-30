@@ -11,6 +11,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.maps.android.clustering.ClusterItem;
 import com.google.maps.android.ui.IconGenerator;
 
 import butterknife.ButterKnife;
@@ -29,8 +30,6 @@ public class DirectionActivity extends BaseMapActivity {
     private String sfc;
     private GoogleMap map = null;
     private Marker marker;
-
-    // private ClusterManager<Sign> clusterManager;
 
     @Override
     protected int getLayoutId() {
@@ -125,6 +124,38 @@ public class DirectionActivity extends BaseMapActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public class Sign implements ClusterItem {
+        private final LatLng position;
+        private double latitude;
+        private double longtitude;
+        private String name;
+        private String notes;
+        private int img;
+
+        public Sign(double lat, double lng, String name, String notes, int image) {
+            this.latitude = lat;
+            this.longtitude = lng;
+            this.position = new LatLng(lat, lng);
+            this.name = name;
+            this.notes = notes;
+            this.img = image;
+        }
+
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public LatLng getPosition() {
+            return position;
         }
     }
 

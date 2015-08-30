@@ -6,13 +6,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import org.csix.android.data.CSixContract;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -21,13 +23,35 @@ import butterknife.ButterKnife;
 public class GroupFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private final String LOG_TAG = GroupFragment.class.getSimpleName();
+    private GroupAdapter mGroupAdapter;
+    
     private static final int LOADER_ID = 201;
 
     public static final String GROUP_ID = "GROUP_ID";
 
-    // @Bind(R.id.listGroups)
-    // ListView listGroups;
-    private GroupListAdapter groupListAdapter;
+
+    private static final String[] GROUP_COLUMNS = {
+            CSixContract.GroupEntry.COLUMN_NAME,
+            CSixContract.GroupEntry.COLUMN_ADDRESS,
+            CSixContract.GroupEntry.COLUMN_LOCATION,
+            CSixContract.GroupEntry.COLUMN_TIME,
+            CSixContract.GroupEntry.COLUMN_DESC
+    };
+
+    static final int COL_GROUP_ID       = 0;
+    static final int COL_GROUP_NAME     = 1;
+    static final int COL_GROUP_ADDRESS  = 2;
+    static final int COL_GROUP_LOCATION = 3;
+    static final int COL_GROUP_TIME     = 4;
+    static final int COL_GROUP_DESC     = 5;
+
+    @Bind(R.id.recyclerview_group)
+    RecyclerView mRecyclerView;
+
+
+    public interface Callback {
+        void onItemSelected(Long groupId, GroupAdapter.GroupAdapterViewHolder vh);
+    }
 
     public GroupFragment() {
     }
@@ -38,36 +62,26 @@ public class GroupFragment extends Fragment implements LoaderManager.LoaderCallb
         View view = inflater.inflate(R.layout.fragment_group, container, false);
         ButterKnife.bind(this, view);
 
-        getLoaderManager().initLoader(LOADER_ID, null, this);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setHasFixedSize(true);
 
-        Cursor cursor = getActivity().getContentResolver().query(
-                CSixContract.GroupEntry.CONTENT_URI,
-                null, // leaving "columns" null just returns all the columns.
-                null, // cols for "where" clause
-                null, // values for "where" clause
-                null// sort order
-        );
-
-        Log.i(LOG_TAG, "SIZE OF THE CURSOR " + cursor.getCount());
-
-        groupListAdapter = new GroupListAdapter(getActivity(), cursor, 0);
-        /*
-        listGroups.setAdapter(groupListAdapter);
-
-        listGroups.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+        mGroupAdapter = new GroupAdapter(getActivity(), new GroupAdapter.GroupAdapterOnClickHandler() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Cursor data = groupListAdapter.getCursor();
-                if (data != null && data.moveToPosition(position)) {
-                    String groupID = data.getString(data.getColumnIndex(CSixContract.GroupEntry._ID));
-                    ((Callback) getActivity()).onItemSelected(GROUP_ID, groupID);
-                    Log.i(LOG_TAG, "CLICKED CLICKED " + groupID);
-                }
+            public void onClick(Long groupId, GroupAdapter.GroupAdapterViewHolder vh) {
+                ((Callback) getActivity())
+                        .onItemSelected(groupId, vh);
             }
         });
-        */
+
+        mRecyclerView.setAdapter(mGroupAdapter);
+
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        getLoaderManager().initLoader(LOADER_ID, null, this);
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Override
@@ -87,13 +101,13 @@ public class GroupFragment extends Fragment implements LoaderManager.LoaderCallb
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         switch (loader.getId()) {
             case LOADER_ID:
-                groupListAdapter.swapCursor(data);
+                mGroupAdapter.swapCursor(data);
                 break;
         }
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        groupListAdapter.swapCursor(null);
+        mGroupAdapter.swapCursor(null);
     }
 }

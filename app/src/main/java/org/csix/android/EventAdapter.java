@@ -45,7 +45,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapter
         public void onClick(View v) {
             int adapterPosition = getAdapterPosition();
             mCursor.moveToPosition(adapterPosition);
-            mClickHandler.onClick(mCursor.getLong(EventsFragment.COL_EVENT_ID), this);
+            mClickHandler.onClick(mCursor.getLong(EventFragment.COL_EVENT_ID), this);
         }
     }
 
@@ -72,7 +72,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapter
     public void onBindViewHolder(EventAdapterViewHolder holder, int position) {
         mCursor.moveToPosition(position);
 
-        Date date = new Date(mCursor.getLong(EventsFragment.COL_EVENT_DATE));
+        Date date = new Date(mCursor.getLong(EventFragment.COL_EVENT_DATE));
         String strTime = DateUtils.getShortDayOfWeekString(date)
                 + ", "
                 + DateUtils.getShortMonthString(date)
@@ -80,10 +80,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapter
                 + DateUtils.getDayString(date);
 
         holder.eventDate.setText("" + strTime);
-        holder.speaker.setText("" + mCursor.getString(EventsFragment.COL_EVENT_SPEAKER));
-        holder.topic.setText("" + mCursor.getString(EventsFragment.COL_EVENT_TOPIC));
+        holder.speaker.setText("" + mCursor.getString(EventFragment.COL_EVENT_SPEAKER));
+        holder.topic.setText("" + mCursor.getString(EventFragment.COL_EVENT_TOPIC));
 
-        String imageUrl = mCursor.getString(EventsFragment.COL_EVENT_IMAGE);
+        String imageUrl = mCursor.getString(EventFragment.COL_EVENT_IMAGE);
         if (imageUrl != null) {
             // The reason I did not use Picasso
             /*

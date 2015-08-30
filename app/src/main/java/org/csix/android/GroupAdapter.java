@@ -37,7 +37,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
         public void onClick(View v) {
             int adapterPosition = getAdapterPosition();
             mCursor.moveToPosition(adapterPosition);
-            mClickHandler.onClick(mCursor.getLong(GroupsFragment.COL_GROUP_ID), this);
+            mClickHandler.onClick(mCursor.getLong(GroupFragment.COL_GROUP_ID), this);
         }
     }
 
@@ -64,7 +64,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
     public void onBindViewHolder(GroupAdapterViewHolder holder, int position) {
         mCursor.moveToPosition(position);
 
-        holder.groupName.setText("" + mCursor.getString(GroupsFragment.COL_GROUP_NAME));
+        holder.groupName.setText("" + mCursor.getString(GroupFragment.COL_GROUP_NAME));
     }
 
     @Override
