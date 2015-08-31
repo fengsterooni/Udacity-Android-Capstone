@@ -21,5 +21,13 @@
     <string name="empty_event_list">No Event Information Available</string>
 
     <string name="action_share">Share</string>
+    <string name="image_church">Image of Saratoga Federated Church Entrance</string>
+    <string name="image_lifehouse">Image of Lifehouse, CSix Meeting Entrance</string>
+    <string name="image_parking">Image of Lower Packing Lot</string>
 
+    <string name="event_location">Saratoga Federated Church</string>
+    <string name="event_address">20390 Park Place, Saratoga, CA 95070</string>
+    <string name="event_start">10:00 AM</string>
+    <string name="event_end">1:00 PM</string>
+    
 </resources>

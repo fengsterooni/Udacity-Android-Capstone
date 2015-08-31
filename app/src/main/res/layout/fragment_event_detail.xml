@@ -1,4 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -6,87 +7,74 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:background="@color/main_color"
-            android:gravity="end|center_vertical"
-            android:paddingEnd="30dp"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tvLower"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignEnd="@id/tvDate"
-            android:layout_alignLeft="@id/tvDate"
-            android:layout_alignRight="@id/tvDate"
-            android:layout_alignStart="@id/tvDate"
-            android:layout_below="@id/tvDate" />
-
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/ivSpeaker"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_gravity="center"
-            android:layout_margin="40dp"
-            android:background="@color/white"
-            android:padding="2dp"
-            android:src="@drawable/csix_logo" />
+            android:layout_margin="@dimen/activity_vertical_margin_top"
+            android:src="@drawable/csix_logo"
+            app:riv_corner_radius="32dp" />
 
         <TextView
             android:id="@+id/tvSpeaker"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvDate"
+            android:layout_alignTop="@id/ivSpeaker"
             android:layout_gravity="center"
-            android:layout_marginEnd="36dp"
-            android:layout_marginLeft="128dp"
-            android:layout_marginRight="36dp"
-            android:layout_marginStart="128dp"
-            android:layout_marginTop="24dp"
-            android:textColor="@color/main_color"
-            android:textSize="18sp" />
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_toEndOf="@id/ivSpeaker"
+            android:layout_toRightOf="@id/ivSpeaker"
+            android:layout_toStartOf="@id/tvSpeaker"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+            android:textColor="@color/main_color" />
 
         <TextView
             android:id="@+id/tvTopic"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@id/tvDate"
-            android:layout_alignLeft="@id/tvDate"
-            android:layout_alignRight="@id/tvDate"
-            android:layout_alignStart="@id/tvDate"
-            android:layout_below="@id/tvDate"
+            android:layout_alignLeft="@id/tvSpeaker"
+            android:layout_alignStart="@id/tvSpeaker"
+            android:layout_below="@id/tvSpeaker"
             android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="36dp"
             android:layout_marginRight="36dp"
-            android:layout_marginTop="72dp"
             android:ellipsize="end"
-            android:lines="3"
-            android:paddingLeft="24dp"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:lines="2"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+
+        <ImageView
+            android:id="@+id/ivEventDetailCalendar"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/tvTopic"
+            android:layout_alignLeft="@id/ivSpeaker"
+            android:src="@drawable/ic_calender_add" />
+
+        <TextView
+            android:id="@+id/tvEventDetailTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@id/ivEventDetailCalendar"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/ivEventDetailCalendar"
+            android:paddingTop="16dp" />
+
 
         <TextView
             android:id="@+id/tvDesc"
+            style="?android:attr/textAppearanceMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@id/tvDate"
-            android:layout_alignLeft="@id/tvDate"
-            android:layout_alignRight="@id/tvDate"
-            android:layout_alignStart="@id/tvDate"
-            android:layout_below="@id/tvTopic"
+            android:layout_below="@id/ivEventDetailCalendar"
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/detail_inner_horiz_margin"
             android:layout_marginRight="@dimen/detail_inner_horiz_margin"
-            android:paddingBottom="@dimen/detail_body_bottom_margin"
             android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
-            style="?android:attr/textAppearanceMedium" />
+            android:paddingBottom="@dimen/detail_body_bottom_margin" />
 
 
     </RelativeLayout>

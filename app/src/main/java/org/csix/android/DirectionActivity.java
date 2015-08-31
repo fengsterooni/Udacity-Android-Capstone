@@ -85,7 +85,7 @@ public class DirectionActivity extends BaseMapActivity {
 
             marker = map.addMarker(new MarkerOptions()
                     .position(latLng));
-            dropPinEffect(marker);
+            // dropPinEffect(marker);
 
             setupSigns();
         }

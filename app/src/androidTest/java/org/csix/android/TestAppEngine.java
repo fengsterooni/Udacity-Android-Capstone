@@ -83,6 +83,15 @@ public class TestAppEngine extends AndroidTestCase {
             event.setImage("http://csix.org/wp-content/uploads/2015/08/kfagan.jpg");
             myApiService.insertEvent(event).execute();
 
+
+            event = new Event();
+            date = format.parse("2015-09-10");
+            event.setDate(new DateTime(date));
+            event.setSpeaker("Patricia Bottero St-Jean");
+            event.setTopic("The Virtues of Semi-Absentee Business Ownership");
+            event.setDesc("Explore the business models of semi-absentee ownership. Whether you are currently employed or are looking for new opportunities, semi-absentee business ownership is a smart way to mitigate the risks of job insecurity. Celebrate unemployment and use this time as an opportunity to get a semi- absentee business off the ground. Choose one that will continue to grow, and produce income, when you return to corporate work, and if you choose to return to work.");
+            event.setImage("http://csix.org/wp-content/uploads/2015/08/PatriciaBotteroStJean-e1440204266895.jpg");
+            myApiService.insertEvent(event).execute();
         }
     }
 

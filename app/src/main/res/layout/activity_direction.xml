@@ -17,7 +17,8 @@
         android:adjustViewBounds="true"
         android:background="@color/purple"
         android:scaleType="fitCenter"
-        android:src="@drawable/church2" />
+        android:src="@drawable/church2"
+        android:contentDescription="@string/image_church" />
 
     <ImageView
         android:layout_width="120dp"
@@ -26,7 +27,8 @@
         android:adjustViewBounds="true"
         android:background="@color/blue"
         android:scaleType="fitCenter"
-        android:src="@drawable/lifehouse2" />
+        android:src="@drawable/lifehouse2"
+        android:contentDescription="@string/image_lifehouse" />
 
     <ImageView
         android:layout_width="120dp"
@@ -35,7 +37,8 @@
         android:adjustViewBounds="true"
         android:background="@color/green"
         android:scaleType="fitCenter"
-        android:src="@drawable/lowerparking2" />
+        android:src="@drawable/lowerparking2"
+        android:contentDescription="@string/image_parking" />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
