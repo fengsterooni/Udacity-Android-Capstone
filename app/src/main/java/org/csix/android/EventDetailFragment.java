@@ -5,10 +5,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
-import android.support.v4.app.ShareCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.util.Log;
@@ -42,6 +40,7 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
     private int year;
     private int month;
     private int day;
+    private StringBuilder summary;
 
     private static final String[] EVENT_DETAIL_COLUMNS = {
             CSixContract.EventEntry.COLUMN_DATE,
@@ -52,13 +51,13 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
             CSixContract.EventEntry.COLUMN_TYPE
     };
 
-    static final int COL_EVENT_ID        = 0;
-    static final int COL_EVENT_DATE      = 1;
-    static final int COL_EVENT_SPEAKER   = 2;
-    static final int COL_EVENT_IMAGE     = 3;
-    static final int COL_EVENT_TOPIC     = 4;
-    static final int COL_EVENT_DESC      = 5;
-    static final int COL_EVENT_TYPE      = 6;
+    static final int COL_EVENT_ID = 0;
+    static final int COL_EVENT_DATE = 1;
+    static final int COL_EVENT_SPEAKER = 2;
+    static final int COL_EVENT_IMAGE = 3;
+    static final int COL_EVENT_TOPIC = 4;
+    static final int COL_EVENT_DESC = 5;
+    static final int COL_EVENT_TYPE = 6;
 
     @Bind(R.id.ivSpeaker)
     ImageView speakerImage;
@@ -73,6 +72,7 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
 
     @Bind(R.id.ivEventDetailCalendar)
     ImageView calendar;
+
     @OnClick(R.id.ivEventDetailCalendar)
     void addToCalendar() {
         Intent calIntent = new Intent(Intent.ACTION_INSERT);
@@ -98,7 +98,8 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
     }
 
 
-    public EventDetailFragment() {}
+    public EventDetailFragment() {
+    }
 
     public static EventDetailFragment newInstatnce(Long eventId) {
         EventDetailFragment fragment = new EventDetailFragment();
@@ -170,8 +171,12 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
                 Date date = new Date(data.getLong(COL_EVENT_DATE));
                 getDate(date);
 
-                speaker.setText("" + data.getString(COL_EVENT_SPEAKER));
-                topic.setText("" + data.getString(COL_EVENT_TOPIC));
+                String eventSpeaker = data.getString(COL_EVENT_SPEAKER);
+                speaker.setText("" + eventSpeaker);
+
+                String eventTopic = data.getString(COL_EVENT_TOPIC);
+                topic.setText("" + eventTopic);
+
                 desc.setText("" + data.getString(COL_EVENT_DESC));
 
                 String imageUrl = data.getString(COL_EVENT_IMAGE);
@@ -180,16 +185,30 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
                     Glide.with(getActivity()).load(imageUrl).into(speakerImage);
                 }
 
-                time.setText(DateUtils.getShortMonthString(date)
+                String dateTime = DateUtils.getShortMonthString(date)
                         + " "
                         + DateUtils.getDayString(date)
                         + " @ "
                         + getString(R.string.event_start)
                         + " - "
-                        + getString(R.string.event_end));
+                        + getString(R.string.event_end);
+                time.setText(dateTime);
+
+                summary = new StringBuilder();
+                summary = summary
+                        .append(eventSpeaker)
+                        .append(": ")
+                        .append(eventTopic)
+                        .append(", ")
+                        .append(dateTime)
+                        .append(" @CSix Connect - www.csix.org");
 
                 break;
         }
+    }
+
+    public StringBuilder getSummary() {
+        return summary;
     }
 
     @Override

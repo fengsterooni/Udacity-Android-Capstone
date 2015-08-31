@@ -8,12 +8,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class EventDetailActivity extends AppCompatActivity {
+    private final String LOG_TAG = EventDetailActivity.class.getSimpleName();
     static EventDetailFragment fragment;
     public final static String EVENT_ID = "EVENT_ID";
 
@@ -25,12 +27,16 @@ public class EventDetailActivity extends AppCompatActivity {
     CoordinatorLayout rootLayout;
     @Bind(R.id.share_fab)
     FloatingActionButton fab;
+
     @OnClick(R.id.share_fab)
     void click() {
-        startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(this)
-                .setType("text/plain")
-                .setText("Some sample text")
-                .getIntent(), getString(R.string.action_share)));
+        String summary = fragment.getSummary().toString();
+        Log.i(LOG_TAG, summary);
+        if (summary != null)
+            startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(this)
+                    .setType("text/plain")
+                    .setText(summary)
+                    .getIntent(), getString(R.string.action_share)));
     }
 
     @Override
