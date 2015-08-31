@@ -29,6 +29,7 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -50,20 +51,45 @@
             android:name=".AboutActivity"
             android:label="@string/activity_title_about" >
         </activity>
+
         <provider
             android:name=".data.CSixProvider"
             android:authorities="@string/content_authority"
             android:exported="false"
             android:syncable="true" />
+
         <service
             android:name=".EventIntentService"
-            android:exported="false"/>
+            android:exported="false" />
         <service
             android:name=".GroupIntentService"
-            android:exported="false"/>
+            android:exported="false" />
         <service
             android:name=".AboutIntentService"
-            android:exported="false"/>
+            android:exported="false" />
+
+        <receiver android:name=".EventWidget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/event_widget_info" />
+        </receiver>
+
+        <service android:name=".EventWidgetIntentService" />
+
+        <receiver android:name=".EventWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/event_widget_info" />
+        </receiver>
+
     </application>
 
 </manifest>

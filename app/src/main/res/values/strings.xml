@@ -32,4 +32,6 @@
     <string name="event_end">1:00 PM</string>
 
     <string name="logo">CSix Logo</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>
