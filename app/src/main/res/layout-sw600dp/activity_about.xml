@@ -5,17 +5,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/fragment_about"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".AboutActivity" />
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:background="@color/main_color"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <FrameLayout
+        android:id="@+id/fragment_about"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        tools:context=".AboutActivity" />
+
 
 </LinearLayout>
