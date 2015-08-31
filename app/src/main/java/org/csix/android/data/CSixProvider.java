@@ -17,6 +17,8 @@ public class CSixProvider extends ContentProvider {
     private static final int EVENT = 101;
     private static final int GROUP_ID = 200;
     private static final int GROUP = 201;
+    private static final int ABOUT_ID = 300;
+    private static final int ABOUT = 301;
 
     private DbHelper dbHelper;
 
@@ -30,6 +32,10 @@ public class CSixProvider extends ContentProvider {
 
         matcher.addURI(authority, CSixContract.PATH_GROUP + "/#", GROUP_ID);
         matcher.addURI(authority, CSixContract.PATH_GROUP, GROUP);
+
+        matcher.addURI(authority, CSixContract.PATH_ABOUT + "/#", ABOUT_ID);
+        matcher.addURI(authority, CSixContract.PATH_ABOUT, ABOUT);
+
         return matcher;
     }
 
@@ -87,6 +93,28 @@ public class CSixProvider extends ContentProvider {
                         sortOrder
                 );
                 break;
+            case ABOUT:
+                retCursor = dbHelper.getReadableDatabase().query(
+                        CSixContract.AboutEntry.TABLE_NAME,
+                        projection,
+                        selection,
+                        selection == null ? null : selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            case ABOUT_ID:
+                retCursor = dbHelper.getReadableDatabase().query(
+                        CSixContract.AboutEntry.TABLE_NAME,
+                        projection,
+                        CSixContract.AboutEntry._ID + " = '" + ContentUris.parseId(uri) + "'",
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
@@ -109,6 +137,10 @@ public class CSixProvider extends ContentProvider {
                 return CSixContract.GroupEntry.CONTENT_ITEM_TYPE;
             case GROUP:
                 return CSixContract.GroupEntry.CONTENT_TYPE;
+            case ABOUT_ID:
+                return CSixContract.AboutEntry.CONTENT_ITEM_TYPE;
+            case ABOUT:
+                return CSixContract.AboutEntry.CONTENT_TYPE;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
@@ -134,6 +166,16 @@ public class CSixProvider extends ContentProvider {
                 long _id = db.insert(CSixContract.GroupEntry.TABLE_NAME, null, values);
                 if (_id > 0) {
                     returnUri = CSixContract.GroupEntry.buildGroupUri(_id);
+                } else {
+                    throw new android.database.SQLException("Failed to insert row into " + uri);
+                }
+                break;
+            }
+
+            case ABOUT: {
+                long _id = db.insert(CSixContract.AboutEntry.TABLE_NAME, null, values);
+                if (_id > 0) {
+                    returnUri = CSixContract.AboutEntry.buildAboutUri(_id);
                 } else {
                     throw new android.database.SQLException("Failed to insert row into " + uri);
                 }
@@ -172,6 +214,16 @@ public class CSixProvider extends ContentProvider {
                         CSixContract.GroupEntry._ID + " = '" + ContentUris.parseId(uri) + "'",
                         selectionArgs);
                 break;
+            case ABOUT:
+                rowsDeleted = db.delete(
+                        CSixContract.AboutEntry.TABLE_NAME, selection, selectionArgs);
+                break;
+            case ABOUT_ID:
+                rowsDeleted = db.delete(
+                        CSixContract.AboutEntry.TABLE_NAME,
+                        CSixContract.AboutEntry._ID + " = '" + ContentUris.parseId(uri) + "'",
+                        selectionArgs);
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
         }
@@ -194,6 +246,10 @@ public class CSixProvider extends ContentProvider {
                 break;
             case GROUP:
                 rowsUpdated = db.update(CSixContract.GroupEntry.TABLE_NAME, values, selection,
+                        selectionArgs);
+                break;
+            case ABOUT:
+                rowsUpdated = db.update(CSixContract.AboutEntry.TABLE_NAME, values, selection,
                         selectionArgs);
                 break;
             default:
@@ -232,6 +288,22 @@ public class CSixProvider extends ContentProvider {
                 try {
                     for (ContentValues value : values) {
                         long _id = db.insert(CSixContract.GroupEntry.TABLE_NAME, null, value);
+                        if (_id != -1) {
+                            returnCount++;
+                        }
+                    }
+                    db.setTransactionSuccessful();
+                } finally {
+                    db.endTransaction();
+                }
+                getContext().getContentResolver().notifyChange(uri, null);
+                return returnCount;
+            case ABOUT:
+                db.beginTransaction();
+                returnCount = 0;
+                try {
+                    for (ContentValues value : values) {
+                        long _id = db.insert(CSixContract.AboutEntry.TABLE_NAME, null, value);
                         if (_id != -1) {
                             returnCount++;
                         }

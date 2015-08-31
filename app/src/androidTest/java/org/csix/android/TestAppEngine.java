@@ -9,6 +9,7 @@ import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.google.api.client.util.DateTime;
 
 import org.csix.backend.myApi.MyApi;
+import org.csix.backend.myApi.model.About;
 import org.csix.backend.myApi.model.Event;
 import org.csix.backend.myApi.model.Group;
 
@@ -48,6 +49,7 @@ public class TestAppEngine extends AndroidTestCase {
     public void testInitialization() throws Throwable {
         initializeEvents();
         initializeGroups();
+        initializeAbouts();
     }
 
     public void initializeEvents() throws Throwable {
@@ -103,7 +105,7 @@ public class TestAppEngine extends AndroidTestCase {
             group.setName("CSix Connect, Burlingame");
             group.setAddress("1500 Easton Drive, Burlingame, CA 94010");
             group.setLocation("First Presbyterian Church");
-            group.setTime("First Tuesdays every month, 6:00 pm - 8:30 pm");
+            group.setTime("First Tuesdays every month,\n6:00 pm - 8:30 pm");
             group.setDesc("CSix Peninsula Chapter");
             myApiService.insertGroup(group).execute();
 
@@ -118,8 +120,8 @@ public class TestAppEngine extends AndroidTestCase {
             group = new Group();
             group.setName("Manufacturing/Operations SIG");
             group.setAddress("1000 S. Bascom Avenue, San Jose, CA 95128");
-            group.setLocation("Community Room – 2nd Floor, Bascom Library & Community Center");
-            group.setTime("Every 1st and 3rd Wednesday of each month, 9:00 am – 11:00 am");
+            group.setLocation("Community Room – 2nd Floor,\nBascom Library & Community Center");
+            group.setTime("Every 1st and 3rd Wednesday of each month,\n9:00 am – 11:00 am");
             group.setDesc("Networking, job leads, and information focused on the corporate functions of manufacturing and more general operations including Facilities, Logistics, Supply Chain, Procurement, Materials, Manufacturing & Test Engineering and Quality Engineering.");
             myApiService.insertGroup(group).execute();
 
@@ -127,7 +129,7 @@ public class TestAppEngine extends AndroidTestCase {
             group.setName("Finance SIG");
             group.setAddress("118 East El Camino Real, Sunnyvale, CA 94087");
             group.setLocation("Panera Bread, Sunnyvale");
-            group.setTime("Every 2nd and 4th Wednesday of each month, 7:30 am – 9:00 pm");
+            group.setTime("Every 2nd and 4th Wednesday of each month,\n7:30 am – 9:00 pm");
             group.setDesc("Our mission is to bring together finance professionals in the South Bay Area so that we may explore the uniqueness of working in this field and how that pertains to job searching, professional development, and being successful on the job.");
             myApiService.insertGroup(group).execute();
 
@@ -135,7 +137,7 @@ public class TestAppEngine extends AndroidTestCase {
             group.setName("Job Search Empowerment on the Peninsula (JSEP)");
             group.setAddress("399 Marine Parkway, Redwood City, CA 94065");
             group.setLocation("Meeting Room #B, Redwood Shores Library");
-                    group.setTime("Monday (Except holidays), 5:30 pm – 6:30 pm");
+                    group.setTime("Monday (Except holidays),\n5:30 pm – 6:30 pm");
             group.setDesc("Help one another with resumes\n" +
                     "Practice interview skills\n" +
                     "Develop a concise elevator pitch\n" +
@@ -147,8 +149,8 @@ public class TestAppEngine extends AndroidTestCase {
             group = new Group();
             group.setName("Semiconductor SIG (SemiSIG)");
             group.setAddress("1000 S. Bascom Avenue, San Jose, CA 95128");
-            group.setLocation("Community Room – 2nd Floor, Bascom Library & Community Center");
-            group.setTime("Every 1st and 3rd Wednesday of each month, 9:00 am – 11:00 am");
+            group.setLocation("Community Room – 2nd Floor,\nBascom Library & Community Center");
+            group.setTime("Every 1st and 3rd Wednesday of each month,\n9:00 am – 11:00 am");
             group.setDesc("SemiSIG is a Special Interest Group for professionals in the semiconductor industry, and in the related industries of flat panel display, magnetic, optical and thin film coating. Our network was formed to improve our members’ knowledge of these industries and to share career change opportunities.");
             myApiService.insertGroup(group).execute();
 
@@ -156,9 +158,25 @@ public class TestAppEngine extends AndroidTestCase {
             group.setName("Morning Wildcat Loop Trail Hike");
             group.setAddress("22500 Cristo Rey Drive, Los Altos, CA");
             group.setLocation("Rancho San Antonio");
-            group.setTime("Every Tuesday, 6:30 am - 8:00 am");
+            group.setTime("Every Tuesday,\n6:30 am - 8:00 am");
             group.setDesc("A fun group of people who meet every Tuesday morning at 6:30 a.m. at Rancho San Antonio in Cupertino (off Hwy 280 & 85) for an early morning networking hike. It’s a terrific way to keep fit and meet interesting people at the same time. This is a particularly good group for people who may be in career transition mode because of the group’s philosophy of mutual support, the power of networking and a group hike! We are finished by 8:00 a.m. so you can get on with your day and feel fantastic because you have had a great workout. We hope you can join us soon!");
             myApiService.insertGroup(group).execute();
+        }
+    }
+
+    public void initializeAbouts() throws Throwable {
+        if (myApiService != null) {
+            myApiService.removeAllAbouts().execute();
+
+            About about = new About();
+            about.setTitle("About");
+            about.setDesc("CSIX CONNECT helps individuals in career transition to significantly improve their job search success through education, in-person networking and mutual support.   In today’s job market, more than 80 per cent of jobs obtained result from successful networking. CSIX CONNECT provides the means to tap into and leverage the power of a network that is already more than 7000 members strong.");
+            myApiService.insertAbout(about).execute();
+
+            about = new About();
+            about.setTitle("Connect");
+            about.setDesc("CSIX is built on the belief that networking is most effective when done face-to-face. Therefore, to join CSIX you must attend a meeting and sign up in person. Membership is free. CSIX membership provides access to a vast array of job listings and job search resources via other members, the CSIX CONNECT Yahoo! group.");
+            myApiService.insertAbout(about).execute();
         }
     }
 }

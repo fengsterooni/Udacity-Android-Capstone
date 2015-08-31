@@ -18,6 +18,7 @@ public class TestProvider extends AndroidTestCase {
     public void deleteAllRecords() {
         deleteAllEvents();
         deleteAllGroups();
+        deleteAllAbouts();
     }
 
     public void deleteAllEvents() {
@@ -64,6 +65,29 @@ public class TestProvider extends AndroidTestCase {
 
     }
 
+    public void deleteAllAbouts() {
+
+        // Testing Groups
+        mContext.getContentResolver().delete(
+                CSixContract.AboutEntry.CONTENT_URI,
+                null,
+                null
+        );
+
+        Cursor cursor = mContext.getContentResolver().query(
+                CSixContract.AboutEntry.CONTENT_URI,
+                null,
+                null,
+                null,
+                null
+        );
+
+        assertEquals(0, cursor.getCount());
+
+        cursor.close();
+
+    }
+
     public void testGetTypeEvent() {
         String type = mContext.getContentResolver().getType(CSixContract.EventEntry.CONTENT_URI);
         assertEquals(CSixContract.EventEntry.CONTENT_TYPE, type);
@@ -84,9 +108,20 @@ public class TestProvider extends AndroidTestCase {
 
     }
 
+    public void testGetTypeAbout() {
+        String type = mContext.getContentResolver().getType(CSixContract.AboutEntry.CONTENT_URI);
+        assertEquals(CSixContract.AboutEntry.CONTENT_TYPE, type);
+
+        long id = 9780137903955L;
+        type = mContext.getContentResolver().getType(CSixContract.AboutEntry.buildAboutUri(id));
+        assertEquals(CSixContract.AboutEntry.CONTENT_ITEM_TYPE, type);
+
+    }
+
     public void testInsertRead() {
         testInsertReadEvents();
         testInsertReadGroups();
+        testInsertReadAbouts();
     }
 
     public void testInsertReadEvents() {
@@ -146,6 +181,37 @@ public class TestProvider extends AndroidTestCase {
         );
 
         TestDb.validateCursor(cursor, groupValues);
+
+        cursor.close();
+    }
+
+    public void testInsertReadAbouts() {
+
+        ContentValues aboutValues = TestDb.getAboutValues();
+
+        Uri aboutUri = mContext.getContentResolver().insert(CSixContract.AboutEntry.CONTENT_URI, aboutValues);
+        long aboutRowId = ContentUris.parseId(aboutUri);
+        assertTrue(aboutRowId != -1);
+
+        Cursor cursor = mContext.getContentResolver().query(
+                CSixContract.AboutEntry.CONTENT_URI,
+                null, // leaving "columns" null just returns all the columns.
+                null, // cols for "where" clause
+                null, // values for "where" clause
+                null  // sort order
+        );
+
+        TestDb.validateCursor(cursor, aboutValues);
+
+        cursor = mContext.getContentResolver().query(
+                CSixContract.AboutEntry.buildAboutUri(aboutRowId),
+                null, // leaving "columns" null just returns all the columns.
+                null, // cols for "where" clause
+                null, // values for "where" clause
+                null  // sort order
+        );
+
+        TestDb.validateCursor(cursor, aboutValues);
 
         cursor.close();
     }

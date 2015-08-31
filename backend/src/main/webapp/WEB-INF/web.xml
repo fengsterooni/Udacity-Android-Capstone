@@ -5,7 +5,7 @@
         <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
         <init-param>
             <param-name>services</param-name>
-            <param-value>org.csix.backend.MyEndpoint, org.csix.backend.EventEndpoint, org.csix.backend.GroupEndpoint</param-value>
+            <param-value>org.csix.backend.MyEndpoint, org.csix.backend.EventEndpoint, org.csix.backend.GroupEndpoint, org.csix.backend.AboutEndpoint</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>

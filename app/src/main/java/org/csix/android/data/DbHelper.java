@@ -40,12 +40,21 @@ public class DbHelper extends SQLiteOpenHelper{
 
                 " UNIQUE (" + CSixContract.GroupEntry.COLUMN_NAME + ") ON CONFLICT REPLACE);";
 
+        final String SQL_CREATE_ABOUT_TABLE = "CREATE TABLE " + CSixContract.AboutEntry.TABLE_NAME + " (" +
+                CSixContract.AboutEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                CSixContract.AboutEntry.COLUMN_TITLE + " TEXT NOT NULL," +
+                CSixContract.AboutEntry.COLUMN_DESC + " TEXT," +
+
+                " UNIQUE (" + CSixContract.AboutEntry.COLUMN_TITLE + ") ON CONFLICT REPLACE);";
+
         Log.d(LOG_TAG, SQL_CREATE_GROUP_TABLE);
         db.execSQL(SQL_CREATE_GROUP_TABLE);
 
         Log.d(LOG_TAG, SQL_CREATE_EVENT_TABLE);
         db.execSQL(SQL_CREATE_EVENT_TABLE);
 
+        Log.d(LOG_TAG, SQL_CREATE_ABOUT_TABLE);
+        db.execSQL(SQL_CREATE_ABOUT_TABLE);
     }
 
     @Override

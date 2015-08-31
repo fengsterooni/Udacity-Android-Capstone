@@ -14,6 +14,7 @@ public class OfyService {
     static {
         ObjectifyService.register(Event.class);
         ObjectifyService.register(Group.class);
+        ObjectifyService.register(About.class);
     }
 
     public static Objectify ofy() {

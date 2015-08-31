@@ -17,6 +17,7 @@
     <string name="activity_title_event_details">Event Details</string>
     <string name="activity_title_group_details">Group Details</string>
     <string name="activity_title_direction">Direction</string>
+    <string name="activity_title_about">About</string>
 
     <string name="empty_event_list">No Event Information Available</string>
 
@@ -29,5 +30,6 @@
     <string name="event_address">20390 Park Place, Saratoga, CA 95070</string>
     <string name="event_start">10:00 AM</string>
     <string name="event_end">1:00 PM</string>
-    
+
+    <string name="logo">CSix Logo</string>
 </resources>

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -27,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements Callback {
     private final String LOG_TAG = MainActivity.class.getSimpleName();
     public static final String EVENTDETAIL_TAG = "EVENTDETAIL_TAG";
     public static final String GROUPDETAIL_TAG = "GROUPDETAIL_TAG";
+    public static final String MAIN_TAG = "MAIN_TAG";
     public static boolean IS_TABLET = false;
 
     @Bind(R.id.toolbar)
@@ -63,12 +63,12 @@ public class MainActivity extends AppCompatActivity implements Callback {
         if (savedInstanceState == null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, new EventFragment())
+                    .replace(R.id.container, new EventFragment(), MAIN_TAG)
                     .commit();
 
             startService(new Intent(this, EventIntentService.class));
             startService(new Intent(this, GroupIntentService.class));
-
+            startService(new Intent(this, AboutIntentService.class));
         }
     }
 
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements Callback {
                 Fragment fragment = null;
                 switch (id) {
                     case R.id.navEvent:
-                        fragment = new EventFragment();
+                            fragment = new EventFragment();
                         // Snackbar.make(rootLayout, "Event Event Event!", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.navDirection:
@@ -115,16 +115,30 @@ public class MainActivity extends AppCompatActivity implements Callback {
                         // Snackbar.make(rootLayout, "GOOPS!", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.navAbout:
+                        startActivity(new Intent(MainActivity.this, AboutActivity.class));
                         // fragment = AboutFragment.newInstance("About", "arg2");
-                        Snackbar.make(rootLayout, "HU AM I?!", Snackbar.LENGTH_SHORT).show();
+                        // Snackbar.make(rootLayout, "HU AM I?!", Snackbar.LENGTH_SHORT).show();
                         break;
                 }
 
                 if (fragment != null) {
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction()
-                            .replace(R.id.container, fragment)
-                            .commit();
+                    android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.container, fragment);
+
+                    // Remove the leftover detailed fragment if master is changed
+                    if (IS_TABLET) {
+                        FragmentManager manager = getSupportFragmentManager();
+                        Fragment frag;
+                        if ((frag = manager.findFragmentByTag(EVENTDETAIL_TAG)) != null)
+                            ft.remove(frag);
+                        if ((frag = manager.findFragmentByTag(GROUPDETAIL_TAG)) != null)
+                            ft.remove(frag);
+
+                    }
+
+                    fragment = null;
+
+                    ft.commit();
                 }
 
                 drawerLayout.closeDrawers();

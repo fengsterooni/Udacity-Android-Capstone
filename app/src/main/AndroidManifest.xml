@@ -46,6 +46,10 @@
             android:name=".GroupDetailActivity"
             android:label="@string/activity_title_group_details" >
         </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/activity_title_about" >
+        </activity>
         <provider
             android:name=".data.CSixProvider"
             android:authorities="@string/content_authority"
@@ -56,6 +60,9 @@
             android:exported="false"/>
         <service
             android:name=".GroupIntentService"
+            android:exported="false"/>
+        <service
+            android:name=".AboutIntentService"
             android:exported="false"/>
     </application>
 

@@ -62,4 +62,27 @@ public class CSixContract {
             return ContentUris.withAppendedId(CONTENT_URI, id);
         }
     }
+
+    public static final String PATH_ABOUT = "abouts";
+
+    public static final class AboutEntry implements BaseColumns {
+        public static final Uri CONTENT_URI =
+                BASE_CONTENT_URI.buildUpon().appendPath(PATH_ABOUT).build();
+
+        public static final String CONTENT_TYPE =
+                ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_ABOUT;
+        public static final String CONTENT_ITEM_TYPE =
+                ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + CONTENT_AUTHORITY + "/" + PATH_ABOUT;
+
+        // Table name
+        public static final String TABLE_NAME = "abouts";
+
+        // Columns
+        public static final String COLUMN_TITLE = "title";
+        public static final String COLUMN_DESC = "description";
+
+        public static Uri buildAboutUri(long id) {
+            return ContentUris.withAppendedId(CONTENT_URI, id);
+        }
+    }
 }

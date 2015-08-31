@@ -36,7 +36,12 @@ public class TestDb extends AndroidTestCase{
     public final static String location = "Richards Hall, Saratoga Federated Church";
     public final static String time = "Thursday, 8:00 am – 9:30 am";
     public final static String group_desc = "EcoGreen Group creates professional and entrepreneurial opportunities in sustainability and clean technologies through education, professional development, industry collaboration, and networking.";
-    
+
+
+    // Variables for Abouts
+    public final static String title = "About";
+    public final static String about_desc = "CSIX CONNECT helps individuals in career transition to significantly improve their job search success through education, in-person networking and mutual support.   In today’s job market, more than 80 per cent of jobs obtained result from successful networking. CSIX CONNECT provides the means to tap into and leverage the power of a network that is already more than 7000 members strong.";
+
     public void testCreateDb() throws Throwable {
         mContext.deleteDatabase(DbHelper.DATABASE_NAME);
         SQLiteDatabase db = new DbHelper(
@@ -121,6 +126,41 @@ public class TestDb extends AndroidTestCase{
         dbHelper.close();
     }
 
+    public void testAbout() {
+
+        DbHelper dbHelper = new DbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        // Testing Group
+        ContentValues values = getAboutValues();
+
+        long ret = db.insert(CSixContract.AboutEntry.TABLE_NAME, null, values);
+        assertEquals(1, ret);
+
+        String[] about_columns = {
+                CSixContract.AboutEntry._ID,
+                CSixContract.AboutEntry.COLUMN_TITLE,
+                CSixContract.AboutEntry.COLUMN_DESC
+        };
+
+        // A cursor is your primary interface to the query results.
+        Cursor cursor = db.query(
+                CSixContract.AboutEntry.TABLE_NAME,  // Table to Query
+                about_columns,
+                null, // Columns for the "where" clause
+                null, // Values for the "where" clause
+                null, // columns to group by
+                null, // columns to filter by row groups
+                null // sort order
+        );
+
+        validateCursor(cursor, values);
+
+        db.close();
+        dbHelper.close();
+    }
+
+
     static void validateCursor(Cursor valueCursor, ContentValues expectedValues) {
 
         assertTrue(valueCursor.moveToFirst());
@@ -157,6 +197,15 @@ public class TestDb extends AndroidTestCase{
         values.put(CSixContract.GroupEntry.COLUMN_LOCATION, location);
         values.put(CSixContract.GroupEntry.COLUMN_TIME, time);
         values.put(CSixContract.GroupEntry.COLUMN_DESC, group_desc);
+
+        return values;
+    }
+
+    public static ContentValues getAboutValues() {
+
+        final ContentValues values = new ContentValues();
+        values.put(CSixContract.AboutEntry.COLUMN_TITLE, title);
+        values.put(CSixContract.AboutEntry.COLUMN_DESC, about_desc);
 
         return values;
     }
