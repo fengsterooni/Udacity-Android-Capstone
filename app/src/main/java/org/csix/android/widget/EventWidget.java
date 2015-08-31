@@ -1,4 +1,4 @@
-package org.csix.android;
+package org.csix.android.widget;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;

@@ -1,4 +1,4 @@
-package org.csix.android;
+package org.csix.android.widget;
 
 import android.app.IntentService;
 import android.app.PendingIntent;
@@ -6,13 +6,15 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.util.Log;
 import android.widget.RemoteViews;
 
+import org.csix.android.DateUtils;
+import org.csix.android.MainActivity;
+import org.csix.android.R;
 import org.csix.android.data.CSixContract;
 
 import java.util.Date;
@@ -36,21 +38,12 @@ public class EventWidgetIntentService extends IntentService implements LoaderMan
     static final int COL_EVENT_DESC      = 5;
     static final int COL_EVENT_TYPE      = 6;
 
-    /**
-     * Creates an IntentService.  Invoked by your subclass's constructor.
-     *
-     * @param name Used to name the worker thread, important only for debugging.
-     */
     public EventWidgetIntentService() {
         super("EventWidgetIntentService");
     }
 
     @Override
     protected void onHandleIntent(Intent intent) {
-
-
-
-
 
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         int[] appWidgetIds = appWidgetManager

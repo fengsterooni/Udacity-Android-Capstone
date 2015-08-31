@@ -32,6 +32,29 @@
     <string name="event_end">1:00 PM</string>
 
     <string name="logo">CSix Logo</string>
-    <string name="appwidget_text">EXAMPLE</string>
+
+    <!-- Widget -->
+    <string name="widget_text">This is a widget probably.</string>
+    <string name="widget_home_team_name">Widget Home Team Name</string>
+    <string name="widget_away_team_name">Widget Away Team Name</string>
+    <string name="widget_home_team_crest">Widget Home Team Crest</string>
+    <string name="widget_away_team_crest">Widget Away Team Crest</string>
+    <string name="widget_match_score">Widget Match Score</string>
+    <string name="widget_home_team_score">Widget Home Team Score</string>
+    <string name="widget_away_team_score">Widget Away Team Score</string>
+    <string name="widget_empty_text">No Game Today</string>
+    <string name="widget_empty_textview">Widget Empty Text</string>
+    <string name="widget_detail_title">Detail</string>
     <string name="add_widget">Add widget</string>
+
+
+    <string name="layout_widget_collection">Widget Collection Layout</string>
+    <string name="layout_widget_collection_header">Widget Collection Header Layout</string>
+    <string name="layout_widget_collection_list">Widget Collection List Layout</string>
+    <string name="layout_widget_collection_item">Widget Collection Item Layout</string>
+    <string name="layout_widget_item">Widget Item Layout</string>
+    <string name="layout_widget_item_crests">Widget Item Crests Layout</string>
+    <string name="layout_widget_item_team_name">Widget Item Team Name Layout</string>
+    <string name="layout_widget_item_scores">Widget Item Scores Layout</string>
+
 </resources>

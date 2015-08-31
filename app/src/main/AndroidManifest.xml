@@ -68,7 +68,7 @@
             android:name=".AboutIntentService"
             android:exported="false" />
 
-        <receiver android:name=".EventWidget" >
+        <receiver android:name=".widget.EventWidget" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -78,9 +78,9 @@
                 android:resource="@xml/event_widget_info" />
         </receiver>
 
-        <service android:name=".EventWidgetIntentService" />
+        <service android:name=".widget.EventWidgetIntentService" />
 
-        <receiver android:name=".EventWidget">
+        <receiver android:name=".widget.EventWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -89,6 +89,23 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/event_widget_info" />
         </receiver>
+
+        <receiver
+            android:name=".widget.DetailWidgetProvider"
+            android:label="@string/widget_detail_title">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.example.android.sunshine.app.ACTION_DATA_UPDATED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_detail" />
+        </receiver>
+
+        <service
+            android:name=".widget.DetailWidgetRemoteViewsService"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
     </application>
 
