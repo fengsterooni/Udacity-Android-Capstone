@@ -149,7 +149,7 @@ public class TestAppEngine extends AndroidTestCase {
             event.setDate(new DateTime(date));
             event.setSpeaker("Clara Chorley");
             event.setTopic("3 Big Mistakes That Cause Job Seekers to Lose Motivation, Focus and Not Find The Job They Want");
-            event.setImage("http://csix.org/wp-content/uploads/2015/05/SandraClark.jpg");
+            event.setImage("http://csix.org/wp-content/uploads/2015/08/ClaraChorley.jpg");
             event.setDesc("The longer people find themselves out of work, the harder it can get to maintain focus, energy and motivation. Over time, taking steps results in little or no progress, obstacles appear that seem impossible to get around, and a sense of stuckness begins to settle in.\n" +
                     "\n" +
                     "Job success is largely determined by three things:\n" +

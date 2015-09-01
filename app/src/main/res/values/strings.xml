@@ -53,5 +53,9 @@
     <string name="layout_widget_collection_list">Widget Collection List Layout</string>
     <string name="layout_widget_collection_item">Widget Collection Item Layout</string>
     <string name="layout_widget_item">Widget Item Layout</string>
+    <string name="layout_appbar">Appbar Layout</string>
+    <string name="layout_collapsing_toolbar">Collapsing Toolbar Layout</string>
+    <string name="imageview_appbar">AppBar ImageView</string>
+    <string name="toolbar">Toolbar</string>
 
 </resources>
