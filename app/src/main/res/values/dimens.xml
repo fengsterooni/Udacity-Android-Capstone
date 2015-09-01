@@ -28,4 +28,7 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     <dimen name="widget_default_width">40dp</dimen>
     <dimen name="widget_default_height">40dp</dimen>
     <dimen name="widget_team">12sp</dimen>
+
+
+    <dimen name="navigation_header_hight">192dp</dimen>
 </resources>

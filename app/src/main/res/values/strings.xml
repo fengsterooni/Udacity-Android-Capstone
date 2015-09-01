@@ -57,5 +57,7 @@
     <string name="layout_collapsing_toolbar">Collapsing Toolbar Layout</string>
     <string name="imageview_appbar">AppBar ImageView</string>
     <string name="toolbar">Toolbar</string>
+    <string name="nav_header_image">Navigation Header Image</string>
+    <string name="icon_add_to_calendar">Add to Calendar</string>
 
 </resources>
