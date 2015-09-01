@@ -4,8 +4,6 @@ import android.test.AndroidTestCase;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
-import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.google.api.client.util.DateTime;
 
 import org.csix.backend.myApi.MyApi;
@@ -13,7 +11,6 @@ import org.csix.backend.myApi.model.About;
 import org.csix.backend.myApi.model.Event;
 import org.csix.backend.myApi.model.Group;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -26,6 +23,7 @@ public class TestAppEngine extends AndroidTestCase {
 
     public TestAppEngine() {
 
+        /*
         MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                 new AndroidJsonFactory(), null)
                 // options for running against local devappserver
@@ -40,8 +38,11 @@ public class TestAppEngine extends AndroidTestCase {
                     public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
                         abstractGoogleClientRequest.setDisableGZipContent(true);
                     }
-                });
+                }); */
         // end options for devappserver
+
+        MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
+                .setRootUrl("https://disco-task-719.appspot.com/_ah/api/");
 
         myApiService = builder.build();
     }
@@ -91,8 +92,100 @@ public class TestAppEngine extends AndroidTestCase {
             event.setDate(new DateTime(date));
             event.setSpeaker("Patricia Bottero St-Jean");
             event.setTopic("The Virtues of Semi-Absentee Business Ownership");
-            event.setDesc("Explore the business models of semi-absentee ownership. Whether you are currently employed or are looking for new opportunities, semi-absentee business ownership is a smart way to mitigate the risks of job insecurity. Celebrate unemployment and use this time as an opportunity to get a semi- absentee business off the ground. Choose one that will continue to grow, and produce income, when you return to corporate work, and if you choose to return to work.");
+            event.setDesc("Explore the business models of semi-absentee ownership. Whether you are currently employed or are looking for new opportunities, semi-absentee business ownership is a smart way to mitigate the risks of job insecurity. Celebrate unemployment and use this time as an opportunity to get a semi- absentee business off the ground. Choose one that will continue to grow, and produce income, when you return to corporate work, and if you choose to return to work.\n" +
+                    "\n" +
+                    " About Patricia Bottero St-Jean\n" +
+                    "\n" +
+                    "Patricia Bottero St-Jean is a Business Career Coach with over twenty years of experience in business and entrepreneurship. Patricia holds a BA in Political Economy from UC Berkeley and is MBA candidate in Global Innovation at CSU East Bay.\n" +
+                    "\n" +
+                    "In her early twenties Patricia sought the American Dream in which freedom includes the opportunity for prosperity, and an upward social mobility. Thus she first experienced self-employment as an immigrant to the United States from Europe. For the next twenty+ years she grew a business to a thriving enterprise that employed up to 50.  Business ownership gave her everything she dreamed of: citizenship to a country she loves, personal growth, education, life-long relationships, the flexibility to be a fully available mom, a lifestyle of her own design, and the income to support it all. Yes, she worked hard too, but everyday Patricia had the rare privilege of working on her business, her dream. In the process, she grew a dynamic enterprise and gained tremendous knowledge as an entrepreneur.\n" +
+                    "\n" +
+                    "Today she continues to live her vision of an empowered life by coaching people explore the less understood but more rewarding, and worth working for, path of achieving income, lifestyle, wealth and equity: entrepreneurship!");
             event.setImage("http://csix.org/wp-content/uploads/2015/08/PatriciaBotteroStJean-e1440204266895.jpg");
+            myApiService.insertEvent(event).execute();
+
+            event = new Event();
+            date = format.parse("2015-10-01");
+            event.setDate(new DateTime(date));
+            event.setSpeaker("Debbie Melnikoff");
+            event.setTopic("Writing Powerful LinkedIn Profiles");
+            event.setDesc("\n" +
+                    "The days of copying and pasting your resume into LinkedIn are gone. Today you need much more to stand out among the 364+ million LinkedIn users. Your profile must be optimized to land at the top of recruiter search results.\n" +
+                    "\n" +
+                    "During this presentation you will learn new writing strategies to blend personality and SEO into your LinkedIn profile; make your profile visually appealing by using symbols and media; and tips for writing great content to make your profile stand out and much more!\n" +
+                    "\n" +
+                    "Debbie is a Certified Career Coach (CCC) and founder of Third Wave Career Coaching, located in Santa Cruz, CA. She provides career transition coaching to both private and corporate clients spanning a wide variety of industries including technology, food and beverage, agriculture and non-profit.\n" +
+                    "\n" +
+                    "Debbie is uniquely qualified to assist clients in transition with over 20 years experience in corporate HR where she managed Talent Acquisition and Learning and Development functions as well as serving as an executive coach. Prior to opening her practice in 2009, she worked for Texas Instruments, Creative Labs, Sun Microsystems and Borland International.\n" +
+                    "\n" +
+                    "Debbie’s credentials include:  Masters in Career Counseling; Certified Career Coach; Certified Job Search Strategist; Certified Social Media Career Strategist; Certified Myers – Briggs Type Indicator® Practitioner.");
+            event.setImage("http://csix.org/wp-content/uploads/2015/08/Debbie-Melnikoff-e1440603883556.jpg");
+            myApiService.insertEvent(event).execute();
+
+            event = new Event();
+            date = format.parse("2015-11-05");
+            event.setDate(new DateTime(date));
+            event.setSpeaker("Sandra Clark");
+            event.setTopic("Linking Into Career Success");
+            event.setDesc("Learn advanced tips and techniques for using LinkedIn for your job search.\n " +
+                    "\n" +
+                    "What makes a powerful profile that will attract and hold the attention of employers\n" +
+                    "How to play to your strengths on LinkedIn when you’re a mature professional\n" +
+                    "How to use LI notes and tags for your job search\n" +
+                    "How to use LinkedIn’s Groups and job search functions, including the advanced search\n" +
+                    "Ninja job search tricks and tips\n" +
+                    "Learn how to find people within your targeted companies and how to approach them, how to use LinkedIn groups to expand your professional network and how to get insider information on prospective job openings.\n" +
+                    "\n" +
+                    "* This presentation is best suited for people who have a solid understanding of LinkedIn, have already created a strong profile on LinkedIn and are ready to get the most out of the tool.\n" +
+                    "\n" +
+                    "Sandra Clark is a trainer and coach specializing in providing LinkedIn education for individuals to create and manage a LinkedIn presence that supports their professional goals or for businesses to maximize their visibility with the collaboration of their employees. Sandra started her career as a teacher and theatre director before moving into educational administration, working for the University of California system (bothUC Berkeley Extension and UCSC Extension) providing corporate training to Silicon Valley for 25 years before starting her own company, LinkedIn Mentoring.\n" +
+                    "\n" +
+                    "www.LinkedInMentoring.com");
+            event.setImage("http://csix.org/wp-content/uploads/2015/05/SandraClark.jpg");
+            myApiService.insertEvent(event).execute();
+
+            event = new Event();
+            date = format.parse("2015-10-22");
+            event.setDate(new DateTime(date));
+            event.setSpeaker("Clara Chorley");
+            event.setTopic("3 Big Mistakes That Cause Job Seekers to Lose Motivation, Focus and Not Find The Job They Want");
+            event.setImage("http://csix.org/wp-content/uploads/2015/05/SandraClark.jpg");
+            event.setDesc("The longer people find themselves out of work, the harder it can get to maintain focus, energy and motivation. Over time, taking steps results in little or no progress, obstacles appear that seem impossible to get around, and a sense of stuckness begins to settle in.\n" +
+                    "\n" +
+                    "Job success is largely determined by three things:\n" +
+                    "\n" +
+                    "– Making sure what we’re doing aligns with our personal values\n" +
+                    "\n" +
+                    "– Knowing how to strategically access and utilize resources and connections\n" +
+                    "\n" +
+                    "– Being willing to grow, change and adapt – as our work situation has\n" +
+                    "\n" +
+                    "Signs that indicate overwork and overwhelm is here or on the way:\n" +
+                    "\n" +
+                    "– Stress and anxiety are daily companions\n" +
+                    "\n" +
+                    "– Doing ‘more’ doesn’t generate the desired results\n" +
+                    "\n" +
+                    "– It’s really difficult to see the long term vision\n" +
+                    "\n" +
+                    "– Buying that plane ticket to Hawaii is getting to be a very real option – if only it was affordable!\n" +
+                    "\n" +
+                    "What you’ll take away:\n" +
+                    "\n" +
+                    "– Tools to help you avoid the 3 Massive Mistakes\n" +
+                    "\n" +
+                    "– Clarity about your next steps\n" +
+                    "\n" +
+                    "– Insight into how you are getting in your own way, and practical steps to get out of the way\n" +
+                    "\n" +
+                    "– Energy and inspiration to get you moving again\n" +
+                    "\n" +
+                    "Clara Chorley helps professional women and men around the world gain clarity about what’s next in their careers, and then integrate those changes into the rest of their lives.\n" +
+                    "\n" +
+                    "She is the CEO and founder of Clarity Unlimited; and has an extensive and unique international background as a career transition coach, professional speaker, humanitarian, and insatiable explorer.\n" +
+                    "\n" +
+                    "Clara has worked and travelled through 40 countries and 5 continents. She is an international speaker, TEDx presenter, and author of the best-seller T.U.R.N.: 4 Steps to Clarity in your Life and Career. Clara currently lives in San Francisco, California.");
+
             myApiService.insertEvent(event).execute();
         }
     }

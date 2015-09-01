@@ -53,8 +53,5 @@
     <string name="layout_widget_collection_list">Widget Collection List Layout</string>
     <string name="layout_widget_collection_item">Widget Collection Item Layout</string>
     <string name="layout_widget_item">Widget Item Layout</string>
-    <string name="layout_widget_item_crests">Widget Item Crests Layout</string>
-    <string name="layout_widget_item_team_name">Widget Item Team Name Layout</string>
-    <string name="layout_widget_item_scores">Widget Item Scores Layout</string>
 
 </resources>

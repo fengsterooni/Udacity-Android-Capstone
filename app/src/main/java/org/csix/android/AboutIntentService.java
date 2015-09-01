@@ -7,8 +7,6 @@ import android.util.Log;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
-import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import org.csix.android.data.CSixContract;
 import org.csix.backend.myApi.MyApi;
@@ -30,6 +28,7 @@ public class AboutIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
+        /*
         MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                 new AndroidJsonFactory(), null)
                 // options for running against local devappserver
@@ -42,8 +41,11 @@ public class AboutIntentService extends IntentService {
                     public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
                         abstractGoogleClientRequest.setDisableGZipContent(true);
                     }
-                });
+                }); */
         // end options for devappserver
+
+        MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
+                .setRootUrl("https://disco-task-719.appspot.com/_ah/api/");
 
         MyApi myApiService = builder.build();
         try {

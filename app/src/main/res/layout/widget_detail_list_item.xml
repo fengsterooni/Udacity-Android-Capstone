@@ -23,31 +23,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="4dp"
             android:ellipsize="end"
             android:lines="2"
+            android:textColor="@color/main_color"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2" />
 
         <TextView
             android:id="@+id/widget_speaker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/widget_topic"
-            android:layout_below="@id/widget_topic"
             android:layout_gravity="center"
+            android:textColor="@color/main_color"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
 
         <TextView
             android:id="@+id/widget_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/widget_topic"
-            android:layout_below="@id/widget_speaker"
             android:layout_gravity="center"
-            android:layout_marginRight="16dp"
             android:gravity="end|center_vertical"
+            android:textColor="@color/main_color"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
 
     </LinearLayout>
