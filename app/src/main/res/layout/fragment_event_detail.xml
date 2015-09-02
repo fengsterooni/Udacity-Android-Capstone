@@ -17,31 +17,28 @@
             app:riv_corner_radius="32dp" />
 
         <TextView
-            android:id="@+id/tvSpeaker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/ivSpeaker"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/activity_vertical_margin"
-            android:layout_marginStart="@dimen/activity_vertical_margin"
-            android:layout_toEndOf="@id/ivSpeaker"
-            android:layout_toRightOf="@id/ivSpeaker"
-            android:layout_toStartOf="@id/tvSpeaker"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
-            android:textColor="@color/main_color" />
-
-        <TextView
             android:id="@+id/tvTopic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/tvSpeaker"
-            android:layout_alignStart="@id/tvSpeaker"
-            android:layout_below="@id/tvSpeaker"
             android:layout_gravity="center"
-            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_toRightOf="@id/ivSpeaker"
+            android:layout_toEndOf="@id/ivSpeaker"
             android:ellipsize="end"
-            android:lines="2"
+            android:maxLines="2"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+
+        <TextView
+            android:id="@+id/tvSpeaker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_below="@id/tvTopic"
+            android:layout_alignLeft="@id/tvTopic"
+            android:layout_alignStart="@id/tvTopic"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+            android:textColor="@color/main_color" />
 
         <ImageView
             android:id="@+id/ivEventDetailCalendar"
@@ -49,7 +46,7 @@
             android:layout_height="50dp"
             android:layout_alignLeft="@id/tvTopic"
             android:layout_alignStart="@id/tvTopic"
-            android:layout_below="@id/tvTopic"
+            android:layout_below="@id/tvSpeaker"
             android:layout_marginEnd="@dimen/activity_vertical_margin"
             android:layout_marginRight="@dimen/activity_vertical_margin"
             android:contentDescription="@string/icon_add_to_calendar"
@@ -59,7 +56,8 @@
             android:id="@+id/tvEventDetailTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvTopic"
+            android:layout_below="@id/tvSpeaker"
+            android:layout_alignTop="@id/ivEventDetailCalendar"
             android:layout_toEndOf="@id/ivEventDetailCalendar"
             android:layout_toRightOf="@id/ivEventDetailCalendar"
             android:paddingTop="16dp" />

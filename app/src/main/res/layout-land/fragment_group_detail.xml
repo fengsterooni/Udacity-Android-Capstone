@@ -1,75 +1,29 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:contentDescription="@string/group_detail_land_card_view">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:baselineAligned="false"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:contentDescription="@string/group_detail_land_linear_layout">
 
         <RelativeLayout
             android:id="@+id/rlGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/activity_vertical_margin"
-            android:layout_weight="2">
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_marginStart="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginEnd="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_weight="3"
+            android:contentDescription="@string/group_detail_land_relative_layout">
 
-            <TextView
-                android:id="@+id/tvGroupDetailTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:layout_marginTop="@dimen/activity_vertical_margin_top"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"/>
-
-            <ImageView
-                android:id="@+id/ivGroupDetailCalendar"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_below="@id/tvGroupDetailTitle"
-                android:layout_alignLeft="@id/tvGroupDetailTitle"
-                android:layout_alignStart="@id/tvGroupDetailTitle"
-                android:src="@drawable/ic_action_event" />
-
-            <TextView
-                android:id="@+id/tvGroupTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/ivGroupDetailCalendar"
-                android:layout_below="@id/tvGroupDetailTitle"
-                android:layout_toEndOf="@id/ivGroupDetailCalendar"
-                android:layout_toRightOf="@id/ivGroupDetailCalendar"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"/>
-
-            <ImageView
-                android:id="@+id/ivGroupLocation"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_alignLeft="@id/ivGroupDetailCalendar"
-                android:layout_alignStart="@id/ivGroupDetailCalendar"
-                android:layout_below="@id/ivGroupDetailCalendar"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_action_direction" />
-
-            <TextView
-                android:id="@+id/tvGroupLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/tvGroupTime"
-                android:layout_alignTop="@id/ivGroupLocation"
-                android:layout_below="@id/tvGroupTime"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
-
-            <TextView
-                android:id="@+id/tvGroupAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/tvGroupTime"
-                android:layout_below="@id/tvGroupLocation"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                android:layout_marginBottom="@dimen/activity_vertical_margin_bottom"/>
+            <include layout="@layout/include_group_detail" />
 
         </RelativeLayout>
 
@@ -78,7 +32,7 @@
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="2"/>
 
     </LinearLayout>
 

@@ -60,7 +60,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapter
 
     public EventAdapterViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewTyped) {
         if (viewGroup instanceof RecyclerView) {
-            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.event_card, viewGroup, false);
+            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card_event, viewGroup, false);
             view.setFocusable(true);
             return new EventAdapterViewHolder(view);
         } else {

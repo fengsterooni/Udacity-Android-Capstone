@@ -10,69 +10,10 @@
             android:id="@+id/rlGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_vertical_margin"
             android:layout_alignParentBottom="true">
 
-            <TextView
-                android:id="@+id/tvGroupDetailTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin_top"
-                android:text="description text"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"/>
-
-            <ImageView
-                android:id="@+id/ivGroupDetailCalendar"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_below="@id/tvGroupDetailTitle"
-                android:layout_alignLeft="@id/tvGroupDetailTitle"
-                android:layout_alignStart="@id/tvGroupDetailTitle"
-                android:src="@drawable/ic_action_event" />
-
-            <TextView
-                android:id="@+id/tvGroupTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@id/ivGroupDetailCalendar"
-                android:layout_below="@id/tvGroupDetailTitle"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_toEndOf="@id/ivGroupDetailCalendar"
-                android:layout_toRightOf="@id/ivGroupDetailCalendar"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"/>
-
-            <ImageView
-                android:id="@+id/ivGroupLocation"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_alignLeft="@id/ivGroupDetailCalendar"
-                android:layout_alignStart="@id/ivGroupDetailCalendar"
-                android:layout_below="@id/ivGroupDetailCalendar"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_action_direction" />
-
-            <TextView
-                android:id="@+id/tvGroupLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/tvGroupTime"
-                android:layout_alignTop="@id/ivGroupLocation"
-                android:layout_below="@id/tvGroupTime"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
-
-            <TextView
-                android:id="@+id/tvGroupAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@id/tvGroupTime"
-                android:layout_below="@id/tvGroupLocation"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                android:layout_marginBottom="@dimen/activity_vertical_margin_bottom"/>
+            <include layout="@layout/include_group_detail" />
 
         </RelativeLayout>
 

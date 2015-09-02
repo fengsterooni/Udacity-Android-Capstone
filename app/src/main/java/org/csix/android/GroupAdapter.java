@@ -52,7 +52,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
 
     public GroupAdapterViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewTyped) {
         if (viewGroup instanceof RecyclerView) {
-            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.group_card, viewGroup, false);
+            View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card_group, viewGroup, false);
             view.setFocusable(true);
             return new GroupAdapterViewHolder(view);
         } else {

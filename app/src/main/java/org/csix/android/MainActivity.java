@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements Callback {
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         setupDrawer();
 
