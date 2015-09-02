@@ -20,12 +20,6 @@ import butterknife.ButterKnife;
 
 public class DirectionActivity extends BaseMapActivity {
 
-    private int year;
-    private int month;
-    private int day;
-    private String eventNotes = null;
-    private String eventId;
-    // private Event event;
     private Typeface font = null;
     private String locationAddress;
     private LatLng latLng;
@@ -95,19 +89,40 @@ public class DirectionActivity extends BaseMapActivity {
     private void setupSigns() {
         IconGenerator iconGenerator = new IconGenerator(this);
 
-        Sign sign = new Sign(37.258055, -122.030835, "Lifehouse\nCSix Entrance", "We meet here", R.drawable.lifehouse2);
+        String signName = getString(R.string.sign_csix_entrance);
+        String signDesc = getString(R.string.sign_csix_entrance_desc);
+        Sign sign = new Sign(
+                37.258055,
+                -122.030835,
+                signName,
+                signDesc,
+                R.drawable.lifehouse2);
         iconGenerator.setRotation(180);
         iconGenerator.setContentRotation(-180);
         iconGenerator.setStyle(IconGenerator.STYLE_BLUE);
         addIcon(iconGenerator, sign.getName(), sign.getPosition());
 
-        sign = new Sign(37.258169, -122.029994, "Church Entrance", "Go pass here", R.drawable.church2);
+        signName = getString(R.string.sign_church_entrance);
+        signDesc = getString(R.string.sign_church_entrance_desc);
+        sign = new Sign(
+                37.258169,
+                -122.029994,
+                signName,
+                signDesc,
+                R.drawable.church2);
         iconGenerator.setRotation(90);
         iconGenerator.setContentRotation(0);
         iconGenerator.setStyle(IconGenerator.STYLE_PURPLE);
         addIcon(iconGenerator, sign.getName(), sign.getPosition());
 
-        sign = new Sign(37.259189, -122.030509, "Lower Parking Lot", "Please park here", R.drawable.lowerparking2);
+        signName = getString(R.string.sign_church_entrance);
+        signDesc = getString(R.string.sign_church_entrance_desc);
+        sign = new Sign(
+                37.259189,
+                -122.030509,
+                signName,
+                signDesc,
+                R.drawable.lowerparking2);
         iconGenerator.setRotation(90);
         iconGenerator.setContentRotation(-90);
         iconGenerator.setStyle(IconGenerator.STYLE_GREEN);
