@@ -79,7 +79,7 @@ public class EventWidgetIntentService extends IntentService implements LoaderMan
         for (int appWidgetId : appWidgetIds) {
 
             // Construct the RemoteViews object
-            RemoteViews views = new RemoteViews(getPackageName(), R.layout.event_widget);
+            RemoteViews views = new RemoteViews(getPackageName(), R.layout.widget_event);
             Log.i("INFO", "SPEAKER " + speaker);
             Log.i("INFO", "DATE " + date);
             Log.i("INFO", "TOPIC " + topic);

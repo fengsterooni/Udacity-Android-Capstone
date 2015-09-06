@@ -32,7 +32,7 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.AboutAdapter
 
     public AboutAdapterViewHolder onCreateViewHolder(ViewGroup viewAbout, int viewTyped) {
         if (viewAbout instanceof RecyclerView) {
-            View view = LayoutInflater.from(viewAbout.getContext()).inflate(R.layout.about_card, viewAbout, false);
+            View view = LayoutInflater.from(viewAbout.getContext()).inflate(R.layout.card_about, viewAbout, false);
             view.setFocusable(true);
             return new AboutAdapterViewHolder(view);
         } else {
