@@ -4,7 +4,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_vertical_margin_bottom">24dp</dimen>
     <dimen name="activity_vertical_margin_top">24dp</dimen>
-    <dimen name="list_side_margin">4dp</dimen>
+    <dimen name="list_vertical_margin">4dp</dimen>
+    <dimen name="list_horizontal_margin">4dp</dimen>
     <dimen name="card_elevation">8dp</dimen>
 
     <dimen name="list_appbar_height">112dp</dimen>
