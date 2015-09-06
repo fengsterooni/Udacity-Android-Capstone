@@ -2,6 +2,7 @@ package org.csix.android;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -21,9 +22,9 @@ public class EventDetailActivity extends AppCompatActivity {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.collapsingToolbarLayout)
+    @Nullable @Bind(R.id.collapsingToolbarLayout)
     CollapsingToolbarLayout collapsingToolbarLayout;
-    @Bind(R.id.rootLayout)
+    @Nullable @Bind(R.id.rootLayout)
     CoordinatorLayout rootLayout;
     @Bind(R.id.share_fab)
     FloatingActionButton fab;

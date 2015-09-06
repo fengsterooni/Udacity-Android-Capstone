@@ -34,6 +34,7 @@
             android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
             android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"
             android:paddingTop="@dimen/abc_list_item_padding_horizontal_material" />
+
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

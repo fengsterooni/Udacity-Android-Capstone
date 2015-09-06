@@ -10,41 +10,41 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="right|bottom"
-        android:adjustViewBounds="true"
-        android:background="@color/purple"
-        android:scaleType="fitCenter"
-        android:src="@drawable/church2"
-        android:contentDescription="@string/image_church" />
-
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="left|bottom"
-        android:adjustViewBounds="true"
-        android:background="@color/blue"
-        android:scaleType="fitCenter"
-        android:src="@drawable/lifehouse2"
-        android:contentDescription="@string/image_lifehouse" />
-
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="right|top"
-        android:adjustViewBounds="true"
-        android:background="@color/green"
-        android:scaleType="fitCenter"
-        android:src="@drawable/lowerparking2"
-        android:contentDescription="@string/image_parking" />
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <ImageView
+        android:layout_width="@dimen/direction_image_size"
+        android:layout_height="@dimen/direction_image_size"
+        android:adjustViewBounds="true"
+        android:background="@color/green"
+        android:contentDescription="@string/image_parking"
+        android:scaleType="fitCenter"
+        android:src="@drawable/lowerparking2"
+        android:layout_gravity="right|top" />
+
+    <ImageView
+        android:layout_width="@dimen/direction_image_size"
+        android:layout_height="@dimen/direction_image_size"
+        android:adjustViewBounds="true"
+        android:background="@color/blue"
+        android:contentDescription="@string/image_lifehouse"
+        android:scaleType="fitCenter"
+        android:src="@drawable/lifehouse2"
+        android:layout_gravity="left|bottom" />
+
+    <ImageView
+        android:layout_width="@dimen/direction_image_size"
+        android:layout_height="@dimen/direction_image_size"
+        android:adjustViewBounds="true"
+        android:background="@color/purple"
+        android:contentDescription="@string/image_church"
+        android:scaleType="fitCenter"
+        android:src="@drawable/church2"
+        android:layout_gravity="right|bottom" />
 
 </FrameLayout>

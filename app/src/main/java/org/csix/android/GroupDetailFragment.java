@@ -193,14 +193,6 @@ public class GroupDetailFragment extends Fragment implements
     }
 
 
-    @Override
-    public void onPause() {
-        super.onDestroyView();
-        if (MainActivity.IS_TABLET && view.findViewById(R.id.fragment_detail) == null) {
-            getFragmentManager().popBackStack();
-        }
-    }
-
     public void onSaveInstanceState(Bundle outState) {
         outState.putLong(GROUP_ID, groupId);
         super.onSaveInstanceState(outState);

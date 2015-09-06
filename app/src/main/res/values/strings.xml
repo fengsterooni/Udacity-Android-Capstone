@@ -57,5 +57,26 @@
     <string name="layout_collapsing_toolbar">Collapsing Toolbar Layout</string>
     <string name="imageview_appbar">AppBar ImageView</string>
     <string name="toolbar">Toolbar</string>
+    <string name="nav_header_image">Navigation Header Image</string>
+    <string name="icon_add_to_calendar">Add to Calendar</string>
 
+    <!-- Event Card -->
+    <string name="event_card_speaker_image">Speaker Image in Event Card</string>
+    <string name="event_card_event_topic">Event Topic in Event Card</string>
+    <string name="event_card_event_date">Event Date in Event Card</string>
+    <string name="event_card_speaker_name">Speaker Name in Event Card</string>
+
+    <!-- Group Detail -->
+    <string name="group_detail_land_card_view">CardView of Group Detail Landscape</string>
+    <string name="group_detail_land_linear_layout">Linear Layout of Group Detail Landscape</string>
+    <string name="group_detail_land_relative_layout">Relative Layout of Group Detail Landscape</string>
+
+
+    <!-- Signs -->
+    <string name="sign_csix_entrance">Lifehouse\nCSix Entrance</string>
+    <string name="sign_csix_entrance_desc">Main Entrance</string>
+    <string name="sign_church_entrance">Church Entrance</string>
+    <string name="sign_church_entrance_desc">Go pass here</string>
+    <string name="sign_lower_parking">Lower Parking Lot</string>
+    <string name="sign_lower_parking_desc">Please park here</string>
 </resources>

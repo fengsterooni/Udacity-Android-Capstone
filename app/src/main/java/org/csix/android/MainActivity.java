@@ -3,6 +3,7 @@ package org.csix.android;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
@@ -31,10 +32,13 @@ public class MainActivity extends AppCompatActivity implements Callback {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
+    @Nullable
     @Bind(R.id.collapsingToolbarLayout)
     CollapsingToolbarLayout collapsingToolbarLayout;
+
     @Bind(R.id.drawerLayout)
     DrawerLayout drawerLayout;
+    @Nullable
     @Bind(R.id.rootLayout)
     CoordinatorLayout rootLayout;
     @Bind(R.id.navigation)
@@ -45,20 +49,17 @@ public class MainActivity extends AppCompatActivity implements Callback {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        IS_TABLET = isTablet();
-        if (IS_TABLET) {
-            setContentView(R.layout.activity_main);
-        } else {
-            setContentView(R.layout.activity_main);
-        }
+        setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        IS_TABLET = isTablet();
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         setupDrawer();
-
 
         if (savedInstanceState == null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
@@ -93,7 +94,8 @@ public class MainActivity extends AppCompatActivity implements Callback {
             }
         };
 
-        drawerLayout.setDrawerListener(drawerToggle);
+        if (drawerLayout != null)
+            drawerLayout.setDrawerListener(drawerToggle);
 
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -102,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements Callback {
                 Fragment fragment = null;
                 switch (id) {
                     case R.id.navEvent:
-                            fragment = new EventFragment();
+                        fragment = new EventFragment();
                         // Snackbar.make(rootLayout, "Event Event Event!", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.navDirection:
@@ -151,13 +153,15 @@ public class MainActivity extends AppCompatActivity implements Callback {
     @Override
     public void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        drawerToggle.syncState();
+        if (drawerLayout != null)
+            drawerToggle.syncState();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        drawerToggle.onConfigurationChanged(newConfig);
+        if (drawerLayout != null)
+            drawerToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
@@ -175,7 +179,8 @@ public class MainActivity extends AppCompatActivity implements Callback {
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
-            drawerLayout.openDrawer(GravityCompat.START);
+            if (drawerLayout != null)
+                drawerLayout.openDrawer(GravityCompat.START);
             return true;
         }
 
@@ -204,31 +209,15 @@ public class MainActivity extends AppCompatActivity implements Callback {
     @Override
     public void onItemSelected(long id, RecyclerView.ViewHolder viewHolder) {
         if (viewHolder instanceof EventAdapter.EventAdapterViewHolder) {
-            if (IS_TABLET) {
-                EventDetailFragment fragment = EventDetailFragment.newInstatnce(id);
-
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_detail, fragment, EVENTDETAIL_TAG)
-                        .commit();
-            } else {
                 Intent intent = new Intent(this, EventDetailActivity.class);
                 intent.putExtra(EventDetailActivity.EVENT_ID, id);
                 startActivity(intent);
-            }
         }
 
         if (viewHolder instanceof GroupAdapter.GroupAdapterViewHolder) {
-            if (IS_TABLET) {
-                GroupDetailFragment fragment = GroupDetailFragment.newInstatnce(id);
-
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_detail, fragment, GROUPDETAIL_TAG)
-                        .commit();
-            } else {
                 Intent intent = new Intent(this, GroupDetailActivity.class);
                 intent.putExtra(GroupDetailActivity.GROUP_ID, id);
                 startActivity(intent);
-            }
         }
     }
 }
