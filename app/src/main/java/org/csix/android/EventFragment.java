@@ -1,5 +1,6 @@
 package org.csix.android;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,7 +25,6 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
 
     private static final String LOG_TAG = EventFragment.class.getSimpleName();
     private EventAdapter mEventAdapter;
-    private long mInitialSelection = -1;
 
     private static final int LOADER_ID = 101;
     public static final String EVENT_ID = "EVENT_ID";
@@ -61,15 +61,12 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setHasFixedSize(true);
 
-        //RecyclerView.ItemDecoration itemDecoration = new
-        //        DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST);
-        //mRecyclerView.addItemDecoration(itemDecoration);
-
         mEventAdapter = new EventAdapter(getActivity(), new EventAdapter.EventAdapterOnClickHandler() {
             @Override
             public void onClick(Long id, EventAdapter.EventAdapterViewHolder vh) {
-                ((Callback) getActivity())
-                        .onItemSelected(id, vh);
+                Intent intent = new Intent(getActivity(), EventDetailActivity.class);
+                intent.putExtra(EventDetailActivity.EVENT_ID, id);
+                startActivity(intent);
             }
         });
 

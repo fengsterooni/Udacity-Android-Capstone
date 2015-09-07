@@ -32,7 +32,7 @@ public class GroupDetailActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             fragment = GroupDetailFragment.newInstatnce(groupID);
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragment_group_detail, fragment, MainActivity.EVENTDETAIL_TAG)
+                    .add(R.id.fragment_group_detail, fragment)
                     .commit();
         }
     }

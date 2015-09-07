@@ -79,8 +79,7 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
     @Nullable
     @OnClick(R.id.share_fab)
     void click() {
-        String summary = getSummary().toString();
-        Log.i(LOG_TAG, summary);
+        Log.i(LOG_TAG, summary.toString());
         if (summary != null)
             startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(getActivity())
                     .setType("text/plain")
@@ -98,10 +97,8 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
     TextView desc;
     @Bind(R.id.tvEventDetailTime)
     TextView time;
-
     @Bind(R.id.ivEventDetailCalendar)
     ImageView calendar;
-
     @OnClick(R.id.ivEventDetailCalendar)
     void addToCalendar() {
         Intent calIntent = new Intent(Intent.ACTION_INSERT);

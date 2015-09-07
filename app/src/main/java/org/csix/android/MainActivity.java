@@ -13,7 +13,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,11 +21,9 @@ import android.view.View;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements Callback {
+public class MainActivity extends AppCompatActivity {
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
-    public static final String EVENTDETAIL_TAG = "EVENTDETAIL_TAG";
-    public static final String GROUPDETAIL_TAG = "GROUPDETAIL_TAG";
     public static final String MAIN_TAG = "MAIN_TAG";
     public static boolean IS_TABLET = false;
 
@@ -125,22 +122,7 @@ public class MainActivity extends AppCompatActivity implements Callback {
 
                 if (fragment != null) {
                     android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                    ft.replace(R.id.container, fragment);
-
-                    // Remove the leftover detailed fragment if master is changed
-                    if (IS_TABLET) {
-                        FragmentManager manager = getSupportFragmentManager();
-                        Fragment frag;
-                        if ((frag = manager.findFragmentByTag(EVENTDETAIL_TAG)) != null)
-                            ft.remove(frag);
-                        if ((frag = manager.findFragmentByTag(GROUPDETAIL_TAG)) != null)
-                            ft.remove(frag);
-
-                    }
-
-                    fragment = null;
-
-                    ft.commit();
+                    ft.replace(R.id.container, fragment).commit();
                 }
 
                 drawerLayout.closeDrawers();
@@ -204,20 +186,5 @@ public class MainActivity extends AppCompatActivity implements Callback {
             finish();
         }
         super.onBackPressed();
-    }
-
-    @Override
-    public void onItemSelected(long id, RecyclerView.ViewHolder viewHolder) {
-        if (viewHolder instanceof EventAdapter.EventAdapterViewHolder) {
-                Intent intent = new Intent(this, EventDetailActivity.class);
-                intent.putExtra(EventDetailActivity.EVENT_ID, id);
-                startActivity(intent);
-        }
-
-        if (viewHolder instanceof GroupAdapter.GroupAdapterViewHolder) {
-                Intent intent = new Intent(this, GroupDetailActivity.class);
-                intent.putExtra(GroupDetailActivity.GROUP_ID, id);
-                startActivity(intent);
-        }
     }
 }

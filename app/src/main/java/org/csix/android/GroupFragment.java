@@ -1,5 +1,6 @@
 package org.csix.android;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -57,9 +58,6 @@ public class GroupFragment extends Fragment implements LoaderManager.LoaderCallb
         View view = inflater.inflate(R.layout.fragment_group, container, false);
         ButterKnife.bind(this, view);
 
-        // mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        // mRecyclerView.setHasFixedSize(true);
-
         int columnCount = getResources().getInteger(R.integer.list_column_count);
         StaggeredGridLayoutManager sglm =
                 new StaggeredGridLayoutManager(columnCount, StaggeredGridLayoutManager.VERTICAL);
@@ -67,9 +65,10 @@ public class GroupFragment extends Fragment implements LoaderManager.LoaderCallb
 
         mGroupAdapter = new GroupAdapter(getActivity(), new GroupAdapter.GroupAdapterOnClickHandler() {
             @Override
-            public void onClick(Long groupId, GroupAdapter.GroupAdapterViewHolder vh) {
-                ((Callback) getActivity())
-                        .onItemSelected(groupId, vh);
+            public void onClick(Long id, GroupAdapter.GroupAdapterViewHolder vh) {
+                Intent intent = new Intent(getActivity(), GroupDetailActivity.class);
+                intent.putExtra(GroupDetailActivity.GROUP_ID, id);
+                startActivity(intent);
             }
         });
 
