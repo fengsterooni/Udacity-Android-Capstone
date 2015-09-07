@@ -1,82 +1,118 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent">
 
-    android:layout_marginTop="@dimen/activity_vertical_margin_top"
-    android:layout_marginStart="@dimen/activity_horizontal_margin"
-    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-    android:layout_marginRight="@dimen/activity_horizontal_margin"
-    android:layout_marginEnd="@dimen/activity_horizontal_margin">
+    <include layout="@layout/include_appbar" />
 
-    <RelativeLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/ivSpeaker"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:src="@drawable/csix_logo"
-            app:riv_corner_radius="32dp" />
-
-        <TextView
-            android:id="@+id/tvTopic"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_toRightOf="@id/ivSpeaker"
-            android:layout_toEndOf="@id/ivSpeaker"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+            android:layout_height="match_parent"
 
-        <TextView
-            android:id="@+id/tvSpeaker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_below="@id/tvTopic"
-            android:layout_alignLeft="@id/tvTopic"
-            android:layout_alignStart="@id/tvTopic"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
-            android:textColor="@color/main_color" />
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin_top"
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/ivEventDetailCalendar"
-            android:layout_width="30dp"
-            android:layout_height="50dp"
-            android:layout_alignLeft="@id/tvTopic"
-            android:layout_alignStart="@id/tvTopic"
-            android:layout_below="@id/tvSpeaker"
-            android:layout_marginEnd="@dimen/activity_vertical_margin"
-            android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:contentDescription="@string/icon_add_to_calendar"
-            android:src="@drawable/ic_calender_add" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvEventDetailTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvSpeaker"
-            android:layout_alignTop="@id/ivEventDetailCalendar"
-            android:layout_toEndOf="@id/ivEventDetailCalendar"
-            android:layout_toRightOf="@id/ivEventDetailCalendar"
-            android:paddingTop="16dp" />
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/ivSpeaker"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/csix_logo"
+                    app:riv_corner_radius="32dp" />
 
-        <TextView
-            android:id="@+id/tvDesc"
-            style="?android:attr/textAppearanceMedium"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ivEventDetailCalendar"
-            android:layout_gravity="center"
-            android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
-            android:paddingBottom="@dimen/detail_body_bottom_margin" />
+                <TextView
+                    android:id="@+id/tvTopic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@id/ivSpeaker"
+                    android:layout_toRightOf="@id/ivSpeaker"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
 
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/tvSpeaker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tvTopic"
+                    android:layout_alignStart="@id/tvTopic"
+                    android:layout_below="@id/tvTopic"
+                    android:layout_gravity="center"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                    android:textColor="@color/main_color" />
 
-</ScrollView>
+                <ImageView
+                    android:id="@+id/ivEventDetailCalendar"
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_alignLeft="@id/tvTopic"
+                    android:layout_alignStart="@id/tvTopic"
+                    android:layout_below="@id/tvSpeaker"
+                    android:layout_marginEnd="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:contentDescription="@string/icon_add_to_calendar"
+                    android:src="@drawable/ic_calender_add" />
+
+                <TextView
+                    android:id="@+id/tvEventDetailTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/ivEventDetailCalendar"
+                    android:layout_below="@id/tvSpeaker"
+                    android:layout_toEndOf="@id/ivEventDetailCalendar"
+                    android:layout_toRightOf="@id/ivEventDetailCalendar"
+                    android:paddingTop="16dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvDesc"
+                style="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivEventDetailCalendar"
+                android:layout_gravity="center"
+                android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
+                android:paddingBottom="@dimen/detail_body_bottom_margin" />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/share_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:src="@drawable/ic_share"
+        android:stateListAnimator="@anim/fab_state_list_anim"
+        app:borderWidth="0dp"
+        app:elevation="@dimen/fab_elevation"
+        app:fabSize="normal"
+        app:pressedTranslationZ="@dimen/fab_press_translation_z" />
+
+</android.support.design.widget.CoordinatorLayout>
+
+
+

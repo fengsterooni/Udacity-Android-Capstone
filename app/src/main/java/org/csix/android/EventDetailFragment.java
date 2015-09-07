@@ -5,10 +5,16 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.app.ShareCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,6 +64,29 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
     static final int COL_EVENT_TOPIC = 4;
     static final int COL_EVENT_DESC = 5;
     static final int COL_EVENT_TYPE = 6;
+
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+    @Nullable
+    @Bind(R.id.collapsingToolbarLayout)
+    CollapsingToolbarLayout collapsingToolbarLayout;
+    @Nullable
+    @Bind(R.id.rootLayout)
+    CoordinatorLayout rootLayout;
+    @Bind(R.id.share_fab)
+    FloatingActionButton fab;
+
+    @Nullable
+    @OnClick(R.id.share_fab)
+    void click() {
+        String summary = getSummary().toString();
+        Log.i(LOG_TAG, summary);
+        if (summary != null)
+            startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(getActivity())
+                    .setType("text/plain")
+                    .setText(summary)
+                    .getIntent(), getString(R.string.action_share)));
+    }
 
     @Bind(R.id.ivSpeaker)
     ImageView speakerImage;
@@ -127,12 +156,17 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
         }
     }
 
-    // @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_event_detail, container, false);
         ButterKnife.bind(this, view);
+
+        ((EventDetailActivity) getActivity()).setSupportActionBar(toolbar);
+        ActionBar actionBar = ((EventDetailActivity) getActivity()).getSupportActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowTitleEnabled(false);
 
         return view;
     }
