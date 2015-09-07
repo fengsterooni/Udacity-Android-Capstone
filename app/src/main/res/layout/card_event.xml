@@ -2,12 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/list_vertical_margin"
-    android:layout_marginLeft="@dimen/list_vertical_margin"
-    android:layout_marginEnd="@dimen/list_vertical_margin"
-    android:layout_marginRight="@dimen/list_vertical_margin"
-    android:layout_marginTop="@dimen/list_horizontal_margin"
-    android:layout_marginBottom="@dimen/list_horizontal_margin" >
+    android:layout_marginStart="@dimen/card_horizontal_margin"
+    android:layout_marginLeft="@dimen/card_horizontal_margin"
+    android:layout_marginEnd="@dimen/card_horizontal_margin"
+    android:layout_marginRight="@dimen/card_horizontal_margin"
+    android:layout_marginTop="@dimen/card_vertical_margin"
+    android:layout_marginBottom="@dimen/card_vertical_margin" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,12 +15,12 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/ivSpeaker"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="@dimen/list_image_size"
+            android:layout_height="@dimen/list_image_size"
             android:layout_gravity="center_vertical"
-            android:layout_margin="@dimen/activity_vertical_margin"
+            android:layout_margin="@dimen/list_margin"
             android:src="@drawable/csix_logo"
-            app:riv_corner_radius="24dp"
+            app:riv_corner_radius="@dimen/list_image_radius"
             android:contentDescription="@string/event_card_speaker_image" />
 
         <TextView

@@ -2,4 +2,10 @@
 <resources>
     <dimen name="direction_image_size">240dp</dimen>
     <dimen name="list_vertical_margin">64dp</dimen>
+    <dimen name="list_appbar_height">320dp</dimen>
+
+    <dimen name="list_image_size">64dp</dimen>
+    <dimen name="list_image_radius">32dp</dimen>
+
+    <dimen name="card_horizontal_margin">120dp</dimen>
 </resources>

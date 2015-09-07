@@ -1,4 +1,12 @@
 <resources>
+    <dimen name="activity_horizontal_margin">80dp</dimen>
+    <dimen name="activity_vertical_margin_bottom">24dp</dimen>
+    <dimen name="activity_vertical_margin_top">32dp</dimen>
+
+    <dimen name="card_horizontal_margin">80dp</dimen>
+
     <dimen name="navigation_header_hight">112dp</dimen>
-    <dimen name="list_vertical_margin">24dp</dimen>
+    <dimen name="list_vertical_margin">56dp</dimen>
+    <dimen name="list_appbar_height">160dp</dimen>
+
 </resources>

@@ -33,7 +33,7 @@
         android:stateListAnimator="@anim/fab_state_list_anim"
         app:borderWidth="0dp"
         app:elevation="@dimen/fab_elevation"
-        app:pressedTranslationZ="@dimen/fab_press_translation_z"
-        app:fabSize="normal" />
+        app:fabSize="normal"
+        app:pressedTranslationZ="@dimen/fab_press_translation_z" />
 
 </android.support.design.widget.CoordinatorLayout>
