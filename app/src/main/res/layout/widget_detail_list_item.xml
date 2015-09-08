@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:contentDescription="@string/layout_widget_collection_item">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:baselineAligned="false"
@@ -19,12 +19,45 @@
         android:paddingStart="@dimen/abc_list_item_padding_horizontal_material">
 
         <TextView
+            android:id="@+id/widget_month"
+            android:layout_width="48dp"
+            android:layout_height="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@color/main_color"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/abc_text_size_caption_material"
+            android:contentDescription="@string/card_view_event_month" />
+
+        <TextView
+            android:id="@+id/widget_day"
+            android:layout_width="48dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/widget_month"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/back"
+            android:gravity="center"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/abc_text_size_medium_material"
+            android:contentDescription="@string/card_view_event_day" />
+
+        <TextView
             android:id="@+id/widget_topic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignTop="@id/widget_month"
+            android:layout_toLeftOf="@id/widget_month"
             android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
             android:ellipsize="end"
-            android:lines="2"
+            android:maxLines="2"
             android:textColor="@color/main_color"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2" />
 
@@ -32,18 +65,13 @@
             android:id="@+id/widget_speaker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/widget_topic"
+            android:layout_alignStart="@id/widget_topic"
+            android:layout_alignLeft="@id/widget_topic"
+            android:layout_toLeftOf="@id/widget_day"
             android:layout_gravity="center"
             android:textColor="@color/main_color"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
 
-        <TextView
-            android:id="@+id/widget_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="end|center_vertical"
-            android:textColor="@color/main_color"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
-
-    </LinearLayout>
+    </RelativeLayout>
 </FrameLayout>

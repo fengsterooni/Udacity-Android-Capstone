@@ -106,8 +106,8 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
         calIntent.setType("vnd.android.cursor.item/event");
         calIntent.putExtra(CalendarContract.Events.TITLE, mCursor.getString(COL_EVENT_TOPIC));
         calIntent.putExtra(CalendarContract.Events.EVENT_LOCATION,
-                R.string.event_location);
-        calIntent.putExtra(CalendarContract.Events.DESCRIPTION, R.string.event_address);
+                R.string.main_event_location);
+        calIntent.putExtra(CalendarContract.Events.DESCRIPTION, R.string.main_event_address);
 
         GregorianCalendar startTime = new GregorianCalendar(year, month, day, 10, 0);
         GregorianCalendar endTime = new GregorianCalendar(year, month, day, 13, 0);
@@ -227,16 +227,16 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
                         + " "
                         + DateUtils.getDayString(date)
                         + " @ "
-                        + getString(R.string.event_start)
+                        + getString(R.string.main_event_start)
                         + " - "
-                        + getString(R.string.event_end);
+                        + getString(R.string.main_event_end);
                 time.setText(dateTime);
 
                 address.setText(
-                        getResources().getString(R.string.event_location)
+                        getResources().getString(R.string.main_event_location)
                         + "\n"
                         +
-                        getResources().getString(R.string.event_address));
+                        getResources().getString(R.string.main_event_address));
 
                 summary = new StringBuilder();
                 summary = summary

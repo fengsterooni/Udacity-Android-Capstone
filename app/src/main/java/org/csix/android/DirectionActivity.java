@@ -117,8 +117,8 @@ public class DirectionActivity extends BaseMapActivity {
         iconGenerator.setStyle(IconGenerator.STYLE_PURPLE);
         addIcon(iconGenerator, sign.getName(), sign.getPosition());
 
-        signName = getString(R.string.sign_church_entrance);
-        signDesc = getString(R.string.sign_church_entrance_desc);
+        signName = getString(R.string.sign_lower_parking);
+        signDesc = getString(R.string.sign_lower_parking_desc);
         sign = new Sign(
                 37.259189,
                 -122.030509,

@@ -95,7 +95,8 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
                 String topic = data.getString(COL_EVENT_TOPIC);
 
                 views.setTextViewText(R.id.widget_speaker, speaker);
-                views.setTextViewText(R.id.widget_date, DateUtils.getDateString(date));
+                views.setTextViewText(R.id.widget_month, DateUtils.getShortMonthString(date));
+                views.setTextViewText(R.id.widget_day, DateUtils.getDayString(date));
                 views.setTextViewText(R.id.widget_topic, topic);
 
                 final Intent fillInIntent = new Intent();
