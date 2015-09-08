@@ -142,7 +142,7 @@ public class GroupDetailFragment extends Fragment implements
         }
 
         if (latLng != null) {
-            CameraPosition cp = CameraPosition.builder().target(latLng).zoom(15).build();
+            CameraPosition cp = CameraPosition.builder().target(latLng).zoom(16).build();
             map.moveCamera(CameraUpdateFactory.newCameraPosition(cp));
 
             map.addMarker(new MarkerOptions()

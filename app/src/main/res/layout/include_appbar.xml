@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:id="@+id/appbarImageView"
-            android:src="@drawable/csix4"
+            android:src="@drawable/ggb"
             app:layout_collapseMode="parallax"
             app:layout_collapseParallaxMultiplier="0.7"
             android:contentDescription="@string/imageview_appbar" />
@@ -31,6 +31,7 @@
             android:layout_height="?attr/actionBarSize"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:title="@string/app_name"
             android:background="#33000000"
             app:layout_collapseMode="pin"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"

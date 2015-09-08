@@ -11,9 +11,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_vertical_margin"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:gravity="center">
 
-            <include layout="@layout/include_group_detail" />
+            <include layout="@layout/include_group_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
 
         </RelativeLayout>
 

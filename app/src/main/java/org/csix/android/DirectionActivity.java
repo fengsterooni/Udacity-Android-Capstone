@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -72,9 +72,11 @@ public class DirectionActivity extends BaseMapActivity {
         if (marker != null)
             marker.setVisible(false);
         if (latLng != null) {
-            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(37.258055, -122.030835), 17);
-            map.moveCamera(cameraUpdate);
-            map.animateCamera(cameraUpdate);
+            CameraPosition cp = CameraPosition.builder().target(latLng).zoom(18).tilt(60).build();
+            map.moveCamera(CameraUpdateFactory.newCameraPosition(cp));
+            //CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(37.258055, -122.030835), 17);
+            //map.moveCamera(cameraUpdate);
+            //map.animateCamera(cameraUpdate);
             map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
             marker = map.addMarker(new MarkerOptions()
