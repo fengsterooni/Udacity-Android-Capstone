@@ -60,7 +60,7 @@
     <string name="toolbar">Toolbar</string>
     <string name="nav_header_image">Navigation Header Image</string>
     <string name="icon_add_to_calendar">Add to Calendar</string>
-
+    <string name="icon_location">Detailed Event Location</string>
 
 
     <!-- Group Detail -->

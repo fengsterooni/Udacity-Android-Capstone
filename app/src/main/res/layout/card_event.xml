@@ -83,7 +83,6 @@
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-            android:textColor="@color/main_color"
             android:contentDescription="@string/card_view_event_speaker_name" />
 
     </RelativeLayout>

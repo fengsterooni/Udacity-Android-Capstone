@@ -122,7 +122,14 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
 
         startActivity(calIntent);
     }
-
+    @Bind(R.id.ivEventDetailLocation)
+    ImageView location;
+    @OnClick(R.id.ivEventDetailLocation)
+    void locationAddress() {
+        startActivity(new Intent(getActivity(), DirectionActivity.class));
+    }
+    @Bind(R.id.tvEventDetailLocation)
+    TextView address;
 
     public EventDetailFragment() {
     }
@@ -224,6 +231,12 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
                         + " - "
                         + getString(R.string.event_end);
                 time.setText(dateTime);
+
+                address.setText(
+                        getResources().getString(R.string.event_location)
+                        + "\n"
+                        +
+                        getResources().getString(R.string.event_address));
 
                 summary = new StringBuilder();
                 summary = summary

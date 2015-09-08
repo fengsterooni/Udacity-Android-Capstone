@@ -16,6 +16,9 @@
     <dimen name="card_vertical_margin">4dp</dimen>
     <dimen name="card_horizontal_margin">4dp</dimen>
 
+    <dimen name="grid_vertical_margin">4dp</dimen>
+    <dimen name="grid_horizontal_margin">4dp</dimen>
+
     <dimen name="card_elevation">8dp</dimen>
 
     <dimen name="list_appbar_height">256dp</dimen>

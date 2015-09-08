@@ -15,7 +15,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:layout_marginEnd="@dimen/activity_horizontal_margin"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
@@ -56,8 +55,7 @@
                     android:layout_alignStart="@id/tvTopic"
                     android:layout_below="@id/tvTopic"
                     android:layout_gravity="center"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
-                    android:textColor="@color/main_color" />
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
 
                 <ImageView
                     android:id="@+id/ivEventDetailCalendar"
@@ -69,7 +67,7 @@
                     android:layout_marginEnd="@dimen/activity_vertical_margin"
                     android:layout_marginRight="@dimen/activity_vertical_margin"
                     android:contentDescription="@string/icon_add_to_calendar"
-                    android:src="@drawable/ic_calender_add" />
+                    android:src="@drawable/ic_calender_add_tinted" />
 
                 <TextView
                     android:id="@+id/tvEventDetailTime"
@@ -81,6 +79,27 @@
                     android:layout_toRightOf="@id/ivEventDetailCalendar"
                     android:paddingTop="16dp" />
 
+                <ImageView
+                    android:id="@+id/ivEventDetailLocation"
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_alignLeft="@id/tvTopic"
+                    android:layout_alignStart="@id/tvTopic"
+                    android:layout_below="@id/ivEventDetailCalendar"
+                    android:layout_marginEnd="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:contentDescription="@string/icon_location"
+                    android:src="@drawable/ic_location_tinted" />
+
+                <TextView
+                    android:id="@+id/tvEventDetailLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvEventDetailTime"
+                    android:layout_toEndOf="@id/ivEventDetailLocation"
+                    android:layout_toRightOf="@id/ivEventDetailLocation"
+                    android:paddingTop="16dp" />
+
             </RelativeLayout>
 
             <TextView
@@ -88,7 +107,7 @@
                 style="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/ivEventDetailCalendar"
+                android:layout_marginTop="16dp"
                 android:layout_gravity="center"
                 android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
                 android:paddingBottom="@dimen/detail_body_bottom_margin" />
