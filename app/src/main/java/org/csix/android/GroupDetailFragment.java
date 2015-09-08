@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -63,16 +62,16 @@ public class GroupDetailFragment extends Fragment implements
 
     @Bind(R.id.tvGroupDetailTitle)
     TextView groupName;
-    @Bind(R.id.tvGroupAddress)
-    TextView groupAddress;
+    //@Bind(R.id.tvGroupAddress)
+    //TextView groupAddress;
     @Bind(R.id.tvGroupLocation)
     TextView groupLocation;
     @Bind(R.id.tvGroupTime)
     TextView groupTime;
-    @Bind(R.id.ivGroupLocation)
-    ImageView ivLocation;
-    @Bind(R.id.ivGroupDetailCalendar)
-    ImageView ivCalendar;
+    // @Nullable @Bind(R.id.ivGroupLocation)
+    // ImageView ivLocation;
+    // @Nullable @Bind(R.id.ivGroupDetailCalendar)
+    // ImageView ivCalendar;
 
     public GroupDetailFragment() {
         // Required empty public constructor
@@ -174,12 +173,15 @@ public class GroupDetailFragment extends Fragment implements
         switch (loader.getId()) {
             case LOADER_ID:
                 Log.i(LOG_TAG, data.toString());
-
+                // Group Name
                 groupName.setText("" + data.getString(COL_GROUP_NAME));
-                address = data.getString(COL_GROUP_ADDRESS);
-                groupAddress.setText("" + address);
-                groupLocation.setText("" + data.getString(COL_GROUP_LOCATION));
+                // Group Time
                 groupTime.setText("" + data.getString(COL_GROUP_TIME));
+                // Group Location
+                address = data.getString(COL_GROUP_ADDRESS);
+                // groupAddress.setText("" + address);
+                location = data.getString(COL_GROUP_LOCATION);
+                groupLocation.setText("" + address + "\n" + location);
 
                 break;
         }
