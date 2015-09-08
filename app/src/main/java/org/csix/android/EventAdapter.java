@@ -26,14 +26,18 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapter
 
     public class EventAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @Bind(R.id.tvDate)
-        TextView eventDate;
+        // @Bind(R.id.tvDate)
+        // TextView eventDate;
         @Bind(R.id.ivSpeaker)
         RoundedImageView speakerImage;
         @Bind(R.id.tvSpeaker)
         TextView speaker;
         @Bind(R.id.tvTopic)
         TextView topic;
+        @Bind(R.id.tvDateMonth)
+        TextView month;
+        @Bind(R.id.tvDateDay)
+        TextView day;
 
         public EventAdapterViewHolder(View view) {
             super(view);
@@ -73,13 +77,16 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapter
         mCursor.moveToPosition(position);
 
         Date date = new Date(mCursor.getLong(EventFragment.COL_EVENT_DATE));
-        String strTime = DateUtils.getShortDayOfWeekString(date)
-                + ", "
-                + DateUtils.getShortMonthString(date)
-                + " "
-                + DateUtils.getDayString(date);
-
-        holder.eventDate.setText("" + strTime);
+        String strMonth = DateUtils.getShortMonthString(date);
+        String strDay = DateUtils.getDayString(date);
+        holder.month.setText("" + strMonth);
+        holder.day.setText("" + strDay);
+        //String strTime = DateUtils.getShortDayOfWeekString(date)
+        //        + ", "
+        //        + strMonth
+        //        + " "
+        //        + strDay;
+        // holder.eventDate.setText("" + strTime);
         holder.speaker.setText("" + mCursor.getString(EventFragment.COL_EVENT_SPEAKER));
         holder.topic.setText("" + mCursor.getString(EventFragment.COL_EVENT_TOPIC));
 

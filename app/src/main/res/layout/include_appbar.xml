@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         app:contentScrim="?attr/colorPrimary"
         app:expandedTitleMarginStart="64dp"
+        app:title="@string/app_name"
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
         android:contentDescription="@string/layout_collapsing_toolbar">
 
@@ -25,13 +26,17 @@
             app:layout_collapseParallaxMultiplier="0.7"
             android:contentDescription="@string/imageview_appbar" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/scrim" />
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:title="@string/app_name"
             android:background="#33000000"
             app:layout_collapseMode="pin"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"

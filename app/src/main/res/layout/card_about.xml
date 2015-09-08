@@ -6,12 +6,13 @@
     android:layout_marginEnd="@dimen/list_vertical_margin"
     android:layout_marginRight="@dimen/list_vertical_margin"
     android:layout_marginTop="@dimen/list_horizontal_margin"
-    android:layout_marginBottom="@dimen/list_horizontal_margin" >
+    android:layout_marginBottom="@dimen/list_horizontal_margin"
+    android:contentDescription="@string/card_view_about">
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/card_view_about_layout">
 
         <ImageView
             android:id="@+id/ivCSixImage"
@@ -19,12 +20,11 @@
             android:layout_height="64dp"
             android:layout_marginTop="8dp"
             android:adjustViewBounds="true"
-            android:contentDescription="@string/logo"
+            android:contentDescription="@string/card_view_about_logo"
             android:src="@drawable/csix_logo" />
 
         <TextView
             android:id="@+id/tvAboutTitle"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -32,7 +32,8 @@
             android:layout_marginLeft="@dimen/activity_vertical_margin"
             android:layout_toEndOf="@id/ivCSixImage"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
-            android:textColor="@color/main_darker" />
+            android:textColor="@color/main_darker"
+            android:contentDescription="@string/card_view_about_title" />
 
         <TextView
             android:id="@+id/tvAboutContent"
@@ -43,7 +44,8 @@
             android:layout_below="@id/tvAboutTitle"
             android:layout_centerVertical="true"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier" />
+            android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
+            android:contentDescription="@string/card_view_about_content" />
 
     </RelativeLayout>
 

@@ -7,11 +7,13 @@
     android:layout_marginEnd="@dimen/card_horizontal_margin"
     android:layout_marginRight="@dimen/card_horizontal_margin"
     android:layout_marginTop="@dimen/card_vertical_margin"
-    android:layout_marginBottom="@dimen/card_vertical_margin" >
+    android:layout_marginBottom="@dimen/card_vertical_margin"
+    android:contentDescription="@string/card_view_event">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/card_view_event_layout">
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/ivSpeaker"
@@ -21,22 +23,53 @@
             android:layout_margin="@dimen/list_margin"
             android:src="@drawable/csix_logo"
             app:riv_corner_radius="@dimen/list_image_radius"
-            android:contentDescription="@string/event_card_speaker_image" />
+            android:contentDescription="@string/card_view_event_speaker_image" />
+
+        <TextView
+            android:id="@+id/tvDateMonth"
+            android:layout_width="48dp"
+            android:layout_height="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@color/main_color"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/abc_text_size_caption_material"
+            android:contentDescription="@string/card_view_event_month" />
+
+        <TextView
+            android:id="@+id/tvDateDay"
+            android:layout_width="48dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tvDateMonth"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/back"
+            android:gravity="center"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/abc_text_size_medium_material"
+            android:contentDescription="@string/card_view_event_day" />
 
         <TextView
             android:id="@+id/tvTopic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_alignTop="@id/tvDateMonth"
             android:layout_marginRight="@dimen/activity_vertical_margin"
             android:layout_marginEnd="@dimen/activity_vertical_margin"
             android:layout_toRightOf="@id/ivSpeaker"
             android:layout_toEndOf="@id/ivSpeaker"
+            android:layout_toLeftOf="@id/tvDateMonth"
+            android:layout_toStartOf="@id/tvDateMonth"
             android:ellipsize="end"
             android:maxLines="2"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-            android:contentDescription="@string/event_card_event_topic" />
+            android:contentDescription="@string/card_view_event_topic" />
 
         <TextView
             android:id="@+id/tvSpeaker"
@@ -44,26 +77,14 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@id/tvTopic"
             android:layout_alignStart="@id/tvTopic"
+            android:layout_alignRight="@id/tvTopic"
+            android:layout_alignEnd="@id/tvTopic"
             android:layout_below="@id/tvTopic"
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
             android:textColor="@color/main_color"
-            android:contentDescription="@string/event_card_speaker_name" />
-
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/tvSpeaker"
-            android:layout_gravity="center"
-            android:layout_marginEnd="@dimen/activity_vertical_margin"
-            android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:gravity="end|center_vertical"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-            android:contentDescription="@string/event_card_event_date" />
+            android:contentDescription="@string/card_view_event_speaker_name" />
 
     </RelativeLayout>
 
