@@ -96,4 +96,10 @@
     <string name="card_view_group_name">Group Card View Group Name</string>
 
 
+    <!-- Shared Element Transition -->
+    <string name="transition_name_profile">transition:PROFILE</string>
+    <string name="transition_name_topic">transition:TOPIC</string>
+    <string name="transition_name_speaker">transition:SPEAKER</string>
+
+    <string name="transition_name_group_name">transition:GROUP</string>
 </resources>

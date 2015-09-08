@@ -3,10 +3,13 @@ package org.csix.android;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -38,13 +41,13 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
             CSixContract.EventEntry.COLUMN_TYPE
     };
 
-    static final int COL_EVENT_ID        = 0;
-    static final int COL_EVENT_DATE      = 1;
-    static final int COL_EVENT_SPEAKER   = 2;
-    static final int COL_EVENT_IMAGE     = 3;
-    static final int COL_EVENT_TOPIC     = 4;
-    static final int COL_EVENT_DESC      = 5;
-    static final int COL_EVENT_TYPE      = 6;
+    static final int COL_EVENT_ID = 0;
+    static final int COL_EVENT_DATE = 1;
+    static final int COL_EVENT_SPEAKER = 2;
+    static final int COL_EVENT_IMAGE = 3;
+    static final int COL_EVENT_TOPIC = 4;
+    static final int COL_EVENT_DESC = 5;
+    static final int COL_EVENT_TYPE = 6;
 
     @Bind(R.id.recyclerview_event)
     RecyclerView mRecyclerView;
@@ -66,7 +69,20 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
             public void onClick(Long id, EventAdapter.EventAdapterViewHolder vh) {
                 Intent intent = new Intent(getActivity(), EventDetailActivity.class);
                 intent.putExtra(EventDetailActivity.EVENT_ID, id);
-                startActivity(intent);
+
+                // http://code.tutsplus.com/tutorials/introduction-to-the-new-lollipop-activity-transitions--cms-23711
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        // the context of the activity
+                        getActivity(),
+                        // For each shared element, add to this method a new Pair item,
+                        // which contains the reference of the view we are transitioning *from*,
+                        // and the value of the transitionName attribute
+                        new Pair<View, String>(vh.speakerImage, getString(R.string.transition_name_profile)),
+                        new Pair<View, String>(vh.topic, getString(R.string.transition_name_topic)),
+                        new Pair<View, String>(vh.speaker, getString(R.string.transition_name_speaker))
+                );
+                ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
+                // startActivity(intent);
             }
         });
 

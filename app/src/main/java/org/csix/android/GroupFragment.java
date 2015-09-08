@@ -3,10 +3,13 @@ package org.csix.android;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -68,7 +71,20 @@ public class GroupFragment extends Fragment implements LoaderManager.LoaderCallb
             public void onClick(Long id, GroupAdapter.GroupAdapterViewHolder vh) {
                 Intent intent = new Intent(getActivity(), GroupDetailActivity.class);
                 intent.putExtra(GroupDetailActivity.GROUP_ID, id);
-                startActivity(intent);
+
+                // http://code.tutsplus.com/tutorials/introduction-to-the-new-lollipop-activity-transitions--cms-23711
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        // the context of the activity
+                        getActivity(),
+                        // For each shared element, add to this method a new Pair item,
+                        // which contains the reference of the view we are transitioning *from*,
+                        // and the value of the transitionName attribute
+                        new Pair<View, String>(vh.groupName, getString(R.string.transition_name_group_name))
+
+                );
+
+                ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
+                //startActivity(intent);
             }
         });
 

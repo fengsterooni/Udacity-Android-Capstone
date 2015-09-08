@@ -2,6 +2,7 @@ package org.csix.android;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 public class EventDetailActivity extends AppCompatActivity {
     private final String LOG_TAG = EventDetailActivity.class.getSimpleName();
@@ -20,5 +21,16 @@ public class EventDetailActivity extends AppCompatActivity {
                     .add(R.id.fragment_event_detail, fragment)
                     .commit();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                supportFinishAfterTransition();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
