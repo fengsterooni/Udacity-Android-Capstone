@@ -68,26 +68,17 @@
             android:name=".AboutIntentService"
             android:exported="false" />
 
-        <receiver android:name=".widget.EventWidget" >
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/event_widget_info" />
-        </receiver>
-
         <service android:name=".widget.EventWidgetIntentService" />
 
-        <receiver android:name=".widget.EventWidget">
+        <receiver android:name=".widget.EventWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="org.csix.android.ACTION_DATA_UPDATED" />
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/event_widget_info" />
+                android:resource="@xml/widget_info_event" />
         </receiver>
 
         <receiver
@@ -95,7 +86,7 @@
             android:label="@string/widget_detail_title">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="com.example.android.sunshine.app.ACTION_DATA_UPDATED" />
+                <action android:name="org.csix.android.ACTION_DATA_UPDATED" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"

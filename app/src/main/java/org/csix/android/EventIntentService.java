@@ -19,7 +19,8 @@ import java.util.Vector;
 public class EventIntentService extends IntentService {
 
     private final String LOG_TAG = EventIntentService.class.getSimpleName();
-    public static final String FETCH_EVENT = "org.csix.services.action.FETCH_EVENT";
+    public static final String ACTION_DATA_UPDATED =
+            "org.csix.android.ACTION_DATA_UPDATED";
 
     public EventIntentService() {
         super("EventIntentService");
@@ -81,8 +82,18 @@ public class EventIntentService extends IntentService {
             ContentValues[] contentArray = new ContentValues[vector.size()];
             vector.toArray(contentArray);
             getContentResolver().bulkInsert(CSixContract.EventEntry.CONTENT_URI, contentArray);
+
+            updateWidgets();
+            // notifyEvents();
         }
 
         Log.i(LOG_TAG, "Update Events completed. " + vector.size() + " added.");
+    }
+
+    private void updateWidgets() {
+        // Setting the package ensures that only components in our app will receive the broadcast
+        Intent dataUpdatedIntent = new Intent(ACTION_DATA_UPDATED)
+                .setPackage(getPackageName());
+        sendBroadcast(dataUpdatedIntent);
     }
 }

@@ -168,7 +168,7 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
                 null,
                 null,
                 null,
-                CSixContract.EventEntry.COLUMN_DATE + " ASC"
+                null
         );
     }
 

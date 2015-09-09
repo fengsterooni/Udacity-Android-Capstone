@@ -11,6 +11,7 @@ import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import org.csix.android.DateUtils;
+import org.csix.android.EventDetailActivity;
 import org.csix.android.R;
 import org.csix.android.data.CSixContract;
 
@@ -90,6 +91,7 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
                 RemoteViews views = new RemoteViews(getPackageName(),
                         R.layout.widget_detail_list_item);
 
+                long id = data.getLong(COL_EVENT_ID);
                 String speaker = data.getString(COL_EVENT_SPEAKER);
                 Date date = new Date(data.getLong(COL_EVENT_DATE));
                 String topic = data.getString(COL_EVENT_TOPIC);
@@ -104,6 +106,7 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
                 Uri eventUri = CSixContract.EventEntry.CONTENT_URI;
 
                 fillInIntent.setData(eventUri);
+                fillInIntent.putExtra(EventDetailActivity.EVENT_ID, id);
                 views.setOnClickFillInIntent(R.id.widget_list_item, fillInIntent);
                 return views;
             }

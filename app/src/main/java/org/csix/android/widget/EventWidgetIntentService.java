@@ -47,7 +47,7 @@ public class EventWidgetIntentService extends IntentService implements LoaderMan
 
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         int[] appWidgetIds = appWidgetManager
-                .getAppWidgetIds(new ComponentName(this, EventWidget.class));
+                .getAppWidgetIds(new ComponentName(this, EventWidgetProvider.class));
 
         Log.i("INFO", "APPWIDGET SIZE: " + appWidgetIds.length);
 

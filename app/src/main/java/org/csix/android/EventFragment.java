@@ -12,6 +12,7 @@ import android.support.v4.content.Loader;
 import android.support.v4.util.Pair;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -117,6 +118,8 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
                 mEventAdapter.swapCursor(data);
                 break;
         }
+
+        Log.i(LOG_TAG, "SIZE OF THE CURSOR: " + mEventAdapter.getItemCount());
     }
 
     @Override
