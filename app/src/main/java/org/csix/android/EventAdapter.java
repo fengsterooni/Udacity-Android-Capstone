@@ -15,6 +15,7 @@ import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapterViewHolder> {
 
@@ -23,6 +24,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapter
     private Cursor mCursor;
     private final Context mContext;
     private final EventAdapterOnClickHandler mClickHandler;
+
+    private Date date;
 
     public class EventAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -36,8 +39,28 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapter
         TextView topic;
         @Bind(R.id.tvDateMonth)
         TextView month;
+        @OnClick(R.id.tvDateMonth)
+        void clickMonth() {
+            int adapterPosition = getAdapterPosition();
+            mCursor.moveToPosition(adapterPosition);
+            CalendarUtils.addToCalendar(
+                    mContext,
+                    mCursor.getString(EventFragment.COL_EVENT_TOPIC),
+                    new Date(mCursor.getLong(EventFragment.COL_EVENT_DATE))
+            );
+        }
         @Bind(R.id.tvDateDay)
         TextView day;
+        @OnClick(R.id.tvDateDay)
+        void clickDay() {
+            int adapterPosition = getAdapterPosition();
+            mCursor.moveToPosition(adapterPosition);
+            CalendarUtils.addToCalendar(
+                    mContext,
+                    mCursor.getString(EventFragment.COL_EVENT_TOPIC),
+                    new Date(mCursor.getLong(EventFragment.COL_EVENT_DATE))
+            );
+        }
 
         public EventAdapterViewHolder(View view) {
             super(view);
@@ -76,7 +99,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapter
     public void onBindViewHolder(EventAdapterViewHolder holder, int position) {
         mCursor.moveToPosition(position);
 
-        Date date = new Date(mCursor.getLong(EventFragment.COL_EVENT_DATE));
+        date = new Date(mCursor.getLong(EventFragment.COL_EVENT_DATE));
         String strMonth = DateUtils.getShortMonthString(date);
         String strDay = DateUtils.getDayString(date);
         holder.month.setText("" + strMonth);

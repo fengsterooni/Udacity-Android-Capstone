@@ -38,7 +38,8 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/abc_text_size_caption_material"
-            android:contentDescription="@string/card_view_event_month" />
+            android:contentDescription="@string/card_view_event_month"
+            android:contextClickable="true" />
 
         <TextView
             android:id="@+id/tvDateDay"
@@ -53,7 +54,8 @@
             android:gravity="center"
             android:textColor="@color/main_color"
             android:textSize="@dimen/abc_text_size_medium_material"
-            android:contentDescription="@string/card_view_event_day" />
+            android:contentDescription="@string/card_view_event_day"
+            android:contextClickable="true" />
 
         <TextView
             android:id="@+id/tvTopic"

@@ -3,7 +3,6 @@ package org.csix.android;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -26,9 +25,7 @@ import com.bumptech.glide.Glide;
 
 import org.csix.android.data.CSixContract;
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -43,10 +40,8 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
     private long eventId;
     private View view;
     private Cursor mCursor;
-    private int year;
-    private int month;
-    private int day;
-    private StringBuilder summary;
+    private Date date;
+    private String eventTopic, eventSpeaker, dateTime;
 
     private static final String[] EVENT_DETAIL_COLUMNS = {
             CSixContract.EventEntry.COLUMN_DATE,
@@ -79,7 +74,8 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
     @Nullable
     @OnClick(R.id.share_fab)
     void click() {
-        Log.i(LOG_TAG, summary.toString());
+        String summary = getSummary().toString();
+        Log.i(LOG_TAG, summary);
         if (summary != null)
             startActivity(Intent.createChooser(ShareCompat.IntentBuilder.from(getActivity())
                     .setType("text/plain")
@@ -101,26 +97,7 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
     ImageView calendar;
     @OnClick(R.id.ivEventDetailCalendar)
     void addToCalendar() {
-        Intent calIntent = new Intent(Intent.ACTION_INSERT);
-        calIntent.setData(CalendarContract.Events.CONTENT_URI);
-        calIntent.setType("vnd.android.cursor.item/event");
-        calIntent.putExtra(CalendarContract.Events.TITLE, mCursor.getString(COL_EVENT_TOPIC));
-        calIntent.putExtra(CalendarContract.Events.EVENT_LOCATION,
-                R.string.main_event_location);
-        calIntent.putExtra(CalendarContract.Events.DESCRIPTION, R.string.main_event_address);
-
-        GregorianCalendar startTime = new GregorianCalendar(year, month, day, 10, 0);
-        GregorianCalendar endTime = new GregorianCalendar(year, month, day, 13, 0);
-
-        calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
-                startTime.getTimeInMillis());
-        calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
-                endTime.getTimeInMillis());
-        calIntent.putExtra(CalendarContract.Events.ACCESS_LEVEL, CalendarContract.Events.ACCESS_PRIVATE);
-        calIntent.putExtra(CalendarContract.Events.AVAILABILITY,
-                CalendarContract.Events.AVAILABILITY_BUSY);
-
-        startActivity(calIntent);
+        CalendarUtils.addToCalendar(getContext(), eventTopic, date);
     }
     @Bind(R.id.ivEventDetailLocation)
     ImageView location;
@@ -206,13 +183,12 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
                 Log.i(LOG_TAG, data.toString());
 
                 mCursor = data;
-                Date date = new Date(data.getLong(COL_EVENT_DATE));
-                getDate(date);
+                date = new Date(data.getLong(COL_EVENT_DATE));
 
-                String eventSpeaker = data.getString(COL_EVENT_SPEAKER);
+                eventSpeaker = data.getString(COL_EVENT_SPEAKER);
                 speaker.setText("" + eventSpeaker);
 
-                String eventTopic = data.getString(COL_EVENT_TOPIC);
+                eventTopic = data.getString(COL_EVENT_TOPIC);
                 topic.setText("" + eventTopic);
 
                 desc.setText("" + data.getString(COL_EVENT_DESC));
@@ -223,7 +199,7 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
                     Glide.with(getActivity()).load(imageUrl).into(speakerImage);
                 }
 
-                String dateTime = DateUtils.getShortMonthString(date)
+                dateTime = DateUtils.getShortMonthString(date)
                         + " "
                         + DateUtils.getDayString(date)
                         + " @ "
@@ -238,21 +214,19 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
                         +
                         getResources().getString(R.string.main_event_address));
 
-                summary = new StringBuilder();
-                summary = summary
-                        .append(eventSpeaker)
-                        .append(": ")
-                        .append(eventTopic)
-                        .append(", ")
-                        .append(dateTime)
-                        .append(" @CSix Connect - www.csix.org");
-
                 break;
         }
     }
 
     public StringBuilder getSummary() {
-        return summary;
+        StringBuilder summary = new StringBuilder();
+        return summary
+                .append(eventSpeaker)
+                .append(": ")
+                .append(eventTopic)
+                .append(", ")
+                .append(dateTime)
+                .append(" @CSix Connect - www.csix.org");
     }
 
     @Override
@@ -263,15 +237,5 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
     public void onSaveInstanceState(Bundle outState) {
         outState.putLong(EVENT_ID, eventId);
         super.onSaveInstanceState(outState);
-    }
-
-    public void getDate(Date date) {
-        Calendar cal = Calendar.getInstance();
-        if (date != null) {
-            cal.setTime(date);
-            year = cal.get(Calendar.YEAR);
-            month = cal.get(Calendar.MONTH);
-            day = cal.get(Calendar.DAY_OF_MONTH);
-        }
     }
 }
