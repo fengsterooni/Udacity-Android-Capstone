@@ -34,18 +34,9 @@
 
     <!-- Widget -->
     <string name="widget_text">This is a widget probably.</string>
-    <string name="widget_home_team_name">Widget Home Team Name</string>
-    <string name="widget_away_team_name">Widget Away Team Name</string>
-    <string name="widget_home_team_crest">Widget Home Team Crest</string>
-    <string name="widget_away_team_crest">Widget Away Team Crest</string>
-    <string name="widget_match_score">Widget Match Score</string>
-    <string name="widget_home_team_score">Widget Home Team Score</string>
-    <string name="widget_away_team_score">Widget Away Team Score</string>
-    <string name="widget_empty_text">No Game Today</string>
-    <string name="widget_empty_textview">Widget Empty Text</string>
-    <string name="widget_detail_title">Detail</string>
+    <string name="widget_detail_title">CSix Detail Widget</string>
     <string name="add_widget">Add widget</string>
-
+    <string name="widget_event_title">CSix Event Widget</string>
 
     <string name="layout_widget_collection">Widget Collection Layout</string>
     <string name="layout_widget_collection_header">Widget Collection Header Layout</string>
@@ -100,6 +91,5 @@
     <string name="transition_name_profile">transition:PROFILE</string>
     <string name="transition_name_topic">transition:TOPIC</string>
     <string name="transition_name_speaker">transition:SPEAKER</string>
-
     <string name="transition_name_group_name">transition:GROUP</string>
 </resources>

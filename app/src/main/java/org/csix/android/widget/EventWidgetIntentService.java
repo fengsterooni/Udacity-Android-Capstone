@@ -21,6 +21,8 @@ import java.util.Date;
 
 public class EventWidgetIntentService extends IntentService implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    private final String LOG_TAG = EventWidgetIntentService.class.getSimpleName();
+
     private static final String[] EVENT_COLUMNS = {
             CSixContract.EventEntry.COLUMN_DATE,
             CSixContract.EventEntry.COLUMN_SPEAKER,
@@ -49,7 +51,7 @@ public class EventWidgetIntentService extends IntentService implements LoaderMan
         int[] appWidgetIds = appWidgetManager
                 .getAppWidgetIds(new ComponentName(this, EventWidgetProvider.class));
 
-        Log.i("INFO", "APPWIDGET SIZE: " + appWidgetIds.length);
+        Log.i(LOG_TAG, "APPWIDGET SIZE: " + appWidgetIds.length);
 
         Cursor data = getContentResolver().query(
                 CSixContract.EventEntry.CONTENT_URI,
@@ -80,9 +82,9 @@ public class EventWidgetIntentService extends IntentService implements LoaderMan
 
             // Construct the RemoteViews object
             RemoteViews views = new RemoteViews(getPackageName(), R.layout.widget_event);
-            Log.i("INFO", "SPEAKER " + speaker);
-            Log.i("INFO", "DATE " + date);
-            Log.i("INFO", "TOPIC " + topic);
+            Log.i(LOG_TAG, "SPEAKER " + speaker);
+            Log.i(LOG_TAG, "DATE " + date);
+            Log.i(LOG_TAG, "TOPIC " + topic);
 
             views.setTextViewText(R.id.widget_speaker, speaker);
             views.setTextViewText(R.id.widget_date, DateUtils.getDateString(date));
