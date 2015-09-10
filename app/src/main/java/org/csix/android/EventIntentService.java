@@ -156,7 +156,7 @@ public class EventIntentService extends IntentService {
             NotificationCompat.Builder mBuilder =
                     new NotificationCompat.Builder(this)
                             .setColor(resources.getColor(R.color.main_color))
-                            .setSmallIcon(R.drawable.csix_logo)
+                            .setSmallIcon(R.drawable.ic_stat_update)
                             .setLargeIcon(largeIcon)
                             .setContentTitle(topic)
                             .setContentText(speaker);

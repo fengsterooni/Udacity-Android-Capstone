@@ -187,6 +187,41 @@ public class TestAppEngine extends AndroidTestCase {
                     "Clara has worked and travelled through 40 countries and 5 continents. She is an international speaker, TEDx presenter, and author of the best-seller T.U.R.N.: 4 Steps to Clarity in your Life and Career. Clara currently lives in San Francisco, California.");
 
             myApiService.insertEvent(event).execute();
+
+            event = new Event();
+            date = format.parse("2015-09-17");
+            event.setDate(new DateTime(date));
+            event.setSpeaker("Dan Rink");
+            event.setTopic("Beyond Job Search Documents – Way Beyond!");
+            event.setImage("http://csix.org/wp-content/uploads/2015/09/DanRink.png");
+            event.setDesc("Many managers and professionals get stalled in their job search because of so much conflicting advice about job search documents and about all of the other elements of a successful job search. The key is just to get the documents out of the way – keeping them simple and focused. Then address the other issues that keep people stuck. We’ll provide a brief overview of the basic documents and provide free PDF tutorials following the talk. Most of this talk will then address broader issues like focus, motivation, choices, networking, success teams, and relationships.\n" +
+                    "\n" +
+                    "Speaker’s Bio:\n" +
+                    "\n" +
+                    " \n" +
+                    "\n" +
+                    "Dan has facilitated hundreds of workshops on job search, career management, knowledge strategies, and communication skills. He has also coached a wide range of managers andprofessionals through career transitions and entrepreneurial issues. Throughout his career, Dan has taught managers and professionals how to enhance their productivity and retain their flexibility in a rapidly changing world.");
+
+            myApiService.insertEvent(event).execute();
+
+            event = new Event();
+            date = format.parse("2015-10-08");
+            event.setDate(new DateTime(date));
+            event.setSpeaker("Julie Anderson");
+            event.setTopic("Want Success? Use Your Brain");
+            event.setImage("http://csix.org/wp-content/uploads/2015/09/JulieAnderson.jpg");
+            event.setDesc("All of us desire to achieve greater success and happiness in business and in life. What career or employment we seek will definitely impact just how much success and how happy we are. What field do we chose? Do we aspire to leadership or just want the 9-5? How do I make the choice that is the BEST for me? In order to make the right decisions and find the ideal career for you, you must first “know thyself”. That is know your brain. Our brains are an amazing and wonderful part of who we are. They are our most valuable asset. Each individual has a set of innate gifts that are unique to them. When we learn to maximize our natural gifts, remove the limiting beliefs and negative self-talk, we can truly begin to achieve things we never thought possible. Next, when you educate ourselves on how people think and process information this leads to understanding why they do things the way they do. In other words understanding their Brain Personality Connection. Then guess what? Success happens!\n" +
+                    "In this presentation you will learn how to:\n" +
+                    "\n" +
+                    "*Identify our natural brain gifts and how they affect our connection to other people.\n" +
+                    "*Decipher what the best career choices are for you and what positions to apply for\n" +
+                    "*Discover how to best present your strengths to a prospective employer.\n" +
+                    "*Maximize your effectiveness in relationships for greater happiness and success.\n" +
+                    "\n" +
+                    "Julie Anderson of YourBestMindOnline.com is a dynamic and engaging international public speaker. Her fun and interactive presentations make the technical science behind psychology interesting and understandable. When Julie speaks she captivates listeners with her natural, down-to-earth, and always energetic style. For more than 15 years she has been igniting her audiences to fire up their brains. Her keynotes and workshops inspire positive changes in the relationships of all in attendance. The information she shares will help those who hear to accelerate their success in life and business through discovery of their natural gifts.");
+
+            myApiService.insertEvent(event).execute();
+            
         }
     }
 
