@@ -10,8 +10,8 @@ import android.widget.AdapterView;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
-import org.csix.android.DateUtils;
-import org.csix.android.EventDetailActivity;
+import org.csix.android.utils.DateUtils;
+import org.csix.android.activities.EventDetailActivity;
 import org.csix.android.R;
 import org.csix.android.data.CSixContract;
 

@@ -1,9 +1,12 @@
-package org.csix.android;
+package org.csix.android.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+
+import org.csix.android.fragments.GroupDetailFragment;
+import org.csix.android.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

@@ -1,4 +1,4 @@
-package org.csix.android;
+package org.csix.android.fragments;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.csix.android.R;
+import org.csix.android.adapters.AboutAdapter;
 import org.csix.android.data.CSixContract;
 
 import butterknife.Bind;
@@ -36,9 +38,9 @@ public class AboutFragment extends Fragment implements LoaderManager.LoaderCallb
             CSixContract.AboutEntry.COLUMN_DESC
     };
 
-    static final int COL_ABOUT_ID       = 0;
-    static final int COL_ABOUT_TITLE    = 1;
-    static final int COL_ABOUT_DESC     = 2;
+    public static final int COL_ABOUT_ID       = 0;
+    public static final int COL_ABOUT_TITLE    = 1;
+    public static final int COL_ABOUT_DESC     = 2;
 
     @Bind(R.id.recyclerview_about)
     RecyclerView mRecyclerView;

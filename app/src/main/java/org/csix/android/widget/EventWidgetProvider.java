@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import org.csix.android.EventIntentService;
+import org.csix.android.services.EventIntentService;
 
 /**
  * Implementation of App Widget functionality.

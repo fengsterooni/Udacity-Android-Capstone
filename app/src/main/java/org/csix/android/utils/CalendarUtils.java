@@ -1,8 +1,10 @@
-package org.csix.android;
+package org.csix.android.utils;
 
 import android.content.Context;
 import android.content.Intent;
 import android.provider.CalendarContract;
+
+import org.csix.android.R;
 
 import java.util.Calendar;
 import java.util.Date;

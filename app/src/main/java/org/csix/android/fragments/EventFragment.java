@@ -1,4 +1,4 @@
-package org.csix.android;
+package org.csix.android.fragments;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,6 +17,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.csix.android.R;
+import org.csix.android.activities.EventDetailActivity;
+import org.csix.android.adapters.EventAdapter;
 import org.csix.android.data.CSixContract;
 
 import butterknife.Bind;
@@ -42,13 +45,13 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
             CSixContract.EventEntry.COLUMN_TYPE
     };
 
-    static final int COL_EVENT_ID = 0;
-    static final int COL_EVENT_DATE = 1;
-    static final int COL_EVENT_SPEAKER = 2;
-    static final int COL_EVENT_IMAGE = 3;
-    static final int COL_EVENT_TOPIC = 4;
-    static final int COL_EVENT_DESC = 5;
-    static final int COL_EVENT_TYPE = 6;
+    public static final int COL_EVENT_ID = 0;
+    public static final int COL_EVENT_DATE = 1;
+    public static final int COL_EVENT_SPEAKER = 2;
+    public static final int COL_EVENT_IMAGE = 3;
+    public static final int COL_EVENT_TOPIC = 4;
+    public static final int COL_EVENT_DESC = 5;
+    public static final int COL_EVENT_TYPE = 6;
 
     @Bind(R.id.recyclerview_event)
     RecyclerView mRecyclerView;

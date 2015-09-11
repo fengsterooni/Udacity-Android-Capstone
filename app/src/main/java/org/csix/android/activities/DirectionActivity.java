@@ -1,4 +1,4 @@
-package org.csix.android;
+package org.csix.android.activities;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -14,6 +14,9 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.clustering.ClusterItem;
 import com.google.maps.android.ui.IconGenerator;
+
+import org.csix.android.R;
+import org.csix.android.utils.LocationUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

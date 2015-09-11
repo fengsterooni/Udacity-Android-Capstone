@@ -1,4 +1,4 @@
-package org.csix.android;
+package org.csix.android.activities;
 
 import android.app.Activity;
 import android.app.Dialog;

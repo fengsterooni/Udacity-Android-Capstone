@@ -1,4 +1,4 @@
-package org.csix.android;
+package org.csix.android.fragments;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -20,7 +20,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.csix.android.R;
 import org.csix.android.data.CSixContract;
+import org.csix.android.utils.LocationUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -43,12 +45,12 @@ public class GroupDetailFragment extends Fragment implements
             CSixContract.GroupEntry.COLUMN_DESC
     };
 
-    static final int COL_GROUP_ID       = 0;
-    static final int COL_GROUP_NAME     = 1;
-    static final int COL_GROUP_ADDRESS  = 2;
-    static final int COL_GROUP_LOCATION = 3;
-    static final int COL_GROUP_TIME     = 4;
-    static final int COL_GROUP_DESC     = 5;
+    public static final int COL_GROUP_ID       = 0;
+    public static final int COL_GROUP_NAME     = 1;
+    public static final int COL_GROUP_ADDRESS  = 2;
+    public static final int COL_GROUP_LOCATION = 3;
+    public static final int COL_GROUP_TIME     = 4;
+    public static final int COL_GROUP_DESC     = 5;
 
     SupportMapFragment mapFragment;
 

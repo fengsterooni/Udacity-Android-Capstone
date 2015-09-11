@@ -1,4 +1,4 @@
-package org.csix.android;
+package org.csix.android.activities;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -17,6 +17,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import org.csix.android.fragments.EventFragment;
+import org.csix.android.fragments.GroupFragment;
+import org.csix.android.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

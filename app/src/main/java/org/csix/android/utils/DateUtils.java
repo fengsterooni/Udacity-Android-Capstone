@@ -1,4 +1,4 @@
-package org.csix.android;
+package org.csix.android.utils;
 
 import com.google.api.client.util.DateTime;
 

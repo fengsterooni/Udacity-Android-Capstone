@@ -12,9 +12,9 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.TaskStackBuilder;
 import android.widget.RemoteViews;
 
-import org.csix.android.EventDetailActivity;
-import org.csix.android.EventIntentService;
-import org.csix.android.MainActivity;
+import org.csix.android.activities.EventDetailActivity;
+import org.csix.android.services.EventIntentService;
+import org.csix.android.activities.MainActivity;
 import org.csix.android.R;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)

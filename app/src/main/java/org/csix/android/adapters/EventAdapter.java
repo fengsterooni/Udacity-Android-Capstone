@@ -1,7 +1,8 @@
-package org.csix.android;
+package org.csix.android.adapters;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.makeramen.roundedimageview.RoundedImageView;
+
+import org.csix.android.utils.CalendarUtils;
+import org.csix.android.utils.DateUtils;
+import org.csix.android.fragments.EventFragment;
+import org.csix.android.R;
 
 import java.util.Date;
 
@@ -32,7 +38,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapter
         // @Bind(R.id.tvDate)
         // TextView eventDate;
         @Bind(R.id.ivSpeaker)
-        RoundedImageView speakerImage;
+        public RoundedImageView speakerImage;
         @Bind(R.id.tvSpeaker)
         TextView speaker;
         @Bind(R.id.tvTopic)
@@ -110,7 +116,16 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapter
         //        + " "
         //        + strDay;
         // holder.eventDate.setText("" + strTime);
+
+        Typeface font = Typeface.createFromAsset(mContext.getAssets(),
+                "fonts/RobotoCondensed-Light.ttf");
+
+        holder.speaker.setTypeface(font);
         holder.speaker.setText("" + mCursor.getString(EventFragment.COL_EVENT_SPEAKER));
+
+        font = Typeface.createFromAsset(mContext.getAssets(),
+                "fonts/Roboto-Light.ttf");
+        //holder.topic.setTypeface(font);
         holder.topic.setText("" + mCursor.getString(EventFragment.COL_EVENT_TOPIC));
 
         String imageUrl = mCursor.getString(EventFragment.COL_EVENT_IMAGE);

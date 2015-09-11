@@ -1,4 +1,4 @@
-package org.csix.android;
+package org.csix.android.services;
 
 import android.annotation.SuppressLint;
 import android.app.IntentService;
@@ -20,6 +20,9 @@ import com.bumptech.glide.Glide;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 
+import org.csix.android.utils.DateUtils;
+import org.csix.android.activities.MainActivity;
+import org.csix.android.R;
 import org.csix.android.data.CSixContract;
 import org.csix.backend.myApi.MyApi;
 import org.csix.backend.myApi.model.Event;

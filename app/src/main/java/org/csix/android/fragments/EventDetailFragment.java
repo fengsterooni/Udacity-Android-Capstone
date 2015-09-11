@@ -1,7 +1,8 @@
-package org.csix.android;
+package org.csix.android.fragments;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -23,7 +24,12 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import org.csix.android.R;
+import org.csix.android.activities.DirectionActivity;
+import org.csix.android.activities.EventDetailActivity;
 import org.csix.android.data.CSixContract;
+import org.csix.android.utils.CalendarUtils;
+import org.csix.android.utils.DateUtils;
 
 import java.util.Date;
 
@@ -52,13 +58,13 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
             CSixContract.EventEntry.COLUMN_TYPE
     };
 
-    static final int COL_EVENT_ID = 0;
-    static final int COL_EVENT_DATE = 1;
-    static final int COL_EVENT_SPEAKER = 2;
-    static final int COL_EVENT_IMAGE = 3;
-    static final int COL_EVENT_TOPIC = 4;
-    static final int COL_EVENT_DESC = 5;
-    static final int COL_EVENT_TYPE = 6;
+    public static final int COL_EVENT_ID = 0;
+    public static final int COL_EVENT_DATE = 1;
+    public static final int COL_EVENT_SPEAKER = 2;
+    public static final int COL_EVENT_IMAGE = 3;
+    public static final int COL_EVENT_TOPIC = 4;
+    public static final int COL_EVENT_DESC = 5;
+    public static final int COL_EVENT_TYPE = 6;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -187,6 +193,10 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
                 mCursor = data;
                 date = new Date(data.getLong(COL_EVENT_DATE));
 
+                Typeface font = Typeface.createFromAsset(getActivity().getAssets(),
+                        "fonts/RobotoCondensed-Light.ttf");
+
+                speaker.setTypeface(font);
                 eventSpeaker = data.getString(COL_EVENT_SPEAKER);
                 speaker.setText("" + eventSpeaker);
 

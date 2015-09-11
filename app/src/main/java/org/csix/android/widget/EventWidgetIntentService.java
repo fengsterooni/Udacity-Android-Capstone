@@ -12,8 +12,8 @@ import android.support.v4.content.Loader;
 import android.util.Log;
 import android.widget.RemoteViews;
 
-import org.csix.android.DateUtils;
-import org.csix.android.MainActivity;
+import org.csix.android.utils.DateUtils;
+import org.csix.android.activities.MainActivity;
 import org.csix.android.R;
 import org.csix.android.data.CSixContract;
 

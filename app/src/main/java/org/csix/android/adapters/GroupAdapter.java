@@ -1,4 +1,4 @@
-package org.csix.android;
+package org.csix.android.adapters;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import org.csix.android.fragments.GroupFragment;
+import org.csix.android.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,7 +27,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
         // @Bind(R.id.ivGroup)
         // ImageView groupLogo;
         @Bind(R.id.tvName)
-        TextView groupName;
+        public TextView groupName;
 
         public GroupAdapterViewHolder(View view) {
             super(view);

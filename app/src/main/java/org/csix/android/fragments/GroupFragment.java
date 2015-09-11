@@ -1,4 +1,4 @@
-package org.csix.android;
+package org.csix.android.fragments;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -16,6 +16,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.csix.android.R;
+import org.csix.android.activities.GroupDetailActivity;
+import org.csix.android.adapters.GroupAdapter;
 import org.csix.android.data.CSixContract;
 
 import butterknife.Bind;
@@ -42,12 +45,12 @@ public class GroupFragment extends Fragment implements LoaderManager.LoaderCallb
             CSixContract.GroupEntry.COLUMN_DESC
     };
 
-    static final int COL_GROUP_ID       = 0;
-    static final int COL_GROUP_NAME     = 1;
-    static final int COL_GROUP_ADDRESS  = 2;
-    static final int COL_GROUP_LOCATION = 3;
-    static final int COL_GROUP_TIME     = 4;
-    static final int COL_GROUP_DESC     = 5;
+    public static final int COL_GROUP_ID       = 0;
+    public static final int COL_GROUP_NAME     = 1;
+    public static final int COL_GROUP_ADDRESS  = 2;
+    public static final int COL_GROUP_LOCATION = 3;
+    public static final int COL_GROUP_TIME     = 4;
+    public static final int COL_GROUP_DESC     = 5;
 
     @Bind(R.id.recyclerview_group)
     RecyclerView mRecyclerView;

@@ -1,4 +1,4 @@
-package org.csix.android;
+package org.csix.android.services;
 
 import android.app.IntentService;
 import android.content.ContentValues;
