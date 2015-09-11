@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
     public static final String MAIN_TAG = "MAIN_TAG";
-    public static boolean IS_TABLET = false;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -49,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        IS_TABLET = isTablet();
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -63,10 +60,6 @@ public class MainActivity extends AppCompatActivity {
             fragmentManager.beginTransaction()
                     .replace(R.id.container, new EventFragment(), MAIN_TAG)
                     .commit();
-
-            startService(new Intent(this, EventIntentService.class));
-            startService(new Intent(this, GroupIntentService.class));
-            startService(new Intent(this, AboutIntentService.class));
         }
     }
 

@@ -15,12 +15,13 @@ import org.csix.android.EventIntentService;
  */
 public class EventWidgetProvider extends AppWidgetProvider {
 
+    private final String LOG_TAG = EventWidgetProvider.class.getSimpleName();
+
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         context.startService(new Intent(context, EventWidgetIntentService.class));
-        Log.i("INFO", "ON UPDATE WIDGET");
+        Log.i(LOG_TAG, "ON UPDATE WIDGET");
     }
-
 
     @Override
     public void onEnabled(Context context) {

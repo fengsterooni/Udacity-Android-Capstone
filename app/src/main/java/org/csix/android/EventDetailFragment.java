@@ -129,11 +129,13 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
         Bundle args = getArguments();
         if (args != null) {
             eventId = args.getLong(EventDetailFragment.EVENT_ID);
-            Log.i(LOG_TAG, "EVENT_ID ID " + eventId);
+            Log.i(LOG_TAG, "EVENT_ID ID in Args " + eventId);
         }
 
         if (savedInstanceState != null) {
             eventId = savedInstanceState.getLong(EVENT_ID);
+            Log.i(LOG_TAG, "EVENT_ID ID in saved State " + eventId);
+            getLoaderManager().restartLoader(LOADER_ID, null, this);
         }
     }
 
