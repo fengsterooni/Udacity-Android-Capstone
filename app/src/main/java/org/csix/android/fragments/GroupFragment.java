@@ -54,6 +54,8 @@ public class GroupFragment extends Fragment implements LoaderManager.LoaderCallb
 
     @Bind(R.id.recyclerview_group)
     RecyclerView mRecyclerView;
+    @Bind(R.id.recyclerview_group_empty)
+    View emptyView;
 
     public GroupFragment() {
     }
@@ -89,7 +91,7 @@ public class GroupFragment extends Fragment implements LoaderManager.LoaderCallb
                 ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
                 //startActivity(intent);
             }
-        });
+        }, emptyView);
 
         mRecyclerView.setAdapter(mGroupAdapter);
 

@@ -183,7 +183,7 @@ public class EventIntentService extends IntentService {
 
             NotificationManager mNotificationManager =
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            // WEATHER_NOTIFICATION_ID allows you to update the notification later on.
+
             mNotificationManager.notify(EVENT_NOTIFICATION_ID, mBuilder.build());
 
         }

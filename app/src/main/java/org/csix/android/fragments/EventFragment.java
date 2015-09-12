@@ -55,6 +55,8 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
 
     @Bind(R.id.recyclerview_event)
     RecyclerView mRecyclerView;
+    @Bind(R.id.recyclerview_event_empty)
+    View emptyView;
 
     public EventFragment() {
     }
@@ -89,7 +91,7 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
                 ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
                 // startActivity(intent);
             }
-        });
+        }, emptyView);
 
         mRecyclerView.setAdapter(mEventAdapter);
         return view;

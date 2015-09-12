@@ -29,6 +29,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapter
 
     private Cursor mCursor;
     private final Context mContext;
+    private final View mEmptyView;
     private final EventAdapterOnClickHandler mClickHandler;
 
     private Date date;
@@ -86,9 +87,10 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapter
         void onClick(Long eventId, EventAdapterViewHolder vh);
     }
 
-    public EventAdapter(Context context, EventAdapterOnClickHandler clickHandler) {
+    public EventAdapter(Context context, EventAdapterOnClickHandler clickHandler, View emptyView) {
         mContext = context;
         mClickHandler = clickHandler;
+        mEmptyView = emptyView;
     }
 
     public EventAdapterViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewTyped) {
@@ -159,5 +161,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapter
     public void swapCursor(Cursor newCursor) {
         mCursor = newCursor;
         notifyDataSetChanged();
+        mEmptyView.setVisibility(getItemCount() == 0 ? View.VISIBLE : View.GONE);
     }
 }

@@ -2,13 +2,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:contentDescription="@string/group_detail_activity_layout">
 
     <FrameLayout
         android:id="@+id/fragment_group_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".GroupDetailActivity" />
+        tools:context=".GroupDetailActivity"
+        android:contentDescription="@string/group_detail_activity_content_layout" />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -16,6 +18,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="#33000000"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:contentDescription="@string/toolbar" />
 </FrameLayout>
 

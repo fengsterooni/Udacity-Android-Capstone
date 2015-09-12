@@ -2,7 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:contentDescription="@string/event_detail_root_layout">
 
     <include layout="@layout/include_appbar" />
 
@@ -10,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:contentDescription="@string/event_detail_nested_scrollview">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,11 +22,13 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin_top"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:contentDescription="@string/event_detail_nested_linearlayout">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/event_detail_content_layout">
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/ivSpeaker"
@@ -33,7 +37,8 @@
                     android:layout_gravity="center"
                     android:src="@drawable/csix_logo"
                     android:transitionName="@string/transition_name_profile"
-                    app:riv_corner_radius="32dp" />
+                    app:riv_corner_radius="32dp"
+                    android:contentDescription="@string/event_detail_event_speaker_image" />
 
                 <TextView
                     android:id="@+id/tvTopic"
@@ -47,7 +52,8 @@
                     android:transitionName="@string/transition_name_topic"
                     android:ellipsize="end"
                     android:maxLines="2"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                    android:contentDescription="@string/event_detail_event_topic" />
 
                 <TextView
                     android:id="@+id/tvSpeaker"
@@ -58,7 +64,8 @@
                     android:layout_below="@id/tvTopic"
                     android:transitionName="@string/transition_name_speaker"
                     android:layout_gravity="center"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                    android:contentDescription="@string/event_detail_event_speaker" />
 
                 <ImageView
                     android:id="@+id/ivEventDetailCalendar"
@@ -80,7 +87,8 @@
                     android:layout_below="@id/tvSpeaker"
                     android:layout_toEndOf="@id/ivEventDetailCalendar"
                     android:layout_toRightOf="@id/ivEventDetailCalendar"
-                    android:paddingTop="16dp" />
+                    android:paddingTop="16dp"
+                    android:contentDescription="@string/event_detail_event_time" />
 
                 <ImageView
                     android:id="@+id/ivEventDetailLocation"
@@ -101,7 +109,8 @@
                     android:layout_below="@id/tvEventDetailTime"
                     android:layout_toEndOf="@id/ivEventDetailLocation"
                     android:layout_toRightOf="@id/ivEventDetailLocation"
-                    android:paddingTop="16dp" />
+                    android:paddingTop="16dp"
+                    android:contentDescription="@string/event_detail_event_location" />
 
             </RelativeLayout>
 
@@ -113,7 +122,8 @@
                 android:layout_marginTop="16dp"
                 android:layout_gravity="center"
                 android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
-                android:paddingBottom="@dimen/detail_body_bottom_margin" />
+                android:paddingBottom="@dimen/detail_body_bottom_margin"
+                android:contentDescription="@string/event_detail_event_description" />
 
         </LinearLayout>
 
@@ -132,7 +142,8 @@
         app:borderWidth="0dp"
         app:elevation="@dimen/fab_elevation"
         app:fabSize="normal"
-        app:pressedTranslationZ="@dimen/fab_press_translation_z" />
+        app:pressedTranslationZ="@dimen/fab_press_translation_z"
+        android:contentDescription="@string/event_detail_fab" />
 
 </android.support.design.widget.CoordinatorLayout>
 

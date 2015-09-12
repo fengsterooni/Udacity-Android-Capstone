@@ -44,6 +44,8 @@ public class AboutFragment extends Fragment implements LoaderManager.LoaderCallb
 
     @Bind(R.id.recyclerview_about)
     RecyclerView mRecyclerView;
+    @Bind(R.id.recyclerview_about_empty)
+    View emptyView;
 
     public AboutFragment() {
     }
@@ -83,7 +85,7 @@ public class AboutFragment extends Fragment implements LoaderManager.LoaderCallb
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setHasFixedSize(true);
 
-        mAboutAdapter = new AboutAdapter();
+        mAboutAdapter = new AboutAdapter(getActivity(), emptyView);
 
         mRecyclerView.setAdapter(mAboutAdapter);
 

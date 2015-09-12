@@ -3,34 +3,35 @@
     android:id="@+id/widget_list_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:contentDescription="@string/layout_widget_collection_item">
+    android:contentDescription="@string/widget_collection_layout_item">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:baselineAligned="false"
-        android:contentDescription="@string/layout_widget_item"
+        android:contentDescription="@string/widget_item_layout"
         android:gravity="center_vertical"
         android:minHeight="?android:attr/listPreferredItemHeight"
         android:orientation="vertical"
-        android:paddingEnd="@dimen/abc_list_item_padding_horizontal_material"
-        android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
-        android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"
-        android:paddingStart="@dimen/abc_list_item_padding_horizontal_material">
+        android:paddingEnd="@dimen/widget_margin_wide"
+        android:paddingLeft="@dimen/widget_margin_wide"
+        android:paddingRight="@dimen/widget_margin_wide"
+        android:paddingStart="@dimen/widget_margin_wide">
 
         <TextView
             android:id="@+id/widget_month"
             android:layout_width="48dp"
             android:layout_height="16dp"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginTop="@dimen/widget_margin_wide"
+            android:layout_marginLeft="@dimen/widget_margin_wide"
+            android:layout_marginRight="@dimen/widget_margin_wide"
             android:background="@color/main_color"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/abc_text_size_caption_material"
-            android:contentDescription="@string/card_view_event_month" />
+            android:contentDescription="@string/widget_item_month"
+            android:clickable="false" />
 
         <TextView
             android:id="@+id/widget_day"
@@ -38,14 +39,14 @@
             android:layout_height="32dp"
             android:layout_alignParentRight="true"
             android:layout_below="@id/widget_month"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginBottom="@dimen/widget_margin_wide"
+            android:layout_marginLeft="@dimen/widget_margin_wide"
+            android:layout_marginRight="@dimen/widget_margin_wide"
             android:background="@drawable/back"
             android:gravity="center"
             android:textColor="@color/main_color"
             android:textSize="@dimen/abc_text_size_medium_material"
-            android:contentDescription="@string/card_view_event_day" />
+            android:contentDescription="@string/widget_item_day" />
 
         <TextView
             android:id="@+id/widget_topic"
@@ -54,12 +55,13 @@
             android:layout_alignTop="@id/widget_month"
             android:layout_toLeftOf="@id/widget_month"
             android:layout_gravity="center"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginLeft="@dimen/widget_margin_wide"
+            android:layout_marginStart="@dimen/widget_margin_wide"
             android:ellipsize="end"
             android:maxLines="2"
             android:textColor="@color/main_color"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2" />
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+            android:contentDescription="@string/widget_item_topic" />
 
         <TextView
             android:id="@+id/widget_speaker"
@@ -71,7 +73,9 @@
             android:layout_toLeftOf="@id/widget_day"
             android:layout_gravity="center"
             android:textColor="@color/main_color"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+            android:contentDescription="@string/widget_item_speaker" />
 
     </RelativeLayout>
+
 </FrameLayout>

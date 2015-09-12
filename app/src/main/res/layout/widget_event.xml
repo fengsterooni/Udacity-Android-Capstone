@@ -3,19 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_color"
-    android:padding="@dimen/widget_margin">
+    android:padding="@dimen/widget_margin"
+    android:contentDescription="@string/widget_event_layout">
 
     <TextView
         android:id="@+id/widget_topic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginTop="@dimen/widget_margin"
+        android:layout_marginLeft="@dimen/widget_margin_wide"
+        android:layout_marginRight="@dimen/widget_margin_wide"
         android:ellipsize="end"
-        android:lines="2"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2" />
+        android:maxLines="2"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+        android:contentDescription="@string/widget_event_topic" />
 
     <TextView
         android:id="@+id/widget_speaker"
@@ -25,7 +27,8 @@
         android:layout_alignLeft="@id/widget_topic"
         android:layout_alignStart="@id/widget_topic"
         android:layout_gravity="center"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+        android:contentDescription="@string/widget_event_speaker" />
 
     <TextView
         android:id="@+id/widget_date"
@@ -36,8 +39,9 @@
         android:layout_alignLeft="@id/widget_topic"
         android:layout_alignStart="@id/widget_topic"
         android:gravity="end|center_vertical"
-        android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+        android:layout_marginRight="@dimen/widget_margin_wide"
+        android:layout_marginEnd="@dimen/widget_margin_wide"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+        android:contentDescription="@string/widget_event_date" />
 
 </RelativeLayout>

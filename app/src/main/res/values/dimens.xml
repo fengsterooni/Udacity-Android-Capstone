@@ -38,7 +38,7 @@ Refer to App Widget Documentation for margin information
 http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     -->
     <dimen name="widget_margin">8dp</dimen>
-    <dimen name="widget_score">16sp</dimen>
+    <dimen name="widget_margin_wide">@dimen/abc_list_item_padding_horizontal_material</dimen>
     <dimen name="widget_default_width">40dp</dimen>
     <dimen name="widget_default_height">40dp</dimen>
     <dimen name="widget_team">12sp</dimen>
@@ -51,5 +51,8 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     <dimen name="detail_card_elevation">6dp</dimen>
 
     <dimen name="notification_large_icon_default">48dp</dimen>
+
+    <dimen name="padding_textview_with_image">8dp</dimen>
+
 
 </resources>

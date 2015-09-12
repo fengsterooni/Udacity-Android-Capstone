@@ -20,6 +20,7 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
 
     private Cursor mCursor;
     private final Context mContext;
+    private final View mEmptyView;
     private final GroupAdapterOnClickHandler mClickHandler;
 
     public class GroupAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -47,9 +48,10 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
         void onClick(Long groupId, GroupAdapterViewHolder vh);
     }
 
-    public GroupAdapter(Context context, GroupAdapterOnClickHandler clickHandler) {
+    public GroupAdapter(Context context, GroupAdapterOnClickHandler clickHandler, View emptyView) {
         mContext = context;
         mClickHandler = clickHandler;
+        mEmptyView = emptyView;
     }
 
     public GroupAdapterViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewTyped) {
@@ -78,5 +80,6 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.GroupAdapter
     public void swapCursor(Cursor newCursor) {
         mCursor = newCursor;
         notifyDataSetChanged();
+        mEmptyView.setVisibility(getItemCount() == 0 ? View.VISIBLE : View.GONE);
     }
 }

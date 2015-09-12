@@ -1,5 +1,6 @@
 package org.csix.android.adapters;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +19,8 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.AboutAdapter
     private final String LOG_TAG = AboutAdapter.class.getSimpleName();
 
     private Cursor mCursor;
+    private final Context mContext;
+    private final View mEmptyView;
 
     public class AboutAdapterViewHolder extends RecyclerView.ViewHolder {
 
@@ -31,6 +34,11 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.AboutAdapter
             ButterKnife.bind(this, view);
 
         }
+    }
+
+    public AboutAdapter(Context context, View emptyView) {
+        mContext = context;
+        mEmptyView = emptyView;
     }
 
     public AboutAdapterViewHolder onCreateViewHolder(ViewGroup viewAbout, int viewTyped) {
@@ -60,5 +68,6 @@ public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.AboutAdapter
     public void swapCursor(Cursor newCursor) {
         mCursor = newCursor;
         notifyDataSetChanged();
+        mEmptyView.setVisibility(getItemCount() == 0 ? View.VISIBLE : View.GONE);
     }
 }

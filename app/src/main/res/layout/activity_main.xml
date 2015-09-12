@@ -2,12 +2,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:contentDescription="@string/main_activity_drawer_layout">
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/rootLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:contentDescription="@string/main_activity_coordinatorlayout">
 
         <include layout="@layout/include_appbar" />
 
@@ -16,7 +18,8 @@
             android:layout_height="match_parent"
             android:id="@+id/container"
             android:fillViewport="true"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:contentDescription="@string/main_activity_content_container" />
 
     </android.support.design.widget.CoordinatorLayout>
 
@@ -28,6 +31,7 @@
         app:headerLayout="@layout/nav_header"
         app:itemIconTint="#333"
         app:itemTextColor="#333"
-        app:menu="@menu/nav_drawer_items" />
+        app:menu="@menu/nav_drawer_items"
+        android:contentDescription="@string/nav_drawers" />
 
 </android.support.v4.widget.DrawerLayout>

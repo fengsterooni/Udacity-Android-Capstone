@@ -6,20 +6,20 @@
     android:orientation="vertical"
     android:background="#E3F2FD"
     android:padding="@dimen/widget_margin"
-    android:contentDescription="@string/layout_widget_collection">
+    android:contentDescription="@string/widget_collection_layout">
 
     <FrameLayout
         android:id="@+id/widget"
         android:layout_width="match_parent"
         android:layout_height="@dimen/abc_action_bar_default_height_material"
-        android:contentDescription="@string/layout_widget_collection_header">
+        android:contentDescription="@string/widget_collection_layout_header">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="8dp"
-            android:contentDescription="@string/app_name"
+            android:padding="@dimen/widget_margin"
+            android:contentDescription="@string/widget_collection_logo"
             android:src="@drawable/csix_logo" />
     </FrameLayout>
 
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:contentDescription="@string/layout_widget_collection_list">
+        android:contentDescription="@string/widget_collection_layout_list">
 
         <ListView
             android:id="@+id/widget_list"
@@ -35,7 +35,8 @@
             android:layout_height="match_parent"
             android:divider="@null"
             android:dividerHeight="0dp"
-            tools:listitem="@layout/widget_detail_list_item" />
+            tools:listitem="@layout/widget_detail_list_item"
+            android:contentDescription="@string/widget_collection_listview" />
 
     </FrameLayout>
 

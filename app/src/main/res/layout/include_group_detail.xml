@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:contentDescription="@string/group_detail_view_layout">
 
     <TextView
         android:id="@+id/tvGroupDetailTitle"
@@ -10,22 +11,25 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:transitionName="@string/transition_name_group_name"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+        android:contentDescription="@string/group_detail_group_name" />
 
     <TextView
         android:id="@+id/tvGroupTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_action_event"
-        android:drawablePadding="8dp"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+        android:drawablePadding="@dimen/padding_textview_with_image"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+        android:contentDescription="@string/group_detail_group_time" />
 
     <TextView
         android:id="@+id/tvGroupLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_action_direction"
-        android:drawablePadding="8dp"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
+        android:drawablePadding="@dimen/padding_textview_with_image"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
+        android:contentDescription="@string/group_detail_group_location" />
 
 </LinearLayout>
