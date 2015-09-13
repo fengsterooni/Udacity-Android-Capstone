@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     android:contentDescription="@string/main_activity_drawer_layout">
 
+    <!-- http://stackoverflow.com/questions/30686225/adview-and-floatingactionbutton-overlap-while-using-coordinatorlayout -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -17,8 +18,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
+import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd;
 
 import org.csix.android.R;
 import org.csix.android.fragments.EventFragment;
@@ -31,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
     public static final String MAIN_TAG = "MAIN_TAG";
+
+    PublisherInterstitialAd mPublisherInterstitialAd;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -74,6 +80,19 @@ public class MainActivity extends AppCompatActivity {
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         adView.loadAd(adRequest);
+
+        mPublisherInterstitialAd = new PublisherInterstitialAd(MainActivity.this);
+        mPublisherInterstitialAd.setAdUnitId("/6499/example/interstitial");
+
+        mPublisherInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+                showMap();
+            }
+        });
+
+        requestNewInterstitial();
     }
 
     private void setupDrawer() {
@@ -111,9 +130,12 @@ public class MainActivity extends AppCompatActivity {
                         // Snackbar.make(rootLayout, "Event Event Event!", Snackbar.LENGTH_SHORT).show();
                         break;
                     case R.id.navDirection:
-                        startActivity(new Intent(MainActivity.this, DirectionActivity.class));
+                        // startActivity(new Intent(MainActivity.this, DirectionActivity.class));
                         // fragment = DirectionFragment.newInstance("Direction", "arg2");
-                        // Snackbar.make(rootLayout, "Where where?!", Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(rootLayout, "Where where?!", Snackbar.LENGTH_SHORT).show();
+
+                        startMap(rootLayout);
+
                         break;
                     case R.id.navGroup:
                         fragment = new GroupFragment();
@@ -179,5 +201,25 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
         super.onBackPressed();
+    }
+
+    private void requestNewInterstitial() {
+        PublisherAdRequest adRequest = new PublisherAdRequest.Builder()
+                .addTestDevice(getResources().getString(R.string.ad_unit_id))
+                .build();
+
+        mPublisherInterstitialAd.loadAd(adRequest);
+    }
+
+    public void startMap(View view) {
+        if (mPublisherInterstitialAd.isLoaded()) {
+            mPublisherInterstitialAd.show();
+        } else {
+            showMap();
+        }
+    }
+
+    public void showMap() {
+        startActivity(new Intent(this, DirectionActivity.class));
     }
 }
