@@ -81,6 +81,12 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         adView.loadAd(adRequest);
 
+        // To make interstitial work, make sure to follow:
+        // https://developers.google.com/admob/android/interstitial
+        // to get the right AdUnitId and TestDeviceID (from LogCat)
+        // Don't forget to update add free/paid to Google MAP API signature
+        // Don't forget to update AndroidManifest.xml
+        
         mPublisherInterstitialAd = new PublisherInterstitialAd(MainActivity.this);
         mPublisherInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
 
