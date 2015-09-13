@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         adView.loadAd(adRequest);
 
         mPublisherInterstitialAd = new PublisherInterstitialAd(MainActivity.this);
-        mPublisherInterstitialAd.setAdUnitId("/6499/example/interstitial");
+        mPublisherInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
 
         mPublisherInterstitialAd.setAdListener(new AdListener() {
             @Override
@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void requestNewInterstitial() {
         PublisherAdRequest adRequest = new PublisherAdRequest.Builder()
-                .addTestDevice(getResources().getString(R.string.ad_unit_id))
+                .addTestDevice("E332EC9E2F6AC08446104FF1207B306E")
                 .build();
 
         mPublisherInterstitialAd.loadAd(adRequest);
