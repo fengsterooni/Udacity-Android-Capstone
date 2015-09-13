@@ -17,6 +17,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.csix.android.R;
 import org.csix.android.fragments.EventFragment;
 import org.csix.android.fragments.GroupFragment;
@@ -42,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     CoordinatorLayout rootLayout;
     @Bind(R.id.navigation)
     NavigationView navigation;
+    @Bind(R.id.adView)
+    AdView adView;
 
     ActionBarDrawerToggle drawerToggle;
 
@@ -64,6 +69,11 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, new EventFragment(), MAIN_TAG)
                     .commit();
         }
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        adView.loadAd(adRequest);
     }
 
     private void setupDrawer() {
