@@ -7,11 +7,13 @@ import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
@@ -111,83 +113,92 @@ public class EventIntentService extends IntentService {
 
     private void notifyEvents() {
 
-        // we'll query our contentProvider, as always
-        Cursor cursor = getContentResolver().query(
-                CSixContract.EventEntry.CONTENT_URI,
-                null,
-                null,
-                null,
-                CSixContract.EventEntry.COLUMN_DATE + " ASC"
-        );
+        //checking the last update and notify if it' the first of the day
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String displayNotificationsKey = getString(R.string.pref_enable_notifications_key);
+        boolean displayNotifications = prefs.getBoolean(displayNotificationsKey,
+                Boolean.parseBoolean(getString(R.string.pref_enable_notifications_default)));
 
-        if (cursor.moveToFirst()) {
-            String topic = cursor.getString(cursor.getColumnIndex(CSixContract.EventEntry.COLUMN_TOPIC));
-            String speakerUrl = cursor.getString(cursor.getColumnIndex(CSixContract.EventEntry.COLUMN_IMAGE));
-            String speaker = cursor.getString(cursor.getColumnIndex(CSixContract.EventEntry.COLUMN_SPEAKER));
-            Date date = new Date(cursor.getLong(cursor.getColumnIndex(CSixContract.EventEntry.COLUMN_DATE)));
+        if (displayNotifications) {
 
-            Resources resources = getResources();
+            // we'll query our contentProvider, as always
+            Cursor cursor = getContentResolver().query(
+                    CSixContract.EventEntry.CONTENT_URI,
+                    null,
+                    null,
+                    null,
+                    CSixContract.EventEntry.COLUMN_DATE + " ASC"
+            );
 
-            // On Honeycomb and higher devices, we can retrieve the size of the large icon
-            // Prior to that, we use a fixed size
-            @SuppressLint("InlinedApi")
-            int largeIconWidth = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
-                    ? resources.getDimensionPixelSize(android.R.dimen.notification_large_icon_width)
-                    : resources.getDimensionPixelSize(R.dimen.notification_large_icon_default);
-            @SuppressLint("InlinedApi")
-            int largeIconHeight = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
-                    ? resources.getDimensionPixelSize(android.R.dimen.notification_large_icon_height)
-                    : resources.getDimensionPixelSize(R.dimen.notification_large_icon_default);
+            if (cursor.moveToFirst()) {
+                String topic = cursor.getString(cursor.getColumnIndex(CSixContract.EventEntry.COLUMN_TOPIC));
+                String speakerUrl = cursor.getString(cursor.getColumnIndex(CSixContract.EventEntry.COLUMN_IMAGE));
+                String speaker = cursor.getString(cursor.getColumnIndex(CSixContract.EventEntry.COLUMN_SPEAKER));
+                Date date = new Date(cursor.getLong(cursor.getColumnIndex(CSixContract.EventEntry.COLUMN_DATE)));
 
-            // Retrieve the large icon
-            Bitmap largeIcon;
-            try {
-                largeIcon = Glide.with(this)
-                        .load(speakerUrl)
-                        .asBitmap()
-                        .fitCenter()
-                        .into(largeIconWidth, largeIconHeight).get();
-            } catch (InterruptedException | ExecutionException e) {
-                Log.e(LOG_TAG, "Error retrieving large icon from " + speakerUrl, e);
-                largeIcon = BitmapFactory.decodeResource(resources, R.drawable.csix_logo);
+                Resources resources = getResources();
+
+                // On Honeycomb and higher devices, we can retrieve the size of the large icon
+                // Prior to that, we use a fixed size
+                @SuppressLint("InlinedApi")
+                int largeIconWidth = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
+                        ? resources.getDimensionPixelSize(android.R.dimen.notification_large_icon_width)
+                        : resources.getDimensionPixelSize(R.dimen.notification_large_icon_default);
+                @SuppressLint("InlinedApi")
+                int largeIconHeight = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
+                        ? resources.getDimensionPixelSize(android.R.dimen.notification_large_icon_height)
+                        : resources.getDimensionPixelSize(R.dimen.notification_large_icon_default);
+
+                // Retrieve the large icon
+                Bitmap largeIcon;
+                try {
+                    largeIcon = Glide.with(this)
+                            .load(speakerUrl)
+                            .asBitmap()
+                            .fitCenter()
+                            .into(largeIconWidth, largeIconHeight).get();
+                } catch (InterruptedException | ExecutionException e) {
+                    Log.e(LOG_TAG, "Error retrieving large icon from " + speakerUrl, e);
+                    largeIcon = BitmapFactory.decodeResource(resources, R.drawable.csix_logo);
+                }
+                String title = getString(R.string.app_name);
+
+
+                // NotificationCompatBuilder is a very convenient way to build backward-compatible
+                // notifications.  Just throw in some data.
+                NotificationCompat.Builder mBuilder =
+                        new NotificationCompat.Builder(this)
+                                .setColor(resources.getColor(R.color.main_color))
+                                .setSmallIcon(R.drawable.ic_notifications_active_white_48dp)
+                                .setLargeIcon(largeIcon)
+                                .setContentTitle(topic)
+                                .setContentText(speaker);
+
+                // Make something interesting happen when the user clicks on the notification.
+                // In this case, opening the app is sufficient.
+                Intent resultIntent = new Intent(this, MainActivity.class);
+
+                // The stack builder object will contain an artificial back stack for the
+                // started Activity.
+                // This ensures that navigating backward from the Activity leads out of
+                // your application to the Home screen.
+                TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+                stackBuilder.addNextIntent(resultIntent);
+                PendingIntent resultPendingIntent =
+                        stackBuilder.getPendingIntent(
+                                0,
+                                PendingIntent.FLAG_UPDATE_CURRENT
+                        );
+                mBuilder.setContentIntent(resultPendingIntent);
+
+                NotificationManager mNotificationManager =
+                        (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+                mNotificationManager.notify(EVENT_NOTIFICATION_ID, mBuilder.build());
+
             }
-            String title = getString(R.string.app_name);
-
-
-            // NotificationCompatBuilder is a very convenient way to build backward-compatible
-            // notifications.  Just throw in some data.
-            NotificationCompat.Builder mBuilder =
-                    new NotificationCompat.Builder(this)
-                            .setColor(resources.getColor(R.color.main_color))
-                            .setSmallIcon(R.drawable.ic_stat_update)
-                            .setLargeIcon(largeIcon)
-                            .setContentTitle(topic)
-                            .setContentText(speaker);
-
-            // Make something interesting happen when the user clicks on the notification.
-            // In this case, opening the app is sufficient.
-            Intent resultIntent = new Intent(this, MainActivity.class);
-
-            // The stack builder object will contain an artificial back stack for the
-            // started Activity.
-            // This ensures that navigating backward from the Activity leads out of
-            // your application to the Home screen.
-            TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-            stackBuilder.addNextIntent(resultIntent);
-            PendingIntent resultPendingIntent =
-                    stackBuilder.getPendingIntent(
-                            0,
-                            PendingIntent.FLAG_UPDATE_CURRENT
-                    );
-            mBuilder.setContentIntent(resultPendingIntent);
-
-            NotificationManager mNotificationManager =
-                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-            mNotificationManager.notify(EVENT_NOTIFICATION_ID, mBuilder.build());
-
+            cursor.close();
         }
-        cursor.close();
     }
 
     private void updateWidgets() {

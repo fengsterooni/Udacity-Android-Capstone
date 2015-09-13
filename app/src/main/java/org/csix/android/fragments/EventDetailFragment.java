@@ -99,20 +99,28 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
     TextView desc;
     @Bind(R.id.tvEventDetailTime)
     TextView time;
-    @Bind(R.id.ivEventDetailCalendar)
-    ImageView calendar;
-    @OnClick(R.id.ivEventDetailCalendar)
+    @OnClick(R.id.tvEventDetailTime)
     void addToCalendar() {
         CalendarUtils.addToCalendar(getContext(), eventTopic, date);
     }
-    @Bind(R.id.ivEventDetailLocation)
-    ImageView location;
-    @OnClick(R.id.ivEventDetailLocation)
+    //@Bind(R.id.ivEventDetailCalendar)
+    //ImageView calendar;
+    //@OnClick(R.id.ivEventDetailCalendar)
+    //void addToCalendar() {
+    //    CalendarUtils.addToCalendar(getContext(), eventTopic, date);
+    //}
+    //@Bind(R.id.ivEventDetailLocation)
+    //ImageView location;
+    //@OnClick(R.id.ivEventDetailLocation)
+    //void locationAddress() {
+    //    startActivity(new Intent(getActivity(), DirectionActivity.class));
+    //}
+    @Bind(R.id.tvEventDetailLocation)
+    TextView address;
+    @OnClick(R.id.tvEventDetailLocation)
     void locationAddress() {
         startActivity(new Intent(getActivity(), DirectionActivity.class));
     }
-    @Bind(R.id.tvEventDetailLocation)
-    TextView address;
 
     public EventDetailFragment() {
     }

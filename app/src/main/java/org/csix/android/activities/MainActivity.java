@@ -14,13 +14,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import org.csix.android.R;
 import org.csix.android.fragments.EventFragment;
 import org.csix.android.fragments.GroupFragment;
-import org.csix.android.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -115,6 +114,11 @@ public class MainActivity extends AppCompatActivity {
                         // fragment = AboutFragment.newInstance("About", "arg2");
                         // Snackbar.make(rootLayout, "HU AM I?!", Snackbar.LENGTH_SHORT).show();
                         break;
+                    case R.id.navSetting:
+                        startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                        // fragment = AboutFragment.newInstance("About", "arg2");
+                        // Snackbar.make(rootLayout, "HU AM I?!", Snackbar.LENGTH_SHORT).show();
+                        break;
                 }
 
                 if (fragment != null) {
@@ -144,13 +148,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -163,18 +160,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
-    }
-
-    private boolean isTablet() {
-        return (getApplicationContext().getResources().getConfiguration().screenLayout
-                & Configuration.SCREENLAYOUT_SIZE_MASK)
-                >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
     @Override

@@ -67,49 +67,31 @@
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
                     android:contentDescription="@string/event_detail_event_speaker" />
 
-                <ImageView
-                    android:id="@+id/ivEventDetailCalendar"
-                    android:layout_width="30dp"
-                    android:layout_height="50dp"
-                    android:layout_alignLeft="@id/tvTopic"
-                    android:layout_alignStart="@id/tvTopic"
-                    android:layout_below="@id/tvSpeaker"
-                    android:layout_marginEnd="@dimen/activity_vertical_margin"
-                    android:layout_marginRight="@dimen/activity_vertical_margin"
-                    android:contentDescription="@string/icon_add_to_calendar"
-                    android:src="@drawable/ic_calender_add_tinted" />
-
                 <TextView
                     android:id="@+id/tvEventDetailTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignTop="@id/ivEventDetailCalendar"
                     android:layout_below="@id/tvSpeaker"
-                    android:layout_toEndOf="@id/ivEventDetailCalendar"
-                    android:layout_toRightOf="@id/ivEventDetailCalendar"
-                    android:paddingTop="16dp"
-                    android:contentDescription="@string/event_detail_event_time" />
-
-                <ImageView
-                    android:id="@+id/ivEventDetailLocation"
-                    android:layout_width="30dp"
-                    android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/main_color"
                     android:layout_alignLeft="@id/tvTopic"
                     android:layout_alignStart="@id/tvTopic"
-                    android:layout_below="@id/ivEventDetailCalendar"
-                    android:layout_marginEnd="@dimen/activity_vertical_margin"
-                    android:layout_marginRight="@dimen/activity_vertical_margin"
-                    android:contentDescription="@string/icon_location"
-                    android:src="@drawable/ic_location_tinted" />
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_calender_add_tinted"
+                    android:drawablePadding="@dimen/padding_textview_with_image"
+                    android:contentDescription="@string/event_detail_event_time" />
 
                 <TextView
                     android:id="@+id/tvEventDetailLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvEventDetailTime"
-                    android:layout_toEndOf="@id/ivEventDetailLocation"
-                    android:layout_toRightOf="@id/ivEventDetailLocation"
-                    android:paddingTop="16dp"
+                    android:textColor="@color/main_color"
+                    android:layout_alignLeft="@id/tvTopic"
+                    android:layout_alignStart="@id/tvTopic"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_location_tinted"
+                    android:drawablePadding="@dimen/padding_textview_with_image"
                     android:contentDescription="@string/event_detail_event_location" />
 
             </RelativeLayout>
@@ -137,7 +119,7 @@
         android:layout_marginBottom="@dimen/fab_margin"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
-        android:src="@drawable/ic_share"
+        android:src="@drawable/ic_share_white_48dp"
         android:stateListAnimator="@anim/fab_state_list_anim"
         app:borderWidth="0dp"
         app:elevation="@dimen/fab_elevation"

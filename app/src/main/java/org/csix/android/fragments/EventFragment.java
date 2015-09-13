@@ -83,10 +83,9 @@ public class EventFragment extends Fragment implements LoaderManager.LoaderCallb
                         // For each shared element, add to this method a new Pair item,
                         // which contains the reference of the view we are transitioning *from*,
                         // and the value of the transitionName attribute
-                        new Pair<View, String>(vh.speakerImage, getString(R.string.transition_name_profile))
-                        // ,
-                        // new Pair<View, String>(vh.topic, getString(R.string.transition_name_topic)),
-                        // new Pair<View, String>(vh.speaker, getString(R.string.transition_name_speaker))
+                        new Pair<View, String>(vh.speakerImage, getString(R.string.transition_name_profile)),
+                        new Pair<View, String>(vh.topic, getString(R.string.transition_name_topic)),
+                        new Pair<View, String>(vh.speaker, getString(R.string.transition_name_speaker))
                 );
                 ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
                 // startActivity(intent);

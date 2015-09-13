@@ -41,9 +41,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventAdapter
         @Bind(R.id.ivSpeaker)
         public RoundedImageView speakerImage;
         @Bind(R.id.tvSpeaker)
-        TextView speaker;
+        public TextView speaker;
         @Bind(R.id.tvTopic)
-        TextView topic;
+        public TextView topic;
         @Bind(R.id.tvDateMonth)
         TextView month;
         @OnClick(R.id.tvDateMonth)

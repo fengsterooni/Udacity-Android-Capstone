@@ -18,7 +18,7 @@
         android:id="@+id/tvGroupTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_action_event"
+        android:drawableStart="@drawable/ic_event_black_24dp"
         android:drawablePadding="@dimen/padding_textview_with_image"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
         android:contentDescription="@string/group_detail_group_time" />
@@ -27,7 +27,7 @@
         android:id="@+id/tvGroupLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_action_direction"
+        android:drawableStart="@drawable/ic_location_on_black_24dp"
         android:drawablePadding="@dimen/padding_textview_with_image"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
         android:contentDescription="@string/group_detail_group_location" />
