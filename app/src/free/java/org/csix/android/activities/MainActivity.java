@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         // to get the right AdUnitId and TestDeviceID (from LogCat)
         // Don't forget to update add free/paid to Google MAP API signature
         // Don't forget to update AndroidManifest.xml
-        
+
         mPublisherInterstitialAd = new PublisherInterstitialAd(MainActivity.this);
         mPublisherInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
 

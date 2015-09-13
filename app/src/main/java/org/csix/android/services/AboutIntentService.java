@@ -29,6 +29,7 @@ public class AboutIntentService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         /*
+        // This part is for local backend testing
         MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                 new AndroidJsonFactory(), null)
                 // options for running against local devappserver
@@ -44,6 +45,7 @@ public class AboutIntentService extends IntentService {
                 }); */
         // end options for devappserver
 
+        // This part is for deployed Google Endpoint
         MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
                 .setRootUrl("https://disco-task-719.appspot.com/_ah/api/");
 

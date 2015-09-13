@@ -103,18 +103,7 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
     void addToCalendar() {
         CalendarUtils.addToCalendar(getContext(), eventTopic, date);
     }
-    //@Bind(R.id.ivEventDetailCalendar)
-    //ImageView calendar;
-    //@OnClick(R.id.ivEventDetailCalendar)
-    //void addToCalendar() {
-    //    CalendarUtils.addToCalendar(getContext(), eventTopic, date);
-    //}
-    //@Bind(R.id.ivEventDetailLocation)
-    //ImageView location;
-    //@OnClick(R.id.ivEventDetailLocation)
-    //void locationAddress() {
-    //    startActivity(new Intent(getActivity(), DirectionActivity.class));
-    //}
+
     @Bind(R.id.tvEventDetailLocation)
     TextView address;
     @OnClick(R.id.tvEventDetailLocation)

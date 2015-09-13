@@ -51,19 +51,6 @@ public class DirectionActivity extends BaseMapActivity {
         locationAddress = "20390 Park Place, Saratoga, CA 95070";
         latLng = LocationUtils.getAddress(this, locationAddress);
     }
-/*
-    saratoga & park
-    37.259537, -122.030344
-
-    Church entrance
-    37.258169, -122.029994
-
-    Lower parking lot
-    37.259189, -122.030509
-
-    Lifthouse (C6) Entrance
-    37.258055, -122.030835
-    */
 
     @Override
     protected void setupMap() {
@@ -77,14 +64,10 @@ public class DirectionActivity extends BaseMapActivity {
         if (latLng != null) {
             CameraPosition cp = CameraPosition.builder().target(latLng).zoom(18).tilt(60).build();
             map.moveCamera(CameraUpdateFactory.newCameraPosition(cp));
-            //CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(37.258055, -122.030835), 17);
-            //map.moveCamera(cameraUpdate);
-            //map.animateCamera(cameraUpdate);
             map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
             marker = map.addMarker(new MarkerOptions()
                     .position(latLng));
-            // dropPinEffect(marker);
 
             setupSigns();
         }

@@ -64,16 +64,10 @@ public class GroupDetailFragment extends Fragment implements
 
     @Bind(R.id.tvGroupDetailTitle)
     TextView groupName;
-    //@Bind(R.id.tvGroupAddress)
-    //TextView groupAddress;
     @Bind(R.id.tvGroupLocation)
     TextView groupLocation;
     @Bind(R.id.tvGroupTime)
     TextView groupTime;
-    // @Nullable @Bind(R.id.ivGroupLocation)
-    // ImageView ivLocation;
-    // @Nullable @Bind(R.id.ivGroupDetailCalendar)
-    // ImageView ivCalendar;
 
     public GroupDetailFragment() {
         // Required empty public constructor
