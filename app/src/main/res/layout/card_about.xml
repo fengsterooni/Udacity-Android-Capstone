@@ -46,9 +46,9 @@
             android:layout_alignLeft="@id/tvAboutTitle"
             android:layout_below="@id/tvAboutTitle"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginRight="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
             android:layout_marginTop="@dimen/list_margin"
             android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
             android:contentDescription="@string/card_view_about_content" />
