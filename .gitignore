@@ -27,8 +27,6 @@ proguard-project.txt
 *.iml
 *.ipr
 *.iws
-.gradle/**
-build/**
 /build
 /backend/build
 

@@ -13,8 +13,8 @@
     <dimen name="list_image_size">48dp</dimen>
     <dimen name="list_image_radius">24dp</dimen>
 
-    <dimen name="card_vertical_margin">4dp</dimen>
-    <dimen name="card_horizontal_margin">4dp</dimen>
+    <dimen name="card_vertical_margin">8dp</dimen>
+    <dimen name="card_horizontal_margin">8dp</dimen>
 
     <dimen name="grid_vertical_margin">4dp</dimen>
     <dimen name="grid_horizontal_margin">4dp</dimen>

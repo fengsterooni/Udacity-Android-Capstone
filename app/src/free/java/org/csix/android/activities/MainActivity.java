@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -138,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.navDirection:
                         // startActivity(new Intent(MainActivity.this, DirectionActivity.class));
                         // fragment = DirectionFragment.newInstance("Direction", "arg2");
-                        Snackbar.make(rootLayout, "Where where?!", Snackbar.LENGTH_SHORT).show();
+                        // Snackbar.make(rootLayout, "Where where?!", Snackbar.LENGTH_SHORT).show();
 
                         startMap(rootLayout);
 

@@ -36,7 +36,8 @@
             android:layout_height="wrap_content"
             app:adSize="BANNER"
             app:adUnitId="@string/banner_ad_unit_id"
-            android:layout_gravity="center_horizontal|bottom" />
+            android:layout_gravity="center_horizontal|bottom"
+            android:contentDescription="@string/adview" />
 
     </LinearLayout>
 

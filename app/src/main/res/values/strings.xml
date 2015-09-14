@@ -34,6 +34,7 @@
     <string name="about_empty_view">About Empty View</string>
 
     <string name="action_share">Share</string>
+    <string name="adview">Adview</string>
 
     <string name="recyclerview_group">Group RecyclerView</string>
     <string name="recyclerview_event">Event RecyclerView</string>

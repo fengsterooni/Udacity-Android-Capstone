@@ -7,7 +7,6 @@
     android:layout_marginEnd="@dimen/card_horizontal_margin"
     android:layout_marginRight="@dimen/card_horizontal_margin"
     android:layout_marginTop="@dimen/card_vertical_margin"
-    android:layout_marginBottom="@dimen/card_vertical_margin"
     android:contentDescription="@string/card_view_event">
 
     <RelativeLayout
@@ -31,7 +30,7 @@
             android:layout_width="48dp"
             android:layout_height="16dp"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/list_margin"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:background="@color/main_color"
@@ -63,8 +62,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_alignTop="@id/tvDateMonth"
-            android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:layout_marginEnd="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/list_margin"
+            android:layout_marginEnd="@dimen/list_margin"
             android:layout_toRightOf="@id/ivSpeaker"
             android:layout_toEndOf="@id/ivSpeaker"
             android:layout_toLeftOf="@id/tvDateMonth"
@@ -86,7 +85,7 @@
             android:layout_below="@id/tvTopic"
             android:layout_gravity="center"
             android:transitionName="@string/transition_name_speaker"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/list_margin"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
             android:contentDescription="@string/card_view_event_speaker_name" />
 
