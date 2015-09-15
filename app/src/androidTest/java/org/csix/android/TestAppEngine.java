@@ -297,13 +297,25 @@ public class TestAppEngine extends AndroidTestCase {
             myApiService.removeAllAbouts().execute();
 
             About about = new About();
-            about.setTitle("About");
-            about.setDesc("CSIX CONNECT helps individuals in career transition to significantly improve their job search success through education, in-person networking and mutual support.   In today’s job market, more than 80 per cent of jobs obtained result from successful networking. CSIX CONNECT provides the means to tap into and leverage the power of a network that is already more than 7000 members strong.");
+            about.setTitle("Meeting Details");
+            about.setDesc("Every Thursday 10:00 a.m. – 1:00 p.m \n\n" +
+                            "Saratoga Federated Church\n" +
+                            "Richards Hall\n" +
+                            "20390 Park Place\n" +
+                            "Saratoga, CA\n" +
+                            "408.867.1000\n\n" +
+                            "$10 per person (Covers program and lunch. Cash and personal checks only please)."
+            );
             myApiService.insertAbout(about).execute();
 
             about = new About();
             about.setTitle("Connect");
             about.setDesc("CSIX is built on the belief that networking is most effective when done face-to-face. Therefore, to join CSIX you must attend a meeting and sign up in person. Membership is free. CSIX membership provides access to a vast array of job listings and job search resources via other members, the CSIX CONNECT Yahoo! group.");
+            myApiService.insertAbout(about).execute();
+
+            about = new About();
+            about.setTitle("About");
+            about.setDesc("CSIX CONNECT helps individuals in career transition to significantly improve their job search success through education, in-person networking and mutual support.   In today’s job market, more than 80 per cent of jobs obtained result from successful networking. CSIX CONNECT provides the means to tap into and leverage the power of a network that is already more than 7000 members strong.");
             myApiService.insertAbout(about).execute();
         }
     }
