@@ -29,6 +29,8 @@ proguard-project.txt
 *.iws
 /build
 /backend/build
+/keystore.jks
+/release.properties
 
 .idea/**
 import-summary.txt

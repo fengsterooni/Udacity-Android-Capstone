@@ -1,9 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.0"
-
     defaultConfig {
         applicationId "org.csix.android"
         minSdkVersion 17
@@ -15,10 +17,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
-
-    productFlavors{
+    productFlavors {
         free {
             applicationId "org.csix.android.free"
         }
@@ -49,3 +51,10 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.6.1'
     compile 'com.makeramen:roundedimageview:2.0.1'
 }
+
+def props = new Properties()
+props.load(new FileInputStream(rootProject.file("release.properties")))
+android.signingConfigs.release.storeFile rootProject.file(props.keyStore)
+android.signingConfigs.release.storePassword props.keyStorePassword
+android.signingConfigs.release.keyAlias props.keyAlias
+android.signingConfigs.release.keyPassword props.keyAliasPassword
