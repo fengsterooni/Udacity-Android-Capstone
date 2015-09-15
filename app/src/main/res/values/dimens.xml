@@ -10,8 +10,8 @@
     <dimen name="list_horizontal_margin">4dp</dimen>
     <dimen name="list_margin">16dp</dimen>
 
-    <dimen name="list_image_size">48dp</dimen>
-    <dimen name="list_image_radius">24dp</dimen>
+    <dimen name="list_image_size">64dp</dimen>
+    <dimen name="list_image_radius">32dp</dimen>
 
     <dimen name="default_margin">@dimen/abc_list_item_padding_horizontal_material</dimen>
 

@@ -32,12 +32,12 @@
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/ivSpeaker"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="@dimen/list_image_size"
+                    android:layout_height="@dimen/list_image_size"
                     android:layout_gravity="center"
                     android:src="@drawable/csix_logo"
                     android:transitionName="@string/transition_name_profile"
-                    app:riv_corner_radius="32dp"
+                    app:riv_corner_radius="@dimen/list_image_radius"
                     android:contentDescription="@string/event_detail_event_speaker_image" />
 
                 <TextView
@@ -45,8 +45,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="@dimen/default_margin"
+                    android:layout_marginStart="@dimen/default_margin"
                     android:layout_toEndOf="@id/ivSpeaker"
                     android:layout_toRightOf="@id/ivSpeaker"
                     android:transitionName="@string/transition_name_topic"
@@ -72,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvSpeaker"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/default_margin"
                     android:textColor="@color/main_color"
                     android:layout_alignLeft="@id/tvTopic"
                     android:layout_alignStart="@id/tvTopic"
@@ -101,7 +101,7 @@
                 style="?android:attr/textAppearanceMedium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/default_margin"
                 android:layout_gravity="center"
                 android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
                 android:paddingBottom="@dimen/detail_body_bottom_margin"

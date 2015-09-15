@@ -38,11 +38,12 @@ directions (based on user’s location)
 
 ### **_Note:_**
 
-CSIX Connect is a nonprofit organization I am involved in recent years. I have done an simple app ( https://github.com/fengsterooni/CSIX ) for the organization several months ago, but it is really premature to be published.
+CSIX Connect is a nonprofit organization I am involved in recent years. I have done an simple app (https://github.com/fengsterooni/CSIX) for the organization several months ago, but it is really premature to be published.
 
 In this capstone project, following features are implemented:
 
 * Data Persistence: Content provider to store data locally
+* Cursor Loader
 * Google Cloud Endpoint to store/update data sets for client app
 * Material design: AppBar, parallax scrolling, and shared element transition...
 * Both phone and tablet support
@@ -50,7 +51,7 @@ In this capstone project, following features are implemented:
 * Google Play Services: Map, Location, Ads
 * Gradle build
 * Testing
-* Notifications for data set updates
+* Notifications
 * ShareActionProvider
 * Widgets
 
