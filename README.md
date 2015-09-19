@@ -1,7 +1,7 @@
 CSix Connect
 =============
 
-This project, **CSix Connect**, is the capstone project for [Udacity](www.udacity.com) [**"Android Developer Nanodegree"** program](https://www.udacity.com/course/android-developer-nanodegree--nd801).
+This project, **CSix Connect**, is the capstone project for [Udacity](https://www.udacity.com) [**"Android Developer Nanodegree"** program](https://www.udacity.com/course/android-developer-nanodegree--nd801).
 
 ### **_Introduction:_**
 
