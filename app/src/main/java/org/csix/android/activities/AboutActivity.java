@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 
 public class AboutActivity extends AppCompatActivity {
     private final String LOG_TAG = AboutActivity.class.getSimpleName();
-    static AboutFragment fragment;
+    private AboutFragment fragment;
     public final static String ABOUT_ID = "ABOUT_ID";
 
     @Bind(R.id.toolbar)

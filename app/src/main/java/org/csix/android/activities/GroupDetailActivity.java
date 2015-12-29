@@ -12,7 +12,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class GroupDetailActivity extends AppCompatActivity {
-    static GroupDetailFragment fragment;
+    private GroupDetailFragment fragment;
     public final static String GROUP_ID = "GROUP_ID";
 
     @Bind(R.id.toolbar)
