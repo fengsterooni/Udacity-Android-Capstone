@@ -32,7 +32,7 @@ public class GroupEndpoint {
 
         Query<Group> query = ofy().load().type(Group.class);
 
-        ArrayList<Group> records = new ArrayList<Group>();
+        ArrayList<Group> records = new ArrayList<>();
 
         for (Group e : query) {
             records.add(e);

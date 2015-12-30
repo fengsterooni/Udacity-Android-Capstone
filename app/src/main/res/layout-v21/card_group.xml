@@ -8,6 +8,7 @@
     android:layout_marginEnd="@dimen/grid_horizontal_margin"
     android:layout_marginTop="@dimen/grid_vertical_margin"
     android:clickable="true"
+    android:elevation="@dimen/card_elevation"
     android:focusable="true"
     android:foreground="?selectableItemBackground"
     android:contentDescription="@string/card_view_group">
@@ -34,6 +35,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="2"
+            android:transitionName="@string/transition_name_group_name"
             android:paddingBottom="4dp"
             android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
             android:paddingRight="@dimen/abc_list_item_padding_horizontal_material"

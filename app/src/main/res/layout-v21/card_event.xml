@@ -20,6 +20,7 @@
             android:layout_height="@dimen/list_image_size"
             android:layout_gravity="center_vertical"
             android:layout_margin="@dimen/list_margin"
+            android:transitionName="@string/transition_name_profile"
             android:src="@drawable/csix_logo"
             app:riv_corner_radius="@dimen/list_image_radius"
             android:contentDescription="@string/card_view_event_speaker_image" />
@@ -65,6 +66,7 @@
             android:layout_toEndOf="@id/ivSpeaker"
             android:layout_toLeftOf="@id/tvDateMonth"
             android:layout_toStartOf="@id/tvDateMonth"
+            android:transitionName="@string/transition_name_topic"
             android:ellipsize="end"
             android:maxLines="2"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
@@ -80,6 +82,7 @@
             android:layout_alignEnd="@id/tvTopic"
             android:layout_below="@id/tvTopic"
             android:layout_gravity="center"
+            android:transitionName="@string/transition_name_speaker"
             android:layout_marginBottom="@dimen/list_margin"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
             android:contentDescription="@string/card_view_event_speaker_name" />

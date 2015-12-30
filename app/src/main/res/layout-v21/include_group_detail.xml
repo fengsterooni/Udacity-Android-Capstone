@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:transitionName="@string/transition_name_group_name"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
         android:contentDescription="@string/group_detail_group_name" />
 

@@ -9,7 +9,7 @@
         android:id="@+id/fragment_group_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".GroupDetailActivity"
+        tools:context=".activities.GroupDetailActivity"
         android:contentDescription="@string/group_detail_activity_content_layout" />
 
     <android.support.v7.widget.Toolbar

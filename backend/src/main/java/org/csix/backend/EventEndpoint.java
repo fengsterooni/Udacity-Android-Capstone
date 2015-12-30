@@ -33,7 +33,7 @@ public class EventEndpoint {
 
         Query<Event> query = ofy().load().type(Event.class);
 
-        ArrayList<Event> records = new ArrayList<Event>();
+        ArrayList<Event> records = new ArrayList<>();
 
         for (Event e : query) {
             records.add(e);

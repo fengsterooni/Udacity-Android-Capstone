@@ -33,7 +33,7 @@ public class AboutEndpoint {
 
         Query<About> query = ofy().load().type(About.class);
 
-        ArrayList<About> records = new ArrayList<About>();
+        ArrayList<About> records = new ArrayList<>();
 
         for (About e : query) {
             records.add(e);
