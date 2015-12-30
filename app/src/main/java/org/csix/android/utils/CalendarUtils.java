@@ -39,7 +39,7 @@ public class CalendarUtils {
         context.startActivity(calIntent);
     }
 
-    public static void getDate(Date date) {
+    private static void getDate(Date date) {
         Calendar cal = Calendar.getInstance();
         if (date != null) {
             cal.setTime(date);

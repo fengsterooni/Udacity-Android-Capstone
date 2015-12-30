@@ -31,8 +31,8 @@ public class GroupDetailFragment extends Fragment implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
     private final String LOG_TAG = GroupDetailFragment.class.getSimpleName();
-    public static final String GROUP_ID = "GROUP_ID";
-    public static final int LOADER_ID = 401;
+    private static final String GROUP_ID = "GROUP_ID";
+    private static final int LOADER_ID = 401;
 
     private long groupId;
     private View view;
@@ -45,17 +45,17 @@ public class GroupDetailFragment extends Fragment implements
             CSixContract.GroupEntry.COLUMN_DESC
     };
 
-    public static final int COL_GROUP_ID       = 0;
-    public static final int COL_GROUP_NAME     = 1;
-    public static final int COL_GROUP_ADDRESS  = 2;
-    public static final int COL_GROUP_LOCATION = 3;
-    public static final int COL_GROUP_TIME     = 4;
-    public static final int COL_GROUP_DESC     = 5;
+    private static final int COL_GROUP_ID       = 0;
+    private static final int COL_GROUP_NAME     = 1;
+    private static final int COL_GROUP_ADDRESS  = 2;
+    private static final int COL_GROUP_LOCATION = 3;
+    private static final int COL_GROUP_TIME     = 4;
+    private static final int COL_GROUP_DESC     = 5;
 
-    SupportMapFragment mapFragment;
+    private SupportMapFragment mapFragment;
 
-    GoogleMap map;
-    LatLng latLng;
+    private GoogleMap map;
+    private LatLng latLng;
     String locationAddress;
     private String name;
     private String address;
@@ -130,7 +130,7 @@ public class GroupDetailFragment extends Fragment implements
         }
     }
 
-    public void setupMap() {
+    private void setupMap() {
 
         if (address != null) {
             latLng = LocationUtils.getAddress(getActivity(), address);

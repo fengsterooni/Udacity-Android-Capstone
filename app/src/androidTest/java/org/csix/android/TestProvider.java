@@ -15,13 +15,13 @@ public class TestProvider extends AndroidTestCase {
         deleteAllRecords();
     }
 
-    public void deleteAllRecords() {
+    private void deleteAllRecords() {
         deleteAllEvents();
         deleteAllGroups();
         deleteAllAbouts();
     }
 
-    public void deleteAllEvents() {
+    private void deleteAllEvents() {
         // Testing Events
         mContext.getContentResolver().delete(
                 CSixContract.EventEntry.CONTENT_URI,
@@ -42,7 +42,7 @@ public class TestProvider extends AndroidTestCase {
         cursor.close();
     }
 
-    public void deleteAllGroups() {
+    private void deleteAllGroups() {
 
         // Testing Groups
         mContext.getContentResolver().delete(
@@ -65,7 +65,7 @@ public class TestProvider extends AndroidTestCase {
 
     }
 
-    public void deleteAllAbouts() {
+    private void deleteAllAbouts() {
 
         // Testing Groups
         mContext.getContentResolver().delete(

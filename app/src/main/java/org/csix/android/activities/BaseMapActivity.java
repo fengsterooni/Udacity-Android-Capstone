@@ -36,12 +36,14 @@ public abstract class BaseMapActivity extends AppCompatActivity implements
 
     private GoogleMap map;
     private GoogleApiClient mGoogleApiClient;
-    protected LatLng srcLatLng, latLng;
-    protected String srcLatitude, srcLongitude;
+    private LatLng srcLatLng;
+    private LatLng latLng;
+    private String srcLatitude;
+    private String srcLongitude;
 
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 10000;
 
-    protected int getLayoutId() {
+    int getLayoutId() {
         return R.layout.activity_map_base;
     }
 
@@ -54,11 +56,11 @@ public abstract class BaseMapActivity extends AppCompatActivity implements
 
     protected abstract void setupMap();
 
-    protected GoogleMap getMap() {
+    GoogleMap getMap() {
         return map;
     }
 
-    public void init() {
+    private void init() {
         SupportMapFragment mapFragment = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
         if (mapFragment != null) {
             mapFragment.getMapAsync(new OnMapReadyCallback() {
@@ -73,7 +75,7 @@ public abstract class BaseMapActivity extends AppCompatActivity implements
         }
     }
 
-    protected void loadMap(GoogleMap googleMap) {
+    private void loadMap(GoogleMap googleMap) {
         map = googleMap;
         if (map != null) {
             map.setMyLocationEnabled(true);
@@ -130,7 +132,7 @@ public abstract class BaseMapActivity extends AppCompatActivity implements
         }
     }
 
-    protected void connectClient() {
+    private void connectClient() {
         // Connect the client.
         if (isGooglePlayServicesAvailable() && mGoogleApiClient != null) {
             mGoogleApiClient.connect();

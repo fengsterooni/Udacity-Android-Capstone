@@ -28,11 +28,11 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
             CSixContract.EventEntry.COLUMN_TYPE
     };
 
-    static final int COL_EVENT_ID        = 0;
-    static final int COL_EVENT_DATE      = 1;
-    static final int COL_EVENT_SPEAKER   = 2;
+    private static final int COL_EVENT_ID        = 0;
+    private static final int COL_EVENT_DATE      = 1;
+    private static final int COL_EVENT_SPEAKER   = 2;
     static final int COL_EVENT_IMAGE     = 3;
-    static final int COL_EVENT_TOPIC     = 4;
+    private static final int COL_EVENT_TOPIC     = 4;
     static final int COL_EVENT_DESC      = 5;
     static final int COL_EVENT_TYPE      = 6;
 

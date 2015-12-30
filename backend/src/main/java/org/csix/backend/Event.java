@@ -8,13 +8,13 @@ import java.util.Date;
 @Entity
 public class Event {
     @Id
-    Long id;
-    Date date;
-    String speaker;
-    String image;
-    String topic;
-    String desc;
-    int type = 0;
+    private Long id;
+    private Date date;
+    private String speaker;
+    private String image;
+    private String topic;
+    private String desc;
+    private int type = 0;
 
     public Event() {}
 
@@ -33,7 +33,7 @@ public class Event {
         return date;
     }
 
-    public void setDate(Date date) {
+    private void setDate(Date date) {
         this.date = date;
     }
 
@@ -41,7 +41,7 @@ public class Event {
         return desc;
     }
 
-    public void setDesc(String desc) {
+    private void setDesc(String desc) {
         this.desc = desc;
     }
 
@@ -57,7 +57,7 @@ public class Event {
         return speaker;
     }
 
-    public void setSpeaker(String speaker) {
+    private void setSpeaker(String speaker) {
         this.speaker = speaker;
     }
 
@@ -65,7 +65,7 @@ public class Event {
         return topic;
     }
 
-    public void setTopic(String topic) {
+    private void setTopic(String topic) {
         this.topic = topic;
     }
 

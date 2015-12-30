@@ -53,7 +53,7 @@ public class TestAppEngine extends AndroidTestCase {
         initializeAbouts();
     }
 
-    public void initializeEvents() throws Throwable {
+    private void initializeEvents() throws Throwable {
         if (myApiService != null) {
             myApiService.removeAllEvents().execute();
 
@@ -221,11 +221,11 @@ public class TestAppEngine extends AndroidTestCase {
                     "Julie Anderson of YourBestMindOnline.com is a dynamic and engaging international public speaker. Her fun and interactive presentations make the technical science behind psychology interesting and understandable. When Julie speaks she captivates listeners with her natural, down-to-earth, and always energetic style. For more than 15 years she has been igniting her audiences to fire up their brains. Her keynotes and workshops inspire positive changes in the relationships of all in attendance. The information she shares will help those who hear to accelerate their success in life and business through discovery of their natural gifts.");
 
             myApiService.insertEvent(event).execute();
-            
+
         }
     }
 
-    public void initializeGroups() throws Throwable {
+    private void initializeGroups() throws Throwable {
         if (myApiService != null) {
             myApiService.removeAllGroups().execute();
 
@@ -292,7 +292,7 @@ public class TestAppEngine extends AndroidTestCase {
         }
     }
 
-    public void initializeAbouts() throws Throwable {
+    private void initializeAbouts() throws Throwable {
         if (myApiService != null) {
             myApiService.removeAllAbouts().execute();
 

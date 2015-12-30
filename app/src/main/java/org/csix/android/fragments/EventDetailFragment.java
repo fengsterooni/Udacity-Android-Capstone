@@ -40,8 +40,8 @@ import butterknife.OnClick;
 public class EventDetailFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private final String LOG_TAG = EventDetailFragment.class.getSimpleName();
-    public static final String EVENT_ID = "EVENT_ID";
-    public static final int LOADER_ID = 201;
+    private static final String EVENT_ID = "EVENT_ID";
+    private static final int LOADER_ID = 201;
 
     private long eventId;
     private View view;
@@ -58,13 +58,13 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
             CSixContract.EventEntry.COLUMN_TYPE
     };
 
-    public static final int COL_EVENT_ID = 0;
-    public static final int COL_EVENT_DATE = 1;
-    public static final int COL_EVENT_SPEAKER = 2;
-    public static final int COL_EVENT_IMAGE = 3;
-    public static final int COL_EVENT_TOPIC = 4;
-    public static final int COL_EVENT_DESC = 5;
-    public static final int COL_EVENT_TYPE = 6;
+    private static final int COL_EVENT_ID = 0;
+    private static final int COL_EVENT_DATE = 1;
+    private static final int COL_EVENT_SPEAKER = 2;
+    private static final int COL_EVENT_IMAGE = 3;
+    private static final int COL_EVENT_TOPIC = 4;
+    private static final int COL_EVENT_DESC = 5;
+    private static final int COL_EVENT_TYPE = 6;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -227,7 +227,7 @@ public class EventDetailFragment extends Fragment implements LoaderManager.Loade
         }
     }
 
-    public StringBuilder getSummary() {
+    private StringBuilder getSummary() {
         StringBuilder summary = new StringBuilder();
         return summary
                 .append(eventSpeaker)

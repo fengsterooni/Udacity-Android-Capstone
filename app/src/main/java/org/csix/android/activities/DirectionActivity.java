@@ -142,11 +142,11 @@ public class DirectionActivity extends BaseMapActivity {
 
     public class Sign implements ClusterItem {
         private final LatLng position;
-        private double latitude;
-        private double longtitude;
+        private final double latitude;
+        private final double longtitude;
         private String name;
-        private String notes;
-        private int img;
+        private final String notes;
+        private final int img;
 
         public Sign(double lat, double lng, String name, String notes, int image) {
             this.latitude = lat;

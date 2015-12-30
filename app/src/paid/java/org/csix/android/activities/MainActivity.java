@@ -27,7 +27,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
-    public static final String MAIN_TAG = "MAIN_TAG";
+    private static final String MAIN_TAG = "MAIN_TAG";
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.navigation)
     NavigationView navigation;
 
-    ActionBarDrawerToggle drawerToggle;
+    private ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

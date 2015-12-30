@@ -6,12 +6,12 @@ import com.googlecode.objectify.annotation.Id;
 @Entity
 public class Group {
     @Id
-    Long id;
-    String name;
-    String address;
-    String location;
-    String time;
-    String desc;
+    private Long id;
+    private String name;
+    private String address;
+    private String location;
+    private String time;
+    private String desc;
 
     public Group() {
     }
@@ -35,7 +35,7 @@ public class Group {
         return address;
     }
 
-    public void setAddress(String address) {
+    private void setAddress(String address) {
         this.address = address;
     }
 
@@ -43,7 +43,7 @@ public class Group {
         return desc;
     }
 
-    public void setDesc(String desc) {
+    private void setDesc(String desc) {
         this.desc = desc;
     }
 
@@ -60,7 +60,7 @@ public class Group {
         return name;
     }
 
-    public void setName(String name) {
+    private void setName(String name) {
         this.name = name;
     }
 

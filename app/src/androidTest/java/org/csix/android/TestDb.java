@@ -15,11 +15,11 @@ public class TestDb extends AndroidTestCase{
     public static final String LOG_TAG = TestDb.class.getSimpleName();
 
     // Variables for Events
-    public final static String date = "2015-08-27";
-    public final static String speaker = "Jenny Dunham";
-    public final static String topic = "Tapping into the Hidden Job Market";
-    public final static String image = "http://csix.org/wp-content/uploads/2015/08/JennyDunham.jpg";
-    public final static String event_desc = "You’ve applied to every job order on line and posted your resume on every job board, but you’re still not getting in the door. What’s next? Many available jobs are unadvertised. Learn how to get in front of hiring managers  without  standing  in  line!  Use  sales  tricks  and  tips  to  warm up  a  cold  call  and  get  past  the gatekeeper to generate informational meetings. Differentiate yourself from the rest of the crowd by doing what other candidates are unwilling to do and afraid to try.\n" +
+    private final static String date = "2015-08-27";
+    private final static String speaker = "Jenny Dunham";
+    private final static String topic = "Tapping into the Hidden Job Market";
+    private final static String image = "http://csix.org/wp-content/uploads/2015/08/JennyDunham.jpg";
+    private final static String event_desc = "You’ve applied to every job order on line and posted your resume on every job board, but you’re still not getting in the door. What’s next? Many available jobs are unadvertised. Learn how to get in front of hiring managers  without  standing  in  line!  Use  sales  tricks  and  tips  to  warm up  a  cold  call  and  get  past  the gatekeeper to generate informational meetings. Differentiate yourself from the rest of the crowd by doing what other candidates are unwilling to do and afraid to try.\n" +
             "\n" +
             "Jenny Dunham is a Personal Career Coach counseling clients throughout various stages of their career transition.  She is a recognized facilitator and speaker who enjoys uncovering natural talent, pinpointing goals and turning dreams into reality.\n" +
             "\n" +
@@ -27,20 +27,20 @@ public class TestDb extends AndroidTestCase{
             "\n" +
             "Jenny brings over 15 years of recruiting and business development experience primarily marketing financial consulting services as the Director of Business Development in a boutique staffing firm in the Silicon Valley.  She returned to coaching after several years marketing financial and “big data” software to technology companies as part of a late stage startup.";
 
-    public final static int type = 0;
+    private final static int type = 0;
 
 
     // Variables for Groups
-    public final static String name = "Eco Green Group (EGG)";
-    public final static String address = "20390 Park Place, Saratoga, CA";
-    public final static String location = "Richards Hall, Saratoga Federated Church";
-    public final static String time = "Thursday, 8:00 am – 9:30 am";
-    public final static String group_desc = "EcoGreen Group creates professional and entrepreneurial opportunities in sustainability and clean technologies through education, professional development, industry collaboration, and networking.";
+    private final static String name = "Eco Green Group (EGG)";
+    private final static String address = "20390 Park Place, Saratoga, CA";
+    private final static String location = "Richards Hall, Saratoga Federated Church";
+    private final static String time = "Thursday, 8:00 am – 9:30 am";
+    private final static String group_desc = "EcoGreen Group creates professional and entrepreneurial opportunities in sustainability and clean technologies through education, professional development, industry collaboration, and networking.";
 
 
     // Variables for Abouts
-    public final static String title = "About";
-    public final static String about_desc = "CSIX CONNECT helps individuals in career transition to significantly improve their job search success through education, in-person networking and mutual support.   In today’s job market, more than 80 per cent of jobs obtained result from successful networking. CSIX CONNECT provides the means to tap into and leverage the power of a network that is already more than 7000 members strong.";
+    private final static String title = "About";
+    private final static String about_desc = "CSIX CONNECT helps individuals in career transition to significantly improve their job search success through education, in-person networking and mutual support.   In today’s job market, more than 80 per cent of jobs obtained result from successful networking. CSIX CONNECT provides the means to tap into and leverage the power of a network that is already more than 7000 members strong.";
 
     public void testCreateDb() throws Throwable {
         mContext.deleteDatabase(DbHelper.DATABASE_NAME);

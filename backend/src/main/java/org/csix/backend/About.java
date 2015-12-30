@@ -7,9 +7,9 @@ import com.googlecode.objectify.annotation.Id;
 @Entity
 public class About {
     @Id
-    Long id;
-    String title;
-    String desc;
+    private Long id;
+    private String title;
+    private String desc;
 
     public About() {
     }

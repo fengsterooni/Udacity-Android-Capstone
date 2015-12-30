@@ -30,7 +30,7 @@ public class AboutFragment extends Fragment implements LoaderManager.LoaderCallb
 
     private static final int LOADER_ID = 201;
 
-    public static final String ABOUT_ID = "ABOUT_ID";
+    private static final String ABOUT_ID = "ABOUT_ID";
 
 
     private static final String[] ABOUT_COLUMNS = {

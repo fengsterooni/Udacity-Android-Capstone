@@ -31,7 +31,7 @@ public class GroupFragment extends Fragment implements LoaderManager.LoaderCallb
 
     private final String LOG_TAG = GroupFragment.class.getSimpleName();
     private GroupAdapter mGroupAdapter;
-    
+
     private static final int LOADER_ID = 201;
 
     public static final String GROUP_ID = "GROUP_ID";
